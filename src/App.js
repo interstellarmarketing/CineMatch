@@ -7,14 +7,20 @@ import Browse from "./components/Browse"
 import Login from "./components/Login"
 import Header from "./components/Header"
 
+//redux
+import appStore from "./utils/redux/appStore"
+import { Provider } from "react-redux"
+
 
 const App = () => {
   return (
-    <div>
-      <Header />
+    <Provider store={appStore}>
+      <div>
+        <Header />
 
-      <Outlet />
-    </div>
+        <Outlet />
+      </div>
+    </Provider>
   )
 }
 export const appRouter = createBrowserRouter([
