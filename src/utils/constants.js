@@ -7,3 +7,7 @@ export const API_OPTIONS = {
       Authorization: 'Bearer ' + TMBD_API_KEY
     }
 };
+
+export const VIDEO_URL = 'https://api.themoviedb.org/3/movie/';
+
+export const VIDEO_URL_END = '/videos?language=en-US';

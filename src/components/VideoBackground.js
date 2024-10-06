@@ -1,6 +1,8 @@
 import React from 'react'
+import useMovieTrailer from '../hooks/useMovieTrailer'
 
-const VideoBackground = () => {
+const VideoBackground = ({movieId}) => {
+  useMovieTrailer(movieId);
   return (
     <div>VideoBackground</div>
   )
