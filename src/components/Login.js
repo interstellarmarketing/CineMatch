@@ -2,7 +2,9 @@ import { useRef, useState } from "react";
 import { COVER_IMAGE } from "../utils/constants"
 import { validateEmail, validateFullName, validatePassword } from "../utils/validateForms";
 import { auth } from "../utils/firebase";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/redux/userSlice";
 
 const Login = () => {
 
@@ -10,6 +12,8 @@ const Login = () => {
   const [emailErrMsg, setEmailErrMsg] = useState(null);
   const [passwordErrMsg, setPasswordErrMsg] = useState(null);
   const [fullNameErrMsg, setFullNameErrMsg] = useState(null);
+
+  const dispatch = useDispatch();
 
 
   const email = useRef(null);
@@ -87,45 +91,45 @@ const Login = () => {
       </div>
 
       {/* Login Form */}
-      <div>
-      <form className="w-full flex p-6 sm:p-12 flex-col bg-black bg-opacity-65" onSubmit={(event) => event.preventDefault()}>
-          <h1 className="font-bold text-3xl m-2 mb-4">
-            {isSignUp ? "Sign Up" : "Sign In"}
-          </h1>
+      <div className="absolute top-0 bottom-0 left-0 right-0 w-4/12 mx-auto my-36 text-white ">
+        <form className="w-full flex p-6 sm:p-12 flex-col bg-black bg-opacity-65" onSubmit={(event) => event.preventDefault()}>
+            <h1 className="font-bold text-3xl m-2 mb-4">
+              {isSignUp ? "Sign Up" : "Sign In"}
+            </h1>
 
-          {isSignUp && 
-            <input 
-              ref={fullName}
+            {isSignUp && 
+              <input 
+                ref={fullName}
+                type="text" 
+                placeholder="Full Name"
+                className="p-2 m-2 text-black bg-gray-300 rounded-md "/>}
+            
+            {isSignUp && <p className="text-red-500 font-semibold m-2 mt-1">{fullNameErrMsg}</p>}
+
+            <input
+              ref={email} 
               type="text" 
-              placeholder="Full Name"
-              className="p-2 m-2 text-black bg-gray-300 rounded-md "/>}
-          
-          {isSignUp && <p className="text-red-500 font-semibold m-2 mt-1">{fullNameErrMsg}</p>}
+              placeholder="Email" 
+              className="p-2 m-2 mt-1 text-black bg-gray-300 rounded-md"
+            />
+            <p className="text-red-500 font-semibold m-2 mt-1">{emailErrMsg}</p>
 
-          <input
-            ref={email} 
-            type="text" 
-            placeholder="Email" 
-            className="p-2 m-2 mt-1 text-black bg-gray-300 rounded-md"
-          />
-          <p className="text-red-500 font-semibold m-2 mt-1">{emailErrMsg}</p>
+            <input 
+              ref={password}
+              type="password" 
+              placeholder="Password"  
+              className="p-2 m-2 mt-1 text-black bg-gray-300 rounded-md" 
+            />
+            <p className="text-red-500 font-semibold m-2">{passwordErrMsg}</p>
 
-          <input 
-            ref={password}
-            type="password" 
-            placeholder="Password"  
-            className="p-2 m-2 mt-1 text-black bg-gray-300 rounded-md" 
-          />
-          <p className="text-red-500 font-semibold m-2">{passwordErrMsg}</p>
+            <button className="bg-sky-400 p-2 m-2 mt-4 rounded-md text-black" onClick={handleButtonClick}>
+              {isSignUp ? "Sign Up" : "Sign In"}
+            </button> 
 
-          <button className="bg-red-500 p-2 m-2 mt-4 rounded-md" onClick={handleButtonClick}>
-            {isSignUp ? "Sign Up" : "Sign In"}
-          </button> 
-
-          <p className="m-2 text-gray-300">{isSignUp ? "Already Registered?" : "New to Liveflix?"} <span 
-                className="cursor-pointer font-bold text-white" onClick={toggleSignUpForm}>{isSignUp ? "Sign In" : "Sign Up"}
-              </span>
-          </p>
+            <p className="m-2 text-gray-300">{isSignUp ? "Already Registered?" : "New to Filmnest?"} <span 
+                  className="cursor-pointer font-bold text-white" onClick={toggleSignUpForm}>{isSignUp ? "Sign In" : "Sign Up"}
+                </span>
+            </p>
         </form>
       </div>
     </div>

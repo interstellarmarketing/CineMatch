@@ -23,7 +23,7 @@ const Header = () => {
                     <span><FaUserNinja /></span>Sankar
                 </p>}
                 <Link to="/login">
-                <button className="cursor-pointer flex items-center bg-red-500 text-sm p-2 px-4 text-white font-semibold rounded-sm ">
+                <button className="cursor-pointer flex items-center bg-sky-400 text-sm p-2 px-4 text-black font-semibold rounded-sm ">
                     {signIn ? <>Sign Out </>: <>Sign In</>}
                 </button>
                 </Link>
