@@ -6,6 +6,7 @@ import Body from "./components/Body"
 import Browse from "./components/Browse"
 import Login from "./components/Login"
 import Header from "./components/Header"
+import MovieDetails from "./components/MovieDetails"
 
 //redux
 import appStore from "./utils/redux/appStore"
@@ -41,7 +42,7 @@ export const appRouter = createBrowserRouter([
         element: <Login />,
       },
       {
-        path:'/movies/: movId',
+        path:'/movies/:movId',
         element: <MovieDetails />
       }
     ] 
