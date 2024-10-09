@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 const VideoBackground = ({movieId}) => {
 
   const trailer = useSelector(store => store.movies?.movieTrailer); //subscribe to the store
-  console.log(trailer);
+
   useMovieTrailer(movieId);
   return (
     <div className="w-full h-screen">
