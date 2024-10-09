@@ -1,6 +1,6 @@
 //components
-import MainComponent from "./MainComponent"
-import SecondaryComponent from "./SecondaryComponent"
+import MainContainer from "./MainContainer"
+import SecondaryContainer from "./SecondaryContainer"
 
 //custom hooks
 import usePopularMovies from "../hooks/usePopularMovies"
@@ -9,8 +9,8 @@ const Browse = () => {
     
   return (
     <div>
-        <MainComponent />
-        <SecondaryComponent />
+        <MainContainer />
+        <SecondaryContainer/>
     </div>
   )
 }

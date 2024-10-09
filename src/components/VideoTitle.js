@@ -4,7 +4,7 @@ import { LuInfo } from "react-icons/lu";
 
 const VideoTitle = ({title,overview}) => {
   return (
-    <div className="absolute z-20 pt-96 pl-32 text-white bg-gradient-to-r from-black bg-opacity-0 w-full h-full">
+    <div className="absolute -top-14 z-20 pt-96 pl-32 text-white bg-gradient-to-r from-black bg-opacity-0 w-full aspect-video">
       <h1 className='text-6xl font-bold '>{title}</h1>
       <p className='py-4 w-1/2'>{overview}</p>
 

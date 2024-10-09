@@ -4,7 +4,7 @@ import VideoBackground from "./VideoBackground"
 import { useSelector } from "react-redux"
 
 
-const MainComponent = () => {
+const MainContainer = () => {
     const movies = useSelector((store => store.movies?.popularMovies));
 
     if(!movies) return; // this is a guard clause 
@@ -23,4 +23,4 @@ const MainComponent = () => {
   )
 }
 
-export default MainComponent
+export default MainContainer
