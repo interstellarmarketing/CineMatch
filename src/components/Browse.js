@@ -5,6 +5,7 @@ import SecondaryContainer from "./SecondaryContainer"
 //custom hooks
 import usePopularMovies from "../hooks/usePopularMovies"
 const Browse = () => {
+  
     usePopularMovies();
     
   return (
