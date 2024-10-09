@@ -3,6 +3,7 @@ import { API_OPTIONS } from "../utils/constants"
 import { useDispatch } from "react-redux";
 import { addTrendingMovies } from "../utils/redux/moviesSlice";
 
+
 const useTrendingMovies = () => {
     const dispatch = useDispatch();
 

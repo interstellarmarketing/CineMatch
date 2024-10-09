@@ -40,6 +40,10 @@ export const appRouter = createBrowserRouter([
         path: "/login",
         element: <Login />,
       },
+      {
+        path:'/movies/: movId',
+        element: <MovieDetails />
+      }
     ] 
   }
 ])
