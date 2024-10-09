@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
     const signIn = false;
   return (
-    <div className="absolute z-30 flex justify-between pl-16 pr-28 py-1 shadow-sm w-full bg-gradient-to-b from-black">
+    <div className="absolute z-30 flex justify-between pl-16 pr-28 py-1 shadow-sm w-full bg-gradient-to-b from-black bg-opacity-0">
         <div>
             <img 
                 src={LOGO}

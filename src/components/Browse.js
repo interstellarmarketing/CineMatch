@@ -6,6 +6,7 @@ import SecondaryComponent from "./SecondaryComponent"
 import usePopularMovies from "../hooks/usePopularMovies"
 const Browse = () => {
     usePopularMovies();
+    
   return (
     <div>
         <MainComponent />
