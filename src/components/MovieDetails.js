@@ -36,13 +36,13 @@ const MovieDetails = () => {
             
             <div className="flex text-lg w-[350px]">
               <button className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 mr-1">Watchlist<span className="ml-2 text-2xl"><MdBookmarkAdd /></span></button>
-              <button className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 mr-1">Like<span className="ml-2 text-2xl"><AiFillHeart /></span></button>
+              <button className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 ml-1">Like<span className="ml-2 text-2xl"><AiFillHeart /></span></button>
             </div>
         </div>
 
         <div className="text-white w-7/12">
           <h1 className="text-5xl font-bold text-center">{movieDetails.title}</h1>
-          <p className="text-lg text-center">{movieDetails.tagline}</p>
+          <p className="text-lg text-center pt-2">{movieDetails.tagline}</p>
 
           <div className="my-3 flex justify-between">
               <div className="flex items-center gap-2 text-xl">
@@ -61,21 +61,21 @@ const MovieDetails = () => {
           </div>
 
           <div>
-            <h1 className="text-xl font-bold">Overview</h1>
-            <p>{movieDetails.overview}</p>
+            <h1 className="text-2xl font-bold">Overview</h1>
+            <p className="text-lg pt-2">{movieDetails.overview}</p>
           </div>
 
           <div className="">
-            <h1 className="text-xl font-bold">Production Company</h1>
-            <div className="flex h-[100px] rounded-sm bg-white">
-              <div className="flex items-center justify-center w-3/6">
+            <h1 className="text-2xl font-bold pt-2 ">Production Company</h1>
+            <div className="flex h-[100px] mt-2">
+              <div className="flex items-center justify-center w-3/6 rounded-sm bg-white">
                 <img
                     src={IMG_CDN_URL + movieDetails.production_companies[0].logo_path}
                     className="p-4 h-full hover:scale-150 transition-transform duration-300 ease-out"
                 />
               </div>
-              <div className=" flex justify-center items-center w-3/6 px-4 border-l-2 border-black">
-                <h1 className="text-black font-semibold text-3xl">{movieDetails.production_companies[0].name}</h1>
+              <div className=" flex justify-center items-center w-3/6 px-4 border-l-2 border-white ml-2">
+                <h1 className="text-white font-bold text-3xl">{movieDetails.production_companies[0].name}</h1>
               </div>
             </div>
             
