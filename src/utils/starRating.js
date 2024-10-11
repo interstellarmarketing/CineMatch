@@ -2,7 +2,7 @@ import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa"
 
 function starRating(stars){
 
-    if (stars > 9.5){
+    if (stars > 9){
       return <p className="starRating">
         <span><FaStar /></span>
         <span><FaStar /></span>
@@ -18,7 +18,7 @@ function starRating(stars){
         <span><FaRegStar /></span>
         <span><FaRegStar /></span>
       </p>
-    }else if(stars > 1 && stars < 2){
+    }else if(stars > 1 && stars <= 2){
       return <p className="starRating">
         <span><FaStar /></span>
         <span><FaRegStar /></span>
@@ -26,7 +26,7 @@ function starRating(stars){
         <span><FaRegStar /></span>
         <span><FaRegStar /></span>
       </p>
-    }else if(stars > 2 && stars < 3){
+    }else if(stars > 2 && stars <= 3){
       return <p className="starRating">
         <span><FaStar /></span>
         <span><FaStarHalfAlt /></span>
@@ -34,7 +34,7 @@ function starRating(stars){
         <span><FaRegStar /></span>
         <span><FaRegStar /></span>
       </p>
-    }else if(stars > 3 && stars < 4){
+    }else if(stars > 3 && stars <= 4){
       return <p className="starRating">
         <span><FaStar /></span>
         <span><FaStar /></span>
@@ -42,7 +42,7 @@ function starRating(stars){
         <span><FaRegStar /></span>
         <span><FaRegStar /></span>
       </p>
-    }else if(stars > 4 && stars < 5){
+    }else if(stars > 4 && stars <= 5){
       return <p className="starRating">
         <span><FaStar /></span>
         <span><FaStar /></span>
@@ -50,7 +50,7 @@ function starRating(stars){
         <span><FaRegStar /></span>
         <span><FaRegStar /></span>
       </p>
-    }else if(stars > 5 && stars < 6){
+    }else if(stars > 5 && stars <= 6){
       return <p className="starRating">
         <span><FaStar /></span>
         <span><FaStar /></span>
@@ -58,7 +58,7 @@ function starRating(stars){
         <span><FaRegStar /></span>
         <span><FaRegStar /></span>
       </p>
-    }else if(stars > 6 && stars < 7){
+    }else if(stars > 6 && stars <= 7){
       return <p className="starRating">
         <span><FaStar /></span>
         <span><FaStar /></span>
@@ -66,7 +66,7 @@ function starRating(stars){
         <span><FaStarHalfAlt /></span>
         <span><FaRegStar /></span>
       </p>
-    }else if(stars > 7 && stars < 8){
+    }else if(stars > 7 && stars <= 8){
       return <p className="starRating">
         <span><FaStar /></span>
         <span><FaStar /></span>
@@ -74,7 +74,7 @@ function starRating(stars){
         <span><FaStar /></span>
         <span><FaRegStar /></span>
       </p>
-    }else if(stars > 8 && stars < 9){
+    }else if(stars > 8 && stars <= 9){
       return <p className="starRating">
         <span><FaStar /></span>
         <span><FaStar /></span>
