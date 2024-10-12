@@ -7,6 +7,7 @@ import starRating from "../utils/starRating";
 import { MdBookmarkAdd } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import genreIcons from "../utils/genreIcons";
+import CastList from "./CastList";
 
 const MovieDetails = () => {
 
@@ -93,6 +94,11 @@ const MovieDetails = () => {
             
           </div>
         </div>
+      </div>
+
+      <div className="mx-28">
+        <h1 className="text-3xl font-bold text-white">Top Cast</h1>
+        <CastList movId={movieDetails.id}/>
       </div>
         
 
