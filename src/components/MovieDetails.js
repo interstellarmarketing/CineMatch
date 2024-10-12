@@ -6,6 +6,7 @@ import { TbActivity } from "react-icons/tb";
 import starRating from "../utils/starRating";
 import { MdBookmarkAdd } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import genreIcons from "../utils/genreIcons";
 
 const MovieDetails = () => {
 
@@ -58,6 +59,17 @@ const MovieDetails = () => {
                 <p className="text-white">{Math.floor(movieDetails.runtime/60)}<span>h</span> {movieDetails.runtime % 60}<span>m</span></p>
               </div>
 
+          </div>
+
+          <div className="my-2 mt-4">
+            <div className="flex justify-center flex-wrap gap-2">
+              {movieDetails.genres.map((genre) => (
+                <div key={genre.id} className="flex items-center justify-center gap-1 text-white border border-white text-lg px-2 py-1 rounded-sm">
+                  <span className="text-2xl"> {genreIcons(genre.name)}</span>
+                  <span>{genre.name}</span>
+                  </div>
+              ))}
+            </div>
           </div>
 
           <div>
