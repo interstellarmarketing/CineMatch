@@ -10,6 +10,10 @@ import genreIcons from "../utils/genreIcons";
 import CastList from "./CastList";
 import useCastDetails from "../hooks/useCastDetatils";
 import { useEffect, useState } from "react";
+import { FaGlobe } from "react-icons/fa";
+import { LiaImdb } from "react-icons/lia";
+import { IoPlayOutline } from "react-icons/io5";
+import { FcGoogle } from "react-icons/fc";
 
 const MovieDetails = () => {
     const { movId } = useParams();
@@ -106,12 +110,39 @@ const MovieDetails = () => {
               <p className="text-lg pt-2">{movieDetails.overview}</p>
             </div>
 
+            <div className="border-t-[1px] border-b-[1px] mt-1 border-white">
+              <h1 className="text-2xl pt-2 font-semibold">Intrigued by <span className="font-bold">{movieDetails.title}</span>? Let’s dive into its world!</h1>
+              <div className="flex items-center justify-between">
+                <div className="">
+                  <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Website<span><FaGlobe/></span></button>
+                </div>
+
+                <div className="">
+                  <button className="text-white font-bold mt-2 text-4xl "><FcGoogle/></button>
+                </div>
+
+                <div className="">
+                  <button className="text-white font-bold mt-2 text-6xl "><LiaImdb /></button>
+                </div>
+
+                <div className="">
+                  <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Trailer<span className="text-3xl"><IoPlayOutline /></span></button>
+                </div>
+
+                <div className="">
+                  <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Netflix</button>
+                </div>
+
+              </div>
+              
+            </div>
+
             <div className="">
               <h1 className="text-2xl font-bold pt-2 ">Production Company</h1>
               <div className="flex h-[100px] mt-2">
                 <div className="flex items-center justify-center w-3/6 rounded-sm bg-white">
                   <img
-                      src={IMG_CDN_URL + movieDetails.production_companies[0].logo_path}
+                      src={movieDetails.production_companies[0] ? IMG_CDN_URL + movieDetails.production_companies[0].logo_path : null}
                       className="p-4 h-full hover:scale-150 transition-transform duration-300 ease-out"
                   />
                 </div>
