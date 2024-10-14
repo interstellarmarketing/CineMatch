@@ -118,7 +118,7 @@ const MovieDetails = () => {
                 </div>
 
                 <div className="">
-                  <button className="text-white font-bold mt-2 text-4xl "><FcGoogle/></button>
+                  <button className="text-white font-bold mt-2 text-4xl pl-9 "><FcGoogle/></button>
                 </div>
 
                 <div className="">
