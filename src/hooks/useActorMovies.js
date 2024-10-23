@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { API_OPTIONS} from "../utils/constants";
 import { useEffect } from "react";
-import { addCastMovies } from "../utils/redux/moviesSlice";
+import { addActorMovies } from "../utils/redux/moviesSlice";
 
 
 const useActorMovies = (castId) => {
@@ -11,7 +11,7 @@ const useActorMovies = (castId) => {
     const data = await fetch("https://api.themoviedb.org/3/person/"+castId+"/movie_credits?language=en-US", API_OPTIONS);
     const json = await data.json();
 
-    dispatch(addCastMovies(json));
+    dispatch(addActorMovies(json));
   }
 
   useEffect(() => {

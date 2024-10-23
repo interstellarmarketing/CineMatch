@@ -11,16 +11,19 @@ import { IoLocationSharp } from "react-icons/io5";
 import { IoMdMale, IoMdFemale  } from "react-icons/io";
 import ActorImagesList from './ActorImagesList';
 import ActorMovieList from './ActorMovieList';
+import useActorSeries from '../hooks/useActorSeries';
 
 const ActorDetails = () => {
     const { castId } = useParams();
     useActorDetails(castId);
     useActorImages(castId);
     useActorMovies(castId);
+    useActorSeries(castId);
 
     const actor = useSelector((store) => store.details.actorDetails);
     const images = useSelector((store) => store.images.actorImages);
     const movies = useSelector((store) => store.movies.actorMovies);
+    const series = useSelector((store) => store.series.actorSeries);
 
     const [loading, setLoading] = useState(true);
 
@@ -111,6 +114,11 @@ const ActorDetails = () => {
         <div className='m-10 mx-28'> 
             <h3 className='text-xl font-semibold text-white'>Movies</h3>
             <ActorMovieList movies={movies} />
+        </div>
+
+        <div className='m-10 mx-28'> 
+            <h3 className='text-xl font-semibold text-white'>Series</h3>
+            <ActorMovieList movies={series} />
         </div>
 
     </div>

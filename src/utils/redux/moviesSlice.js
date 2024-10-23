@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { addActorMovies } from './detailsSlice'
 
 const moviesSlice = createSlice({
     name: 'movies',
@@ -27,11 +26,11 @@ const moviesSlice = createSlice({
         addUpcomingMovies: (state, action) => {
             state.upcomingMovies = action.payload 
         },
-        addCastMovies: (state, action) => {
+        addActorMovies: (state, action) => {
             state.actorMovies = action.payload
         }
     }
 })
 
-export const { addMovieTrailer, addPopularMovies, addNowPlayingMovies, addTrendingMovies, addUpcomingMovies, addCastMovies} = moviesSlice.actions
+export const { addMovieTrailer, addPopularMovies, addNowPlayingMovies, addTrendingMovies, addUpcomingMovies, addActorMovies} = moviesSlice.actions
 export default moviesSlice.reducer
