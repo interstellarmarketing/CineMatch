@@ -14,10 +14,14 @@ const detailsSlice = createSlice({
 
         addCastDetails: (state, action) => {
             state.castDetails = action.payload
-        }
+        },
+
+        addActorDetails: (state, action) => {
+            state.actorDetails = action.payload
+        },
         
     }
 })
 
-export const { addMovieDetails,addCastDetails } = detailsSlice.actions
+export const { addMovieDetails,addCastDetails, addActorDetails } = detailsSlice.actions
 export default detailsSlice.reducer

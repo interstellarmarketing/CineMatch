@@ -11,6 +11,7 @@ import MovieDetails from "./components/MovieDetails"
 //redux
 import appStore from "./utils/redux/appStore"
 import { Provider } from "react-redux"
+import ActorDetails from "./components/ActorDetails"
 
 
 const App = () => {
@@ -44,6 +45,10 @@ export const appRouter = createBrowserRouter([
       {
         path:'/movies/:movId',
         element: <MovieDetails />
+      },
+      {
+        path:'/cast/:castId',
+        element: <ActorDetails />
       }
     ] 
   }

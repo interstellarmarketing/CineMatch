@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useMovieDetails from "../hooks/useMovieDetails";
 import { useSelector } from "react-redux";
-import { IMG_CDN_ORG_URL, IMG_CDN_URL } from "../utils/constants";
+import { GOOGLE_URL, IMDB_URL, IMG_CDN_ORG_URL, IMG_CDN_URL } from "../utils/constants";
 import { TbActivity } from "react-icons/tb";
 import starRating from "../utils/starRating";
 import { MdBookmarkAdd } from "react-icons/md";
@@ -9,16 +9,26 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import genreIcons from "../utils/genreIcons";
 import CastList from "./CastList";
 import useCastDetails from "../hooks/useCastDetatils";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaGlobe } from "react-icons/fa";
 import { LiaImdb } from "react-icons/lia";
 import { IoPlayOutline } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
+import MovieTrailer from "./MovieTrailer";
 
 const MovieDetails = () => {
     const { movId } = useParams();
 
     const [loading, setLoading] = useState(true);
+
+    const trailerRef = useRef(null);
+
+    const scrollToTrailer = () => {
+      if (trailerRef.current) {
+        trailerRef.current.scrollIntoView({ behavior: 'smooth' }); // Scroll to the trailer section smoothly
+      }
+    };
+  
   
     useEffect(() => {
       window.scrollTo(0, 0);
@@ -110,36 +120,9 @@ const MovieDetails = () => {
               <p className="text-lg pt-2">{movieDetails.overview}</p>
             </div>
 
-            <div className="border-t-[1px] border-b-[1px] mt-1 border-white">
-              <h1 className="text-2xl pt-2 font-semibold">Intrigued by <span className="font-bold">{movieDetails.title}</span>? Let’s dive into its world!</h1>
-              <div className="flex items-center justify-between">
-                <div className="">
-                  <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Website<span><FaGlobe/></span></button>
-                </div>
-
-                <div className="">
-                  <button className="text-white font-bold mt-2 text-4xl pl-9 "><FcGoogle/></button>
-                </div>
-
-                <div className="">
-                  <button className="text-white font-bold mt-2 text-6xl "><LiaImdb /></button>
-                </div>
-
-                <div className="">
-                  <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Trailer<span className="text-3xl"><IoPlayOutline /></span></button>
-                </div>
-
-                <div className="">
-                  <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Netflix</button>
-                </div>
-
-              </div>
-              
-            </div>
-
             <div className="">
               <h1 className="text-2xl font-bold pt-2 ">Production Company</h1>
-              <div className="flex h-[100px] mt-2">
+              <div className="flex h-[100px] my-3">
                 <div className="flex items-center justify-center w-3/6 rounded-sm bg-white">
                   <img
                       src={movieDetails.production_companies[0] ? IMG_CDN_URL + movieDetails.production_companies[0].logo_path : null}
@@ -152,13 +135,57 @@ const MovieDetails = () => {
               </div>
               
             </div>
+
+
+            <div className="border-t-[1px] border-b-[1px] my-4 border-white">
+              <h1 className="text-2xl pt-2 font-semibold">Intrigued by <span className="font-bold">{movieDetails.title}</span>? Let’s dive into its world!</h1>
+              <div className="flex items-center justify-between">
+                <div className="">
+                  <Link to={movieDetails.homepage} target="_blank">
+                    <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Website<span><FaGlobe/></span></button>
+                  </Link>
+                </div>
+
+                <div className="">
+                  <Link to={GOOGLE_URL + encodeURIComponent(movieDetails.title)} target="_blank">
+                    <button className="text-white font-bold mt-2 text-4xl pl-9 "><FcGoogle/></button>
+                  </Link>
+                </div>
+
+                <div className="">
+                  <Link to={IMDB_URL +movieDetails.imdb_id} target="_blank">
+                    <button className="text-white font-bold mt-2 text-6xl "><LiaImdb /></button>
+                  </Link>
+                </div>
+
+                <div className="">
+                  
+                  <button onClick={scrollToTrailer} className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Trailer<span className="text-3xl"><IoPlayOutline /></span></button>
+                
+                </div>
+
+                <div className="">
+                  <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Netflix</button>
+                </div>
+
+              </div>
+              
+            </div>
+
           </div>
         </div>
 
-        <div className="mx-28">
+        <div className="text-4xl my-10 mx-28">
           <h1 className="text-3xl font-bold text-white">Top Cast</h1>
           <CastList/>
         </div>
+
+        <div className="text-4xl mx-28" ref={trailerRef}>
+          <h1 className="text-3xl font-bold text-white">Trailer</h1>
+          <MovieTrailer movieId={movieDetails.id} />
+          
+          </div>
+
           
 
       </div>
