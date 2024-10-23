@@ -103,12 +103,12 @@ const ActorDetails = () => {
            
         </div>
 
-        <div>
+        <div className='m-10 mx-28'>
             <h3 className='text-xl font-semibold text-white'>Images</h3>
             <ActorImagesList images={images} />
         </div>
 
-        <div>
+        <div className='m-10 mx-28'> 
             <h3 className='text-xl font-semibold text-white'>Movies</h3>
             <ActorMovieList movies={movies} />
         </div>
