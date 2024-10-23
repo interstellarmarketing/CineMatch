@@ -1,6 +1,10 @@
 import React from 'react'
 
-const ActorMovieList = () => {
+const ActorMovieList = ({movies}) => {
+
+    const actorMovies = movies?.cast;
+
+    console.log(actorMovies);
   return (
     <div>
         

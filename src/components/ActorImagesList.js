@@ -3,7 +3,7 @@ import { IMG_CDN_ORG_URL, IMG_CDN_URL } from '../utils/constants';
 
 const ActorImagesList = ({images}) => {
 
-    const actorImages = images.profiles;
+    const actorImages = images?.profiles;
 
     const [selectedImage, setSelectedImage] = useState(null);
 
