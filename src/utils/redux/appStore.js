@@ -4,6 +4,7 @@ import { configureStore } from "@reduxjs/toolkit"
 import moviesReducer from "./moviesSlice"
 import userReducer from "./userSlice"
 import detailsReducer from "./detailsSlice"
+import imagesReducer from "./imagesSlice"
 
 const appStore = configureStore({
     reducer:{
@@ -11,6 +12,7 @@ const appStore = configureStore({
         user: userReducer,
         movies: moviesReducer,
         details: detailsReducer,
+        images: imagesReducer,
     }
 })
 

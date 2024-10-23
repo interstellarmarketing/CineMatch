@@ -48,8 +48,6 @@ const MovieDetails = () => {
     useCastDetails(movId);
 
     const movieDetails = useSelector((store) => store.details.movieDetails);
-    
-    console.log(movieDetails);
 
     if (!movieDetails) return;
 
@@ -61,6 +59,8 @@ const MovieDetails = () => {
         </div>
       );
     }
+
+    
 
     
 
@@ -101,7 +101,6 @@ const MovieDetails = () => {
                   <p><TbActivity /></p>
                   <p className="text-white">{Math.floor(movieDetails.runtime/60)}<span>h</span> {movieDetails.runtime % 60}<span>m</span></p>
                 </div>
-
             </div>
 
             <div className="my-2 mt-4">
