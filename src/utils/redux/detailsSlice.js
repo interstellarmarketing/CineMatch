@@ -5,6 +5,7 @@ const detailsSlice = createSlice({
     initialState: {
         movieDetails: null,
         castDetails: null,
+        actorDetails: null,
         
     },
     reducers: {
@@ -19,7 +20,6 @@ const detailsSlice = createSlice({
         addActorDetails: (state, action) => {
             state.actorDetails = action.payload
         },
-        
     }
 })
 

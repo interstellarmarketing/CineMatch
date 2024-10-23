@@ -3,6 +3,7 @@ import { IMG_CDN_URL } from '../utils/constants'
 import { useParams } from 'react-router-dom';
 import useActorDetails from '../hooks/useActorDetails';
 import useActorImages from '../hooks/useActorImages';
+import useActorMovies from '../hooks/useActorMovies';
 import { useSelector } from 'react-redux';
 import calculateAge from '../utils/calculateAge';
 import { MdCake } from "react-icons/md";
@@ -14,10 +15,12 @@ const ActorDetails = () => {
     const { castId } = useParams();
     useActorDetails(castId);
     useActorImages(castId);
+    useActorMovies(castId);
 
     const actor = useSelector((store) => store.details.actorDetails);
     const images = useSelector((store) => store.images.actorImages);
-    console.log(images);
+    const movies = useSelector((store) => store.movies.actorMovies);
+    console.log(movies);
     const [loading, setLoading] = useState(true);
 
     let formattedBirthday, age;
