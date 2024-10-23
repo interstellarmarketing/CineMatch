@@ -8,7 +8,7 @@ const imagesSlice = createSlice({
     },
     reducers: {
         addActorImages: (state, action) => {
-            state.movieDetails = action.payload
+            state.actorImages = action.payload
         },
     }
 })

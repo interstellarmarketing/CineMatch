@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { IMG_CDN_URL } from '../utils/constants'
 import { useParams } from 'react-router-dom';
 import useActorDetails from '../hooks/useActorDetails';
+import useActorImages from '../hooks/useActorImages';
 import { useSelector } from 'react-redux';
 import calculateAge from '../utils/calculateAge';
 import { MdCake } from "react-icons/md";
 import { IoLocationSharp } from "react-icons/io5";
 import { IoMdMale, IoMdFemale  } from "react-icons/io";
+import ActorImagesList from './ActorImagesList';
 
 const ActorDetails = () => {
     const { castId } = useParams();
     useActorDetails(castId);
+    useActorImages(castId);
 
     const actor = useSelector((store) => store.details.actorDetails);
-
+    const images = useSelector((store) => store.images.actorImages);
+    console.log(images);
     const [loading, setLoading] = useState(true);
 
     let formattedBirthday, age;
@@ -92,6 +96,12 @@ const ActorDetails = () => {
                     <p className='text-lg'>{actor.known_for_department}</p>
                 </div>
             </div>
+           
+        </div>
+
+        <div>
+            <h3 className='text-xl font-semibold text-white'>Images</h3>
+            <ActorImagesList images={images} />
         </div>
 
     </div>
