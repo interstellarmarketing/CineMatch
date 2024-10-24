@@ -16,7 +16,7 @@ export const VIDEO_URL_END = '/videos?language=en-US';
 export const LOGO = 'https://i.ibb.co/tJsszfL/flimnest-logo2.png';
 
 export const COVER_IMAGE =
-        "https://assets.nflxext.com/ffe/siteui/vlv3/4d2c5849-b306-4884-9036-6211f7ee0178/web/IN-en-20240930-TRIFECTA-perspective_1e1ca6cd-9e2d-4e9d-9e4b-ba0c2d3a0e31_large.jpg"
+          "https://assets.nflxext.com/ffe/siteui/vlv3/74d734ca-0eab-4cd9-871f-bca01823d872/web/IN-en-20241021-TRIFECTA-perspective_2277eb50-9da3-4fdf-adbe-74db0e9ee2cf_large.jpg"
         
         
 export const IMG_CDN_URL = 'https://image.tmdb.org/t/p/w500';
@@ -24,3 +24,8 @@ export const IMG_CDN_ORG_URL = 'https://image.tmdb.org/t/p/original';
 
 export const GOOGLE_URL = 'https://www.google.com/search?q=';
 export const IMDB_URL = 'https://www.imdb.com/title/';
+
+export const SUPPORTED_LANGUAGES = [{identifier: 'en', name: 'English'}, 
+  {identifier: 'ta', name: 'Tamil'}, 
+  {identifier: 'hi', name: 'Hindi'},
+  {identifier: 'ka', name: 'Kannada'},];

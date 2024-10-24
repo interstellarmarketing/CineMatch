@@ -12,6 +12,7 @@ import MovieDetails from "./components/MovieDetails"
 import appStore from "./utils/redux/appStore"
 import { Provider } from "react-redux"
 import ActorDetails from "./components/ActorDetails"
+import GeminiSearch from "./components/GeminiSearch"
 
 
 const App = () => {
@@ -41,6 +42,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/gptsearch",
+        element: <GeminiSearch />,
       },
       {
         path:'/movies/:movId',
