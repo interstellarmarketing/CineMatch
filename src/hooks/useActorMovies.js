@@ -8,7 +8,7 @@ const useActorMovies = (castId) => {
   const dispatch = useDispatch();
 
   const getActorMovies = async (castId) => {
-    const data = await fetch("https://api.themoviedb.org/3/person/"+castId+"/movie_credits?language=en-US", API_OPTIONS);
+    const data = await fetch("https://api.themoviedb.org/3/person/"+castId+"/movie_credits?language=en-US&include_adult=false", API_OPTIONS);
     const json = await data.json();
 
     dispatch(addActorMovies(json));
