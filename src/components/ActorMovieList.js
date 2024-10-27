@@ -4,7 +4,8 @@ import ActorMovieCard from './ActorMovieCard';
 
 const ActorMovieList = ({movies}) => {
 
-    const actorMovies = movies?.cast || [];
+    const data = movies?.cast || [];
+    const actorMovies = data.filter(movie => movie.adult === false);
     const moviesPerPage = 10;
     const [currentPage, setCurrentPage] = useState(1);
 
