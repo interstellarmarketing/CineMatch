@@ -41,41 +41,55 @@ const Header = () => {
 
 
   return (
-    <div className="absolute z-30 flex justify-between pl-16 pr-28 py-1 shadow-sm w-full bg-gradient-to-b from-black bg-opacity-0">
-        <div>
-            <img 
-                src={LOGO}
-                alt="flimnest-logo"
-                className="w-48" 
-            />
-        </div>
-        <div className="flex gap-10 items-center"> 
-            <Nav />
-           
-            <div className="flex gap-10 w-77 items-center"> 
-                {user && <p className=" text-lg flex items-center gap-1 text-white font-semibold">
-                    <span><FaUserNinja /></span>{user.displayName}
-                </p>}
+    <div className="">
+        <div className="hidden absolute z-30 md:flex justify-between pl-16 pr-28 py-1 shadow-sm w-full bg-gradient-to-b from-black bg-opacity-0">
+            <div>
+                <img 
+                    src={LOGO}
+                    alt="flimnest-logo"
+                    className="w-48" 
+                />
+            </div>
+            <div className="flex gap-10 items-center"> 
+                <Nav />
+            
+                <div className="flex gap-10 w-77 items-center"> 
+                    {user && <p className=" text-lg flex items-center gap-1 text-white font-semibold">
+                        <span><FaUserNinja /></span>{user.displayName}
+                    </p>}
 
-                {
-                    user ? 
-                        <>
-                            <button onClick={handleSignOut} className="cursor-pointer flex items-center bg-sky-400 text-sm p-2 px-4 text-black font-semibold rounded-sm ">
-                                Sign Out
-                            </button>
-                        </> 
-                        :
-                        <>
-                            <Link to="/login">
-                                <button className="cursor-pointer flex items-center bg-sky-400 text-sm p-2 px-4 text-black font-semibold rounded-sm ">
-                                    Sign In
+                    {
+                        user ? 
+                            <>
+                                <button onClick={handleSignOut} className="cursor-pointer flex items-center bg-sky-400 text-sm p-2 px-4 text-black font-semibold rounded-sm ">
+                                    Sign Out
                                 </button>
-                            </Link>
-                        </>
-                }
-                
+                            </> 
+                            :
+                            <>
+                                <Link to="/login">
+                                    <button className="cursor-pointer flex items-center bg-sky-400 text-sm p-2 px-4 text-black font-semibold rounded-sm ">
+                                        Sign In
+                                    </button>
+                                </Link>
+                            </>
+                    }
+                    
+                </div>
+        </div>
+
+        </div>
+
+        <div className="flex absolute md:hidden bg-gray-900 z-30 w-full">
+            <div>
+                <img 
+                    src={LOGO}
+                    alt="flimnest-logo"
+                    className="w-44" 
+                />
             </div>
         </div>
+        
         
     </div>
   )

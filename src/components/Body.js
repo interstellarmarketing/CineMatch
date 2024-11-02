@@ -3,7 +3,7 @@ import Header from "./Header";
 
 const Body = () => {
   return (
-    <div className="pt-96" >
+    <div className="pt-96 bg-gray-800" >
         <h1 className="text-6xl">Sankar</h1>
         <Link to="/browse" className="text-2xl">Browse</Link>
         <Link to="/login" className="text-2xl">Login</Link>
