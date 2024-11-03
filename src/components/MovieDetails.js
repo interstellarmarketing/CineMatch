@@ -67,28 +67,35 @@ const MovieDetails = () => {
     return (
       <div className="bg-gray-900 pt-20">
 
-        <div className=" flex justify-between m-10 mx-28">
-          <div className="flex flex-col gap-5 w-5/12">
-              <div className="" >
+        <div className=" flex max-md:flex-col justify-between md:m-10 md:mx-28">
+          <div className="flex flex-col md:hidden text-white">
+            <h1 className="text-3xl font-bold text-center">{movieDetails.title}</h1>
+            <p className="text-lg text-center pt-1">{movieDetails.tagline}</p>
+          </div>
+
+          <div className="flex flex-col gap-5 md:w-5/12 max-md:items-center max-md:mt-3">
+              <div className="max-md:flex max-md:justify-center" >
                 <img 
                   src={IMG_CDN_URL +  movieDetails.poster_path} 
                   alt="" 
-                  className="w-[350px] rounded-sm "
+                  className="w-[250px] md:w-[350px] rounded-sm "
                 />
               </div>
 
               
-              <div className="flex text-lg w-[350px]">
+              <div className="flex text-lg w-[250px] items-center justify-center md:w-[350px]">
                 <button className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 mr-1">Watchlist<span className="ml-2 text-2xl"><MdBookmarkAdd /></span></button>
                 <button className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 ml-1">Like<span className="ml-2 text-2xl"><AiFillHeart /></span></button>
               </div>
           </div>
 
-          <div className="text-white w-7/12">
-            <h1 className="text-5xl font-bold text-center">{movieDetails.title}</h1>
-            <p className="text-lg text-center pt-2">{movieDetails.tagline}</p>
-
-            <div className="my-3 flex justify-between">
+          <div className="text-white md:w-7/12">
+            <div className="hidden md:flex md:flex-col">
+              <h1 className="text-5xl font-bold text-center">{movieDetails.title}</h1>
+              <p className="text-lg text-center pt-2">{movieDetails.tagline}</p>
+            </div>
+            
+            <div className=" my-3 flex justify-between max-md:mx-3 max-md:flex-col max-md:items-center">
                 <div className="flex items-center gap-2 text-xl">
                     {starRating(movieDetails.vote_average)}
                     <span className="font-bold">
@@ -103,32 +110,32 @@ const MovieDetails = () => {
                 </div>
             </div>
 
-            <div className="my-2 mt-4">
+            <div className="my-2 mt-4 max-md:mx-2">
               <div className="flex justify-center flex-wrap gap-2">
                 {movieDetails.genres.map((genre) => (
                   <div key={genre.id} className="flex items-center justify-center gap-1 text-white border border-white text-lg px-2 py-1 rounded-sm">
-                    <span className="text-2xl"> {genreIcons(genre.name)}</span>
-                    <span>{genre.name}</span>
+                    <span className="text-2xl max-md:text-lg"> {genreIcons(genre.name)}</span>
+                    <span className="max-md:text-sm">{genre.name}</span>
                     </div>
                 ))}
               </div>
             </div>
 
-            <div>
+            <div className="max-md:mx-3">
               <h1 className="text-2xl font-bold">Overview</h1>
               <p className="text-lg pt-2">{movieDetails.overview}</p>
             </div>
 
-            <div className="">
+            <div className="max-md:mx-3">
               <h1 className="text-2xl font-bold pt-2 ">Production Company</h1>
-              <div className="flex h-[100px] my-3">
-                <div className="flex items-center justify-center w-3/6 rounded-sm bg-white">
+              <div className="flex max-md:flex-col max-md:items-center md:h-[100px] my-3">
+                <div className="flex items-center justify-center md:w-3/6 rounded-sm bg-white">
                   <img
                       src={movieDetails.production_companies[0] ? IMG_CDN_URL + movieDetails.production_companies[0].logo_path : null}
                       className="p-4 h-full hover:scale-150 transition-transform duration-300 ease-out"
                   />
                 </div>
-                <div className=" flex justify-center items-center w-3/6 px-4 border-l-2 border-white ml-2">
+                <div className=" flex justify-center items-center md:w-3/6 px-4 md:border-l-2 md:border-white ml-2">
                   <h1 className="text-white font-bold text-3xl">{movieDetails.production_companies[0].name}</h1>
                 </div>
               </div>
