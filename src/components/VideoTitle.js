@@ -22,13 +22,6 @@ const VideoTitle = ({title,overview,movieId}) => {
           </Link>
         </div> 
       </div>
-
-      <div className="flex flex-col md:hidden absolute pt-16 ">
-        <h1 className='text-6xl font-bold '>{title}</h1>
-        <p className='py-4 w-1/2'>{overview}</p>
-
-
-      </div>
     </div>
     
   )

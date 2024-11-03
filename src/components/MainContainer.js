@@ -16,7 +16,7 @@ const MainContainer = () => {
 
 
   return (
-    <div>
+    <div className="bg-gray-900">
         <VideoTitle title={title} overview={overview} movieId={id}/>
         <VideoBackground movieId={id}/>
     </div>
