@@ -1,6 +1,6 @@
 const CastCard = ({actorName, actorCharacter, actorProfilePath}) => {
   return (
-    <div className="flex flex-col my-5 items-center w-56 text-white">
+    <div className="flex flex-col my-5 items-center w-36 md:w-56 text-white">
         <img
             alt ="movies"
             src = {`https://image.tmdb.org/t/p/w500${actorProfilePath}`} 

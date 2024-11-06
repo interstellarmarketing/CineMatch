@@ -143,8 +143,8 @@ const MovieDetails = () => {
             </div>
 
 
-            <div className="border-t-[1px] md:border-b-[1px] my-4 border-white max-md:mx-3">
-              <h1 className="text-lg md:text-2xlpt-2 font-semibold">Intrigued by <span className="font-bold">{movieDetails.title}</span>? Let’s dive into its world!</h1>
+            <div className="border-t-[1px] border-b-[1px] my-4 border-white max-md:mx-3">
+              <h1 className="text-lg md:text-2xl pt-2 font-semibold">Intrigued by <span className="font-bold">{movieDetails.title}</span>? Let’s dive into its world!</h1>
               <div className="">
                 <div className="hidden md:flex items-center md:justify-between">
                   <div className="">
@@ -175,17 +175,41 @@ const MovieDetails = () => {
 
                 </div>
 
-                <div className="flex md:hidden">  
-                  <div className="">
+                <div className="flex flex-col md:hidden"> 
+
+                  <div className="flex gap-3 items-center justify-center">
+
+                    <div className="">
+                      <Link to={GOOGLE_URL + encodeURIComponent(movieDetails.title)} target="_blank">
+                        <button className="flex text-white items-center font-bold mt-2 text-4xl md:pl-9 "><FcGoogle/></button>
+                      </Link>
+                    </div>
+
+                    <div className="">
+                      <Link to={movieDetails.homepage} target="_blank">
+                        <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Website<span><FaGlobe/></span></button>
+                      </Link>
+                    </div>
+
+                    <div className="">
+                      <Link to={IMDB_URL +movieDetails.imdb_id} target="_blank">
+                        <button className="flex items-centertext-white font-bold mt-2 text-6xl  "><LiaImdb /></button>
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center items-center">
+                    <div className="">
+                      
+                      <button onClick={scrollToTrailer} className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Trailer<span className="text-3xl"><IoPlayOutline /></span></button>
                     
-                    <button onClick={scrollToTrailer} className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Trailer<span className="text-3xl"><IoPlayOutline /></span></button>
+                    </div>
+
+                    <div className="">
+                      <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Netflix</button>
+                    </div>
+                  </div>
                   
-                  </div>
-
-                  <div className="">
-                    <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Netflix</button>
-                  </div>
-
                 </div>
                 
               </div>
@@ -195,8 +219,8 @@ const MovieDetails = () => {
           </div>
         </div>
 
-        <div className="text-4xl my-10 mx-28">
-          <h1 className="text-3xl font-bold text-white">Top Cast</h1>
+        <div className="md:my-10 mx-3 md:mx-28">
+          <h1 className="text-2xl md:text-3xl font-bold text-white">Top Cast</h1>
           <CastList/>
         </div>
 
