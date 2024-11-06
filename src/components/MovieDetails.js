@@ -78,7 +78,7 @@ const MovieDetails = () => {
                 <img 
                   src={IMG_CDN_URL +  movieDetails.poster_path} 
                   alt="" 
-                  className="w-[250px] md:w-[350px] rounded-sm "
+                  className="w-[300px] md:w-[350px] rounded-sm "
                 />
               </div>
 

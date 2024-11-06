@@ -16,14 +16,14 @@ const ActorImagesList = ({images}) => {
     };
     
   return (
-    <div className="px-12 py-3">
+    <div className="md:px-12 py-3">
         <div className="flex overflow-x-scroll scrollbar-hide ">
             <div className="flex scroll-smooth">
                 {actorImages.map(image => (
-                   <div className='w-64 pr-4'>                    
+                   <div className='w-60 md:w-64 pr-4'>                    
                    <img 
                         src={IMG_CDN_URL + image.file_path}
-                        className='w-52 h-72 rounded-md m-2 object-cover'
+                        className='md:w-52 md:h-72 rounded-md m-2 object-cover'
                         onClick={() => handleImageClick(image)} 
                     
                     />

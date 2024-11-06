@@ -58,30 +58,43 @@ const ActorDetails = () => {
 
   return (
     <div className='bg-gray-900 pt-20'>
-        <div className='flex justify-between m-10 mx-28'>
-            <div className="flex flex-col gap-5 w-5/12">
-                <div className="" >
-                    <img 
-                    src={IMG_CDN_URL + actor.profile_path} 
-                    alt="" 
-                    className="w-[350px] rounded-sm "
-                    />
+        <div className='flex max-md:flex-col justify-between md:m-10 mx-3 md:mx-28'>
+            <div className='flex flex-col gap-5 md:w-5/12'>
+                <div className='flex flex-col text-white md:hidden'>
+                    <h1 className="text-5xl font-bold text-center">{actor.name}</h1>
+                    <p className="text-lg text-center pt-2">Also known as <span className='font-semibold'>{actor.also_known_as[0]}</span></p>
                 </div>
+
+                <div className="flex flex-col">
+                    <div className="max-md:flex max-md:justify-center" >
+                        <img 
+                        src={IMG_CDN_URL + actor.profile_path} 
+                        alt="" 
+                        className="w-[300px] md:w-[350px] rounded-sm "
+                        />
+                    </div>
 
                 
                 {/* <div className="flex text-lg w-[350px]">
                     <button className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 mr-1">Watchlist<span className="ml-2 text-2xl"><MdBookmarkAdd /></span></button>
                     <button className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 ml-1">Like<span className="ml-2 text-2xl"><AiFillHeart /></span></button>
                 </div> */}
+                </div>
+
             </div>
+            
 
-            <div className="text-white w-7/12">
-                <h1 className="text-5xl font-bold text-center">{actor.name}</h1>
-                <p className="text-lg text-center pt-2">Also known as <span className='font-semibold'>{actor.also_known_as[0]}</span></p>
 
-                <div className='flex justify-between text-xl my-2'>
-                    <div className='flex items-center gap-2'>
-                        <h3 className='flex items-center gap-1'><MdCake /> {formattedBirthday}</h3>
+            <div className="text-white mx-3 md:w-7/12">
+                <div className='flex flex-col max-md:hidden'>
+                    <h1 className="text-5xl font-bold text-center">{actor.name}</h1>
+                    <p className="text-lg text-center pt-2">Also known as <span className='font-semibold'>{actor.also_known_as[0]}</span></p>
+                </div>
+                
+
+                <div className='flex max-md:flex-col justify-center items-center md:justify-between text-xl my-2'>
+                    <div className='flex items-center gap-1 md:gap-2'>
+                        <h3 className='flex items-center gap-[2px] md:gap-1'><MdCake /> {formattedBirthday}</h3>
                         <p>|</p>
                         {actor.deathday ? <h3> Deceded </h3> : <h3><span className='font-bold'>{age}</span> Years</h3>}  
                         <p>|</p>
@@ -94,20 +107,20 @@ const ActorDetails = () => {
                 </div>
 
                 <div className='my-3'>
-                    <h3 className='text-xl font-semibold'>Biography</h3>
-                    <p className='text-lg'>{actor.biography}</p>
+                    <h3 className='text-2xl font-bold'>Biography</h3>
+                    <p className='text-lg pt-2'>{actor.biography}</p>
                 </div>
 
                 <div>
-                    <h3 className='text-xl font-semibold'>Known For</h3>
-                    <p className='text-lg'>{actor.known_for_department}</p>
+                    <h3 className='text-2xl font-bold'>Known For</h3>
+                    <p className='text-lg pt-2'>{actor.known_for_department}</p>
                 </div>
             </div>
            
         </div>
 
-        <div className='m-10 mx-28'>
-            <h3 className='text-xl font-semibold text-white'>Images</h3>
+        <div className='mx-6 md:m-10 md:mx-28'>
+            <h3 className='text-2xl font-bold text-white'>Images</h3>
             <ActorImagesList images={images} />
         </div>
 
