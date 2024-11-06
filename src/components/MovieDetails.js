@@ -65,7 +65,7 @@ const MovieDetails = () => {
     
 
     return (
-      <div className="bg-gray-900 pt-20">
+      <div className="bg-gray-900 pt-20 ">
 
         <div className=" flex max-md:flex-col justify-between md:m-10 md:mx-28">
           <div className="flex flex-col md:hidden text-white">
@@ -224,7 +224,7 @@ const MovieDetails = () => {
           <CastList/>
         </div>
 
-        <div className="text-4xl mx-28" ref={trailerRef}>
+        <div className="mx-3 md:mx-28" ref={trailerRef}>
           <h1 className="text-3xl font-bold text-white">Trailer</h1>
           <MovieTrailer movieId={movieDetails.id} />
           
@@ -232,7 +232,7 @@ const MovieDetails = () => {
 
           
 
-      </div>
+        </div>
     )
   }
 

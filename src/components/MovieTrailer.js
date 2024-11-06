@@ -10,9 +10,9 @@ const MovieTrailer = ({movieId}) => {
 
     
   return (
-    <div className='md:mx-40 mt-10' id='trailer'>
+    <div className='md:mx-40 md:mt-10 py-5' id='trailer'>
         <iframe   
-        className="w-full md:aspect-video rounded-xl"
+        className="w-full h-full aspect-video rounded-xl"
         src= {"https://www.youtube.com/embed/"+trailer?.key+"?rel=0&showinfo=0"} 
         title="YouTube video player" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
