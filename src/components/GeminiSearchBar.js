@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS, COVER_IMAGE } from "../utils/constants";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { GEMINI_API_KEY } from "../utils/API_KEYS";
 import { addSearchResultMovies } from "../utils/redux/geminiSlice";
 import lang from "../utils/languageConstants"
 
@@ -27,7 +26,7 @@ const GeminiSearchBar = () => {
             return;
         }
 
-        const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+        const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API);
         const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
         const prompt = "Act as movie recommendation engine and suggest movies based on user's input -" + searchText.current.value + 
