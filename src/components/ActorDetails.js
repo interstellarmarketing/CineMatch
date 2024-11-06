@@ -124,12 +124,12 @@ const ActorDetails = () => {
             <ActorImagesList images={images} />
         </div>
 
-        <div className='m-10 mx-28'> 
+        <div className='mx-6 md:m-10 md:mx-28'> 
             <h3 className='text-xl font-semibold text-white'>Movies</h3>
             <ActorMovieList movies={movies} />
         </div>
 
-        <div className='m-10 mx-28'> 
+        <div className='mx-6 md:m-10 md:mx-28'> 
             <h3 className='text-xl font-semibold text-white'>Series</h3>
             <ActorMovieList movies={series} />
         </div>
