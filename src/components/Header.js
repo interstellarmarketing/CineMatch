@@ -1,13 +1,19 @@
 //components
+import Nav from "./Nav"
+
+//Authentication
+import { addUser, removeUser } from "../utils/redux/userSlice";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useDispatch, useSelector } from "react-redux";
+
+//icons
 import { FaUserNinja } from "react-icons/fa";
 import { LOGO } from "../utils/constants";
-import Nav from "./Nav"
+
+//React
 import { Link, useNavigate } from "react-router-dom";
-import { addUser, removeUser } from "../utils/redux/userSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useEffect } from "react";
-import { auth } from "../utils/firebase";
 
 const Header = () => {
     const user = useSelector(store => store.user);
