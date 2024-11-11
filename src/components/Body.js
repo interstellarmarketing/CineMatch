@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import Header from "./Header";
-import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { SiGooglegemini } from "react-icons/si";
 import { useSelector } from "react-redux";
 
+//icons
+import { SiGooglegemini } from "react-icons/si";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 const Body = () => {
 
