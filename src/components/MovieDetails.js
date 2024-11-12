@@ -1,20 +1,22 @@
 import { Link, useParams } from "react-router-dom";
 import useMovieDetails from "../hooks/useMovieDetails";
 import { useSelector } from "react-redux";
-import { GOOGLE_URL, IMDB_URL, IMG_CDN_ORG_URL, IMG_CDN_URL } from "../utils/constants";
+import { GOOGLE_URL, IMDB_URL, IMG_CDN_URL } from "../utils/constants";
 import { TbActivity } from "react-icons/tb";
 import starRating from "../utils/starRating";
-import { MdBookmarkAdd } from "react-icons/md";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import genreIcons from "../utils/genreIcons";
 import CastList from "./CastList";
 import useCastDetails from "../hooks/useCastDetatils";
 import { useEffect, useRef, useState } from "react";
+import MovieTrailer from "./MovieTrailer";
+
+//icons
 import { FaGlobe } from "react-icons/fa";
 import { LiaImdb } from "react-icons/lia";
-import { IoPlayOutline } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
-import MovieTrailer from "./MovieTrailer";
+import { IoPlayOutline } from "react-icons/io5";
+import { MdBookmarkAdd } from "react-icons/md";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import genreIcons from "../utils/genreIcons";
 
 const MovieDetails = () => {
     const { movId } = useParams();
