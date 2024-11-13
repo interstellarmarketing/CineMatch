@@ -11,7 +11,7 @@ const GeminiMovieSuggestions = () => {
   if (!searchResultMoviesNames) return null; 
 
   return ( 
-    <div className="mx-14 my-10">
+    <div className="md:mx-14 md:my-10">
       <div className='flex items-center justify-center p-2 flex-wrap bg-black bg-opacity-60'>
         {searchResultMovies.map((subArray,index)=>
             subArray.filter( (movie) => 
