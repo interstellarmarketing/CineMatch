@@ -17,8 +17,8 @@ const Body = () => {
         </div>
 
         <div className="absolute inset-0 -top-24 flex flex-col items-center justify-center text-white">
-          <h1 className="text-xl  md:text-4xl text-center font-bold">Discover Hidden Gems and Blockbusters Made for You!</h1>
-          <div className="flex gap-3 items-center justify-center pt-3 text-black font-semibold">
+          <h1 className="text-xl md:text-4xl text-center font-bold">Discover Hidden Gems and Blockbusters Made for You!</h1>
+          <div className="flex max-md:flex-col gap-3 items-center justify-center pt-3 text-black font-semibold">
             <Link to={ user ? "/gptsearch" : "/login"} className="flex justify-center items-center gap-1 text-xl bg-white py-2 px-4 hover:bg-sky-400  hover:text-black rounded-sm"><span className='text-xl'><SiGooglegemini /></span><span>Gemini Search</span></Link>  
             <Link to="/browse" className=" flex items-centert text-xl text-white py-2 px-4 hover:bg-white hover:text-sky-400 rounded-sm">Browse<span className="text-3xl"><MdKeyboardDoubleArrowRight /></span></Link>  
           </div>
