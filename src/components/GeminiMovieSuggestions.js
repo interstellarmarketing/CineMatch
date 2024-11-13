@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import ActorMovieCard from "./ActorMovieCard";
+import GeminiMovieCard from "./GeminiMovieCard";
 import { Link } from "react-router-dom";
 
 const GeminiMovieSuggestions = () => {
@@ -11,7 +11,7 @@ const GeminiMovieSuggestions = () => {
   if (!searchResultMoviesNames) return null; 
 
   return (
-    <div className="absolute inset-0 w-full h-full pt-[4%]">
+    <div className="absolute inset-0 w-full h-screen">
       <h1 className="text-white text-2xl">Movies</h1>
       <div className='flex flex-wrap bg-black'>
         {searchResultMovies.map((subArray,index)=>
@@ -19,7 +19,7 @@ const GeminiMovieSuggestions = () => {
               (movie.original_language==='en' || movie.original_language ==='hi'|| movie.original_language==='ta'|| movie.original_language==='te')&& movie.title === searchResultMoviesNames[index].trim()
             ).map((movie)=> 
               <Link to={'/movies/'+movie.id} >
-                <ActorMovieCard key={movie.id} movie={movie}/>
+                <GeminiMovieCard key={movie.id} movie={movie}/>
               </Link>)
           )}
       </div>
