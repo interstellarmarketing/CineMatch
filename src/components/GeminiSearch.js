@@ -53,23 +53,23 @@ const GeminiSearch = () => {
 
   return (
     <div>
-      <div>
-        <div className="">
+      <div className="">
           <img
               src={COVER_IMAGE}
               alt="Netflix Logo"
-              className="w-full h-screen object-cover"
+              className="w-full h-screen object-cover fixed"
           />
-        </div>
-        <div className=" flex justify-center pt-6">
-          <form className=" absolute z-50 top-24 bg-black p-6 flex justify-center items-center w-6/12 gap-3 rounded-md" onSubmit={(e)=>e.preventDefault()}>
+      </div>
+      <div className="">
+        <div className="flex justify-center md:pt-6">
+          <form className=" absolute z-50 top-24 bg-black p-2 md:p-6 flex justify-center items-center w-full md:w-6/12 gap-3 rounded-md" onSubmit={(e)=>e.preventDefault()}>
               <input
                   ref={searchText} 
                   type="text" 
-                  className=" p-2 px-4 w-5/6 rounded-sm outline-none" 
+                  className=" p-1 md:p-2 px-4 w-5/6 rounded-sm outline-none " 
                   placeholder={lang[currentLang].gptSearchPlaceHolder}
               />
-              <button className="text-white border border-white w-1/6 p-2 rounded-sm" onClick={handleGPTSearch}>
+              <button className="text-white border border-white w-1/6 p-1 md:p-2 rounded-sm" onClick={handleGPTSearch}>
                   {lang[currentLang].search}
               </button>
           </form>
