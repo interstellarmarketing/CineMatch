@@ -4,7 +4,7 @@ import { IMG_CDN_URL } from "../utils/constants";
 
 const GeminiMovieCard = ({movie}) => {
   return (
-    <div className="w-40 p-4"> 
+    <div className="w-44 px-4 py-2"> 
         <img
             alt ="movies"
             src = {`${IMG_CDN_URL}${movie.poster_path}`} 

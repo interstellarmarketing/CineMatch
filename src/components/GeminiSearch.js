@@ -62,7 +62,7 @@ const GeminiSearch = () => {
           />
         </div>
         <div className=" flex justify-center pt-6">
-          <form className=" absolute top-24 bg-black p-6 flex justify-center items-center w-6/12 gap-3 rounded-md" onSubmit={(e)=>e.preventDefault()}>
+          <form className=" absolute z-50 top-24 bg-black p-6 flex justify-center items-center w-6/12 gap-3 rounded-md" onSubmit={(e)=>e.preventDefault()}>
               <input
                   ref={searchText} 
                   type="text" 
@@ -75,7 +75,7 @@ const GeminiSearch = () => {
           </form>
         </div>
       </div>
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 top-40">
         <GeminiMovieSuggestions />
       </div>
         

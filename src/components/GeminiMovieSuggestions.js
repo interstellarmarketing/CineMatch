@@ -10,10 +10,9 @@ const GeminiMovieSuggestions = () => {
 
   if (!searchResultMoviesNames) return null; 
 
-  return (
-    <div className="w-full h-screen">
-      <h1 className="text-white text-2xl">Movies</h1>
-      <div className='flex flex-wrap bg-black'>
+  return ( 
+    <div className="mx-14 my-10">
+      <div className='flex items-center justify-center p-2 flex-wrap bg-black bg-opacity-60'>
         {searchResultMovies.map((subArray,index)=>
             subArray.filter( (movie) => 
               (movie.original_language==='en' || movie.original_language ==='hi'|| movie.original_language==='ta'|| movie.original_language==='te')&& movie.title === searchResultMoviesNames[index].trim()
