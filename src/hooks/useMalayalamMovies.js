@@ -8,7 +8,7 @@ const useMalayalamMovies = () => {
     const dispatch = useDispatch();
 
     const getMalayalamMovies = async () => {
-        const data = await fetch('https://api.themoviedb.org/3/discover/movie?language=en-US&page=1&with_original_language=ta', API_OPTIONS);
+        const data = await fetch('https://api.themoviedb.org/3/discover/movie?language=en-US&page=1&with_original_language=ml', API_OPTIONS);
         const jsonData = await data.json();
 
         dispatch(addMalayalamMovies(jsonData.results));
