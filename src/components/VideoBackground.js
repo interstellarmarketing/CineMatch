@@ -33,7 +33,7 @@ const VideoBackground = ({movieId}) => {
         </iframe>
       </div>
 
-      <div className='flex flex-col md:hidden w-full h-screen items-center '>
+      <div className='hidden w-full h-screen items-center '>
           <img 
             src={IMG_CDN_URL+details?.backdrop_path} 
             alt={details?.title} 
