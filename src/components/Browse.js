@@ -8,6 +8,8 @@ import useNowPlaying from "../hooks/useNowPlaying";
 import useUpcomingMovies from "../hooks/useUpcomingMovies";
 import useTrendingMovies from "../hooks/useTrendingMovies";
 import useTamilMovies from "../hooks/useTamilMovies";
+import useBollyWoodMovies from "../hooks/useBollyWoodMovies";
+
 const Browse = () => {
 
     useUpcomingMovies();
@@ -15,7 +17,8 @@ const Browse = () => {
     usePopularMovies();
     useNowPlaying();
     useTamilMovies();
-    
+    useBollyWoodMovies();
+        
   return (
     <div>
         <MainContainer />
