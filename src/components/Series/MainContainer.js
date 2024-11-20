@@ -7,19 +7,19 @@ import { useSelector } from "react-redux"
 
 
 const MainContainer = () => {
-    const movies = useSelector((store => store.movies?.popularMovies));
+    const series = useSelector((store => store.series?.topRatedSeries));
 
-    if(!movies) return; // this is a guard clause 
+    if(!series) return; // this is a guard clause 
 
     const randomIndex = Math.floor(Math.random() * 20);
-    const mainMovie = movies[randomIndex];
+    const mainSeries = series[randomIndex];
 
-    const{title, overview,id} = mainMovie;
+    const{name, overview,id} = mainSeries;
 
 
   return (
     <div className="bg-black md:bg-gray-900">
-        <VideoTitle title={title} overview={overview} movieId={id}/>
+        <VideoTitle title={name} overview={overview} movieId={id}/>
         <VideoBackground movieId={id}/>
     </div>
   )

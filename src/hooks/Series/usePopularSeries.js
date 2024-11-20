@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { API_OPTIONS } from "../../utils/constants"
 import { useDispatch } from "react-redux";
-import { addTopRatedSeries } from "../../utils/redux/seriesSlice";
+import { addPopularSeries, addTopRatedSeries } from "../../utils/redux/seriesSlice";
 
 
 const usePopularSeries = () => {

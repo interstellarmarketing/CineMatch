@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import SeriesCard from "./SeriesCard";
 
-const SeriesList = ({title,movies}) => {
+const SeriesList = ({title,series}) => {
 
-    if(!movies) return;
+    if(!series) return;
+    // console.log(movies)
 
   return (
     <div className="px-5 md:px-12 py-3 text-white">
@@ -12,7 +13,7 @@ const SeriesList = ({title,movies}) => {
         </h1>
         <div className="flex overflow-x-scroll scrollbar-hide ">
             <div className="flex scroll-smooth">
-                {movies.map(movie => (
+                {series.map(movie => (
                     <Link to={'/movies/'+movie.id} >
                         <SeriesCard key={movie.id} poster_path={movie.poster_path}/>
                     </Link>
