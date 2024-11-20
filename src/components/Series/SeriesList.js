@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import MovieCard from "./MovieCard"
+import SeriesCard from "./SeriesCard";
 
 const SeriesList = ({title,movies}) => {
 
@@ -14,7 +14,7 @@ const SeriesList = ({title,movies}) => {
             <div className="flex scroll-smooth">
                 {movies.map(movie => (
                     <Link to={'/movies/'+movie.id} >
-                        <MovieCard key={movie.id} poster_path={movie.poster_path}/>
+                        <SeriesCard key={movie.id} poster_path={movie.poster_path}/>
                     </Link>
                 ))} 
             </div>

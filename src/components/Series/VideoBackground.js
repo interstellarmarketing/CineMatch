@@ -14,8 +14,8 @@ const VideoBackground = ({movieId}) => {
   useMovieTrailer(movieId);
   useMovieDetails(movieId);
 
-  const trailer = useSelector(store => store.movies?.movieTrailer); //subscribe to the store
-  const details = useSelector(store => store.details?.movieDetails); //subscribe
+  const trailer = useSelector(store => store.series?.seriesTrailer); //subscribe to the store
+  const details = useSelector(store => store.details?.seriesDetails); //subscribe
 
   console.log(details)
 

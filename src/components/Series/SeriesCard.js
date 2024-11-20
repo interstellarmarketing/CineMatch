@@ -2,7 +2,7 @@ import { IMG_CDN_URL } from "../utils/constants";
 
 
 
-const MovieCard = ({poster_path}) => {
+const SeriesCard = ({poster_path}) => {
   return (
     <div className="w-36 md:w-64 pr-2 md:pr-4"> 
         <img
@@ -15,4 +15,4 @@ const MovieCard = ({poster_path}) => {
   )
 }
 
-export default MovieCard;
+export default SeriesCard;
