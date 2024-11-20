@@ -19,8 +19,6 @@ const useTamilSeries = (lang) => {
         }else if (lang === 'te'){
             dispatch(addTeluguSeries(jsonData.results));
         }
-        
-
     }
 
     useEffect(() => {

@@ -42,7 +42,7 @@ const Nav = () => {
   return (
     <div className="flex justify-between items-center gap-10 text-white">
         <div className="cursor-pointer ">
-        {
+        {user && (
             toggleGPT ? (
                 <button
                     className="flex w-[120px] justify-center items-center gap-1 text-sm font-semibold p-2 m-4 text-white border border-white hover:bg-white hover:text-black rounded-sm"
@@ -58,7 +58,7 @@ const Nav = () => {
                 <span className="text-lg"><IoSearch /></span> Gemini
                 </button>
             )
-        }
+        )}
 
         
                 
