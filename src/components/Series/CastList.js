@@ -4,7 +4,7 @@ import CastCard from './CastCard';
 import { Link } from 'react-router-dom';
 
 const CastList = () => {
-    const cast = useSelector((store) => store.details.castDetails);
+    const cast = useSelector((store) => store.details.tvCastDetails);
 
     console.log(cast);
   return (

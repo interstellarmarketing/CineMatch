@@ -106,9 +106,10 @@ const SeriesDetails = () => {
                 </div>
 
                 <div className="flex items-center gap-2 text-xl font-semibold">
-                  <p className="text-white"> {new Date(movieDetails.release_date).getFullYear()}</p>
+                  <p className="text-white"> {new Date(movieDetails.first_air_date).getFullYear()}</p>
                   <p><TbActivity /></p>
-                  <p className="text-white">{Math.floor(movieDetails.runtime/60)}<span>h</span> {movieDetails.runtime % 60}<span>m</span></p>
+                  <p className="text-white"> {new Date(movieDetails.last_air_date).getFullYear()}</p>
+                  {/* <p className="text-white">{Math.floor(movieDetails.runtime/60)}<span>h</span> {movieDetails.runtime % 60}<span>m</span></p> */}
                 </div>
             </div>
 
@@ -156,7 +157,7 @@ const SeriesDetails = () => {
                   </div>
 
                   <div className="">
-                    <Link to={GOOGLE_URL + encodeURIComponent(movieDetails.title)} target="_blank">
+                    <Link to={GOOGLE_URL + encodeURIComponent(movieDetails.original_name)} target="_blank">
                       <button className="text-white font-bold mt-2 text-4xl max-md:text-xl md:pl-9 "><FcGoogle/></button>
                     </Link>
                   </div>
@@ -228,7 +229,7 @@ const SeriesDetails = () => {
 
         <div className="mx-3 md:mx-28" ref={trailerRef}>
           <h1 className="text-3xl font-bold text-white">Trailer</h1>
-          <SeriesTrailer movieId={movieDetails.id} />
+            <SeriesTrailer movieId={movieDetails.id} />
           
           </div>
 
