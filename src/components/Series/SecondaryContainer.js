@@ -9,6 +9,9 @@ const SecondaryContainer = () => {
       <div className="pt-20 md:-mt-80 md:mx-10 relative z-40">
         <SeriesList title={"Top Rated Series"} series={series?.topRatedSeries}/>
         <SeriesList title={"Tamil Series"} series={series?.tamilSeries}/>
+        <SeriesList title={"Bollywood Series"} series={series?.hindiSeries}/>
+        <SeriesList title={"Telugu Series"} series={series?.teluguSeries}/>
+        <SeriesList title={"Malayalam Series"} series={series?.malayalamSeries}/>
         <SeriesList title={"Trending Series"} series={series?.trendingSeries}/>
         {/* <MovieList title={"Tamil Movies"} movies={movies?.tamilMovies}/>
         <MovieList title={"Bollywood Movies"} movies={movies?.bollywoodMovies}/>

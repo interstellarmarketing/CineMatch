@@ -6,7 +6,7 @@ const SeriesTrailer = ({movieId}) => {
 
     useSeriesTrailer(movieId);
 
-    const trailer = useSelector(store => store.movies?.seriesTrailer); //subscribe to the store
+    const trailer = useSelector(store => store.series?.seriesTrailer); //subscribe to the store
 
     
   return (

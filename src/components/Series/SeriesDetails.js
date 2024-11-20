@@ -130,16 +130,16 @@ const SeriesDetails = () => {
             </div>
 
             <div className="max-md:mx-3">
-              <h1 className="text-2xl font-bold pt-2 ">Production Company</h1>
+              <h1 className="text-2xl font-bold pt-2 ">Network</h1>
               <div className="flex max-md:flex-col max-md:items-center md:h-[100px] my-3">
                 <div className="flex items-center justify-center md:w-3/6 rounded-sm bg-white">
                   <img
-                      src={movieDetails.production_companies[0] ? IMG_CDN_URL + movieDetails.production_companies[0].logo_path : null}
+                      src={movieDetails.networks[0] ? IMG_CDN_URL + movieDetails.networks[0].logo_path : null}
                       className="p-4 h-full hover:scale-150 transition-transform duration-300 ease-out"
                   />
                 </div>
                 <div className=" flex justify-center items-center md:w-3/6 px-4 md:border-l-2 md:border-white ml-2">
-                  <h1 className="text-white font-bold text-3xl">{movieDetails.production_companies[0].name}</h1>
+                  <h1 className="text-white font-bold text-3xl">{movieDetails.networks[0].name}</h1>
                 </div>
               </div>
               

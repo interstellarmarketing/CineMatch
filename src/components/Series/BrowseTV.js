@@ -20,7 +20,10 @@ const BrowseTV = () => {
   usePopularSeries();
   useTrendingSeries();
   useTopRatedSeries();
-  useTamilSeries();
+  useTamilSeries('ta');
+  useTamilSeries('hi');
+  useTamilSeries('ml');
+  useTamilSeries('te');
     // useUpcomingMovies();
 
 
