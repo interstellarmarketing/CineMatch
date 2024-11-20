@@ -1,18 +1,18 @@
 //custom hooks
-import useMovieDetails from '../hooks/useMovieDetails';
-import useMovieTrailer from '../hooks/useMovieTrailer'
+import useSeriesTrailer from '../../hooks/Series/useSeriesTrailer';
+import useSeriesDetails from '../../hooks/Series/useSeriesDetails';
 
 //redux
 import { useSelector } from 'react-redux'
-import { IMG_CDN_ORG_URL, IMG_CDN_URL } from '../utils/constants';
+import { IMG_CDN_ORG_URL, IMG_CDN_URL } from '../../utils/constants';
 import { FaPlay } from 'react-icons/fa';
 import { LuInfo } from 'react-icons/lu';
 import { Link } from 'react-router-dom';
 
 const VideoBackground = ({movieId}) => {
   
-  useMovieTrailer(movieId);
-  useMovieDetails(movieId);
+  useSeriesTrailer(movieId);
+  useSeriesDetails(movieId);
 
   const trailer = useSelector(store => store.series?.seriesTrailer); //subscribe to the store
   const details = useSelector(store => store.details?.seriesDetails); //subscribe

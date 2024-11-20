@@ -6,7 +6,8 @@ const seriesSlice = createSlice({
         actorSeries: null,
         trendingSeries: null,
         topRatedSeries: null,
-        seriesTrailer: null
+        seriesTrailer: null,
+        popularSeries: null
         
     },
     reducers: {
@@ -27,9 +28,11 @@ const seriesSlice = createSlice({
             state.seriesTrailer = action.payload
         },
 
-        a
+        addPopularSeries: (state, action) => {
+            state.popularSeries = action.payload
+        }
     }
 })
 
-export const { addActorSeries, addTrendingSeries, addTopRatedSeries, addSeriesTrailer} = seriesSlice.actions
+export const { addActorSeries, addTrendingSeries, addTopRatedSeries, addSeriesTrailer, addPopularSeries} = seriesSlice.actions
 export default seriesSlice.reducer
