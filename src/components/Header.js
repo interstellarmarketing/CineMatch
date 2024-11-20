@@ -26,7 +26,10 @@ const Header = () => {
            if (user) {
              const {uid,email,displayName} = user;
              dispatch(addUser({uid: uid, email: email, displayName: displayName}));
-            //  navigate("/browse");
+             // Navigate only if the user is not already on a specific path
+            if (window.location.pathname === "/login" || window.location.pathname === "/") {
+                navigate("/browse");
+            }
            } else {
              dispatch(removeUser());
              navigate("/");
