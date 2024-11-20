@@ -18,6 +18,7 @@ import { useEffect } from "react";
 const Header = () => {
     const user = useSelector(store => store.user);
     const toggleGPT = useSelector(store => store.gemini.toggleState);
+    const toggleGemini = useSelector(store => store.gemini.toggleGemini);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -28,11 +29,11 @@ const Header = () => {
              const {uid,email,displayName} = user;
              dispatch(addUser({uid: uid, email: email, displayName: displayName}));
              // Navigate only if the user is not already on a specific path
-            if (window.location.pathname === "/login" || window.location.pathname === "/") {
-                navigate("/browse");
-            }
-            else if (toggleGPT && window.location.pathname === "/login") {
+            
+            if (toggleGPT && window.location.pathname === "/login") {
                 navigate("/gptsearch");
+            }else if (window.location.pathname === "/login" || window.location.pathname === "/") {
+                navigate("/browse");
             }
 
            } else {
