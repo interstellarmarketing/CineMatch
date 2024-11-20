@@ -3,7 +3,7 @@ import MainContainer from "./MainContainer"
 import SecondaryContainer from "./SecondaryContainer"
 
 //custom hooks
-import usePopularMovies from "../../hooks/usePopularMovies"
+import useTrendingSeries from "../../hooks/Series/useTrendingSeries"
 // import useUpcomingMovies from "../../hooks/useUpcomingMovies";
 // import useTrendingMovies from "../../hooks/useTrendingMovies";
 // import useTamilMovies from "../../hooks/useTamilMovies";
@@ -14,6 +14,7 @@ import usePopularMovies from "../../hooks/usePopularMovies"
 
 const BrowseTV = () => {
 
+  useTrendingSeries();
     // useUpcomingMovies();
     // useTrendingMovies();
     // usePopularMovies();
