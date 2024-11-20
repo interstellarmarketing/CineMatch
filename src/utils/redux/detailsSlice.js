@@ -7,6 +7,7 @@ const detailsSlice = createSlice({
         castDetails: null,
         actorDetails: null,
         seriesDetails: null,
+        tvCastDetails: null,
         
     },
     reducers: {
@@ -16,6 +17,9 @@ const detailsSlice = createSlice({
 
         addCastDetails: (state, action) => {
             state.castDetails = action.payload
+        },
+        addTVCastDetails: (state, action) => {
+            state.tvCastDetails = action.payload
         },
 
         addActorDetails: (state, action) => {
@@ -28,5 +32,5 @@ const detailsSlice = createSlice({
     }
 })
 
-export const { addMovieDetails,addCastDetails, addActorDetails, addSeriesDetails } = detailsSlice.actions
+export const { addMovieDetails,addCastDetails, addActorDetails, addSeriesDetails, addTVCastDetails } = detailsSlice.actions
 export default detailsSlice.reducer
