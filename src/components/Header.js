@@ -17,6 +17,7 @@ import { useEffect } from "react";
 
 const Header = () => {
     const user = useSelector(store => store.user);
+    const toggleGPT = useSelector(store => store.gemini.toggleState);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -30,6 +31,10 @@ const Header = () => {
             if (window.location.pathname === "/login" || window.location.pathname === "/") {
                 navigate("/browse");
             }
+            else if (toggleGPT && window.location.pathname === "/login") {
+                navigate("/gptsearch");
+            }
+
            } else {
              dispatch(removeUser());
              navigate("/");

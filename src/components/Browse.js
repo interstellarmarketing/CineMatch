@@ -1,6 +1,8 @@
 //components
 import MainContainer from "./MainContainer"
 import SecondaryContainer from "./SecondaryContainer"
+import GeminiSearch from "./GeminiSearch";
+import Login from "./Login";
 
 //custom hooks
 import usePopularMovies from "../hooks/usePopularMovies"
@@ -10,6 +12,10 @@ import useTamilMovies from "../hooks/useTamilMovies";
 import useBollyWoodMovies from "../hooks/useBollyWoodMovies";
 import usePopularInIndia from "../hooks/useTeluguMovies";
 import useMalayalamMovies from "../hooks/useMalayalamMovies";
+
+//redux
+import { useSelector } from "react-redux";
+
 
 const Browse = () => {
 
@@ -23,8 +29,8 @@ const Browse = () => {
         
   return (
     <div>
-        <MainContainer />
-        <SecondaryContainer/>
+      <MainContainer />
+      <SecondaryContainer />  
     </div>
   )
 }

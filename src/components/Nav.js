@@ -1,22 +1,29 @@
 //icons
 import { IoMdHome } from "react-icons/io";
 import { IoSearch } from "react-icons/io5";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleGPTSearch } from "../utils/redux/geminiSlice";
 
 const Nav = () => {
-    const toggleGPT = false;
-    const user = useSelector(store => store.user);
+    const dispatch = useDispatch();
+
+    const toggleGPT = useSelector(store => store.gemini.toggleState);
+    console.log(toggleGPT);
+
+    const handleGeminiSearch = () => {
+        dispatch(toggleGPTSearch());
+    }
+    
   return (
     <div className="flex justify-between items-center gap-10 text-white">
         <div className="cursor-pointer ">
 
-            
-                <Link to={ user ? "/gptsearch" : "/login"} className='flex justify-center items-center gap-1 text-sm font-semibold p-2 text-white border border-white hover:bg-white hover:text-black rounded-sm'
+        <button className='flex justify-center items-center gap-1 text-sm font-semibold p-2 m-4 text-white border border-white hover:bg-white hover:text-black rounded-sm'
+            onClick={handleGeminiSearch}
+        >
+          {toggleGPT ? (<><span className='text-lg'><IoMdHome  /></span> Home Page</>) : (<><span className='text-lg'><IoSearch /></span> GPT Search</>)}
+        </button>
                 
-                >
-                    {toggleGPT ? (<><span className='text-lg'><IoMdHome  /></span> Home Page</>) : (<><span className='text-lg'><IoSearch /></span> GPT Search</>)}
-                </Link>
         </div>
         <div className="cursor-pointer">
             Categories
