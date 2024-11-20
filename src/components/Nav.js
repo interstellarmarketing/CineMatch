@@ -31,6 +31,10 @@ const Nav = () => {
         navigate("/about");
     }
 
+    const handleAnimePage = () => {
+        navigate("/anime");
+    }
+
   return (
     <div className="flex justify-between items-center gap-10 text-white">
         <div className="cursor-pointer ">
@@ -63,7 +67,7 @@ const Nav = () => {
             TV Shows
         </div>
 
-        <div className="cursor-pointer">
+        <div className="cursor-pointer" onClick={handleAnimePage}>
             Anime
         </div>
 

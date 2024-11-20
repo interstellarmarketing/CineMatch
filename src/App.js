@@ -15,6 +15,7 @@ import ActorDetails from "./components/ActorDetails"
 import GeminiSearch from "./components/GeminiSearch"
 import About from "./components/About"
 import Anime from "./components/Anime"
+import BrowseTV from "./components/BrowseTV"
 
 
 const App = () => {
@@ -65,6 +66,10 @@ export const appRouter = createBrowserRouter([
         path:'/anime',
         element: <Anime />
       },
+      {
+        path:'/browsetv',
+        element: <BrowseTV />
+      }
     ] 
   }
 ])
