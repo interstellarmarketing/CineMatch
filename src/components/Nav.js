@@ -27,6 +27,10 @@ const Nav = () => {
         navigate("/");
     }
 
+    const handleAboutPage = () => {
+        navigate("/about");
+    }
+
   return (
     <div className="flex justify-between items-center gap-10 text-white">
         <div className="cursor-pointer ">
@@ -63,7 +67,7 @@ const Nav = () => {
             Anime
         </div>
 
-        <div className="cursor-pointer">
+        <div className="cursor-pointer" onClick={handleAboutPage}>
             About
         </div>
     </div>

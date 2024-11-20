@@ -5,14 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { SiGooglegemini } from "react-icons/si";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { toggleGPTSearch } from "../utils/redux/geminiSlice";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../utils/firebase";
-import { useEffect } from "react";
-import { addUser } from "../utils/redux/userSlice";
 
 const Body = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const user = useSelector(store => store.user);
   const toggleGPT = useSelector(store => store.gemini.toggleState);
@@ -20,24 +15,8 @@ const Body = () => {
       dispatch(toggleGPTSearch());
   }
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-       if (user) {
-         const {uid,email,displayName} = user;
-         dispatch(addUser({uid: uid, email: email, displayName: displayName}));
-         // Navigate only if the user is not already on a specific path
-         if (toggleGPT) {
-          navigate("/gptsearch");
-        }
-      }
-     });
- 
-     return () => unsubscribe();
-   }, []);
-  
-
   return (
-    <div className="bg-gray-800" >
+    <div className="bg-black" >
         <div className="relative flex ">
           <img src="https://utfs.io/f/0Gl64F1LqW8ASxldPqUfmCFVWPrR6B3Dn9yoKa2jLgY0Sexd  " className="w-full h-screen object-cover" alt="Home Page" />
         </div>
