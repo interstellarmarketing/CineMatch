@@ -27,6 +27,7 @@ export const IMDB_URL = 'https://www.imdb.com/title/';
 
 export const MOVIE_BANNER = 'https://utfs.io/f/0Gl64F1LqW8AyVKfKPBL23UVxRaD91gjGBwqWErKHuoScT6F'
 export const SERIES_BANNER = 'https://utfs.io/f/0Gl64F1LqW8AyXAlwqBL23UVxRaD91gjGBwqWErKHuoScT6F'
+export const ACTOR_BANNER = 'https://utfs.io/f/0Gl64F1LqW8AzpvQZNId7O3n0CwI1YRZ5lVtTFNGou9AE8Qc'
 
 export const SUPPORTED_LANGUAGES = [{identifier: 'en', name: 'English'}, 
   {identifier: 'ta', name: 'Tamil'}, 

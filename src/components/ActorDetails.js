@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { IMG_CDN_URL } from '../utils/constants'
+import { ACTOR_BANNER, IMG_CDN_URL } from '../utils/constants'
 import { useParams } from 'react-router-dom';
 import useActorDetails from '../hooks/useActorDetails';
 import useActorImages from '../hooks/useActorImages';
@@ -66,7 +66,7 @@ const ActorDetails = () => {
                 <div className="flex flex-col">
                     <div className="max-md:flex max-md:justify-center" >
                         <img 
-                        src={IMG_CDN_URL + actor.profile_path} 
+                        src={actor.profile_path ? IMG_CDN_URL + actor.profile_path : ACTOR_BANNER} 
                         alt="" 
                         className="w-[300px] md:w-[350px] rounded-sm "
                         />

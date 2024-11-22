@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { GOOGLE_URL, IMDB_URL, IMG_CDN_URL } from "../../utils/constants";
+import { GOOGLE_URL, IMDB_URL, IMG_CDN_URL, SERIES_BANNER } from "../../utils/constants";
 import { TbActivity } from "react-icons/tb";
 import starRating from "../../utils/starRating";
 import CastList from "./CastList";
@@ -75,7 +75,7 @@ const SeriesDetails = () => {
           <div className="flex flex-col gap-5 md:w-5/12 max-md:items-center max-md:mt-3">
               <div className="max-md:flex max-md:justify-center" >
                 <img 
-                  src={IMG_CDN_URL +  movieDetails.poster_path} 
+                  src={movieDetails.poster_path ? IMG_CDN_URL +  movieDetails.poster_path : SERIES_BANNER} 
                   alt="" 
                   className="w-[300px] md:w-[350px] rounded-sm "
                 />
