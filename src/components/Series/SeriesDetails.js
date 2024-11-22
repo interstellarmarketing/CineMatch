@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { GOOGLE_URL, IMDB_URL, IMG_CDN_URL, PROD_LOGO, SERIES_BANNER } from "../../utils/constants";
+import { GOOGLE_URL, IMDB_URL, IMG_CDN_URL, NETWORK_LOGO, PROD_LOGO, SERIES_BANNER } from "../../utils/constants";
 import { TbActivity } from "react-icons/tb";
 import starRating from "../../utils/starRating";
 import CastList from "./CastList";
@@ -131,7 +131,7 @@ const SeriesDetails = () => {
               <div className="flex max-md:flex-col max-md:items-center md:h-[100px] my-3">
                 <div className="flex items-center justify-center md:w-3/6 rounded-sm bg-white">
                   <img
-                      src={movieDetails.networks[0] ? IMG_CDN_URL + movieDetails.networks[0].logo_path : PROD_LOGO}
+                      src={movieDetails.networks[0].logo_path ? IMG_CDN_URL + movieDetails.networks[0].logo_path : NETWORK_LOGO}
                       className="p-4 h-full hover:scale-150 transition-transform duration-300 ease-out"
                   />
                 </div>

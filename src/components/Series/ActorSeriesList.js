@@ -45,7 +45,7 @@ const ActorSeriesList = ({ movies }) => {
   }
   return (
     <div className='px-12 py-3' ref={seriesRef}>
-      <div className='flex flex-wrap'>
+      <div className='flex flex-wrap items-center justify-center'>
         {currentMovies.map(movie => (
           <Link to={'/shows/' + movie.id} key={movie.id}>
             <ActorSeriesCard movie={movie} />
