@@ -17,6 +17,7 @@ import { IoPlayOutline } from "react-icons/io5";
 import { MdBookmarkAdd } from "react-icons/md";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import genreIcons from "../utils/genreIcons";
+import DetailsShimmer from "./Shimmer/DetailsShimmer";
 
 const MovieDetails = () => {
     const { movId } = useParams();
@@ -54,12 +55,16 @@ const MovieDetails = () => {
     if (!movieDetails) return;
 
 
-    if (loading) {
-      return (
-        <div className="bg-gray-900 pt-20 text-white text-center text-3xl w-full h-screen">
-          Loading...
-        </div>
-      );
+    // if (loading) {
+    //   return (
+    //     <div className="bg-gray-900 pt-20 text-white text-center text-3xl w-full h-screen">
+    //       Loading...
+    //     </div>
+    //   );
+    // }
+
+    if (loading){
+      return <DetailsShimmer />
     }
 
     

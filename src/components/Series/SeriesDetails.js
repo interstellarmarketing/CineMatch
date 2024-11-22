@@ -17,6 +17,7 @@ import genreIcons from "../../utils/genreIcons";
 import useSeriesDetails from "../../hooks/Series/useSeriesDetails";
 import useTVCastDetails from "../../hooks/Series/useTVCastDetails";
 import SeriesTrailer from "./SeriesTrailer";
+import DetailsShimmer from "../Shimmer/DetailsShimmer";
 
 const SeriesDetails = () => {
     const { movId } = useParams();
@@ -55,11 +56,7 @@ const SeriesDetails = () => {
 
 
     if (loading) {
-      return (
-        <div className="bg-gray-900 pt-20 text-white text-center text-3xl w-full h-screen">
-          Loading...
-        </div>
-      );
+      return <DetailsShimmer />;
     }
 
     

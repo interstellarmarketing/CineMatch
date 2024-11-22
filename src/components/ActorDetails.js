@@ -12,6 +12,8 @@ import { IoMdMale, IoMdFemale  } from "react-icons/io";
 import ActorImagesList from './ActorImagesList';
 import ActorMovieList from './ActorMovieList';
 import useActorSeries from '../hooks/useActorSeries';
+import DetailsShimmer from './Shimmer/DetailsShimmer';
+import ActorSeriesList from './Series/ActorSeriesList';
 
 const ActorDetails = () => {
     const { castId } = useParams();
@@ -49,11 +51,7 @@ const ActorDetails = () => {
     if(!actor) return;
 
     if (loading) {
-        return (
-          <div className="bg-gray-900 pt-20 text-white text-center text-3xl w-full h-screen">
-            Loading...
-          </div>
-        );
+        return <DetailsShimmer />;
     }
 
   return (
@@ -131,7 +129,7 @@ const ActorDetails = () => {
 
         <div className='mx-6 md:m-10 md:mx-28'> 
             <h3 className='text-xl font-semibold text-white'>Series</h3>
-            <ActorMovieList movies={series} />
+            <ActorSeriesList movies={series} />
         </div>
 
     </div>
