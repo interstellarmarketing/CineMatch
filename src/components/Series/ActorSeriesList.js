@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import ActorMovieCard from '../ActorMovieCard';
 import ActorSeriesCard from './ActorSeriesCard';
 
 const ActorSeriesList = ({ movies }) => {
@@ -35,6 +34,15 @@ const ActorSeriesList = ({ movies }) => {
     }
   };
 
+  if (actorMovies.length === 0) {
+    return (
+      <div className='px-12 py-3'>
+        <h1 className='text-2xl text-white text-center mt-10'>
+          No TV Shows found for this actor
+        </h1>
+      </div>
+    );
+  }
   return (
     <div className='px-12 py-3' ref={seriesRef}>
       <div className='flex flex-wrap'>

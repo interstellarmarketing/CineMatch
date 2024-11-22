@@ -26,6 +26,7 @@ const ActorDetails = () => {
     const images = useSelector((store) => store.images.actorImages);
     const movies = useSelector((store) => store.movies.actorMovies);
     const series = useSelector((store) => store.series.actorSeries);
+    console.log(series);
 
     const [loading, setLoading] = useState(true);
 
@@ -127,10 +128,13 @@ const ActorDetails = () => {
             <ActorMovieList movies={movies} />
         </div>
 
+
+         
         <div className='mx-6 md:m-10 md:mx-28'> 
             <h3 className='text-xl font-semibold text-white'>Series</h3>
             <ActorSeriesList movies={series} />
         </div>
+
 
     </div>
   )
