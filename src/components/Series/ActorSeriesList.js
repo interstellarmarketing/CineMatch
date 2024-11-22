@@ -36,7 +36,7 @@ const ActorSeriesList = ({ movies }) => {
 
   if (actorMovies.length === 0) {
     return (
-      <div className='px-12 py-3'>
+      <div className='md:px-12 md:py-3'>
         <h1 className='text-2xl text-white text-center mt-10'>
           No TV Shows found for this actor
         </h1>
@@ -44,7 +44,7 @@ const ActorSeriesList = ({ movies }) => {
     );
   }
   return (
-    <div className='px-12 py-3' ref={seriesRef}>
+    <div className='md:px-12 md:py-3' ref={seriesRef}>
       <div className='flex flex-wrap items-center justify-center'>
         {currentMovies.map(movie => (
           <Link to={'/shows/' + movie.id} key={movie.id}>

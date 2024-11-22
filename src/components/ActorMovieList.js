@@ -41,7 +41,7 @@ const ActorMovieList = ({ movies }) => {
   };
 
   return (
-    <div ref={moviesContainerRef} className="px-12 py-3">
+    <div ref={moviesContainerRef} className="md:px-12 md:py-3">
       <div className="flex flex-wrap items-center justify-center">
         {currentMovies.map((movie) => (
           <Link to={'/movies/' + movie.id} key={movie.id}>
