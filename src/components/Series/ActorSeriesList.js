@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 // Components
 import ActorMovieCard from '../ActorMovieCard';
+import ActorSeriesCard from './ActorSeriesCard';
 
 const ActorSeriesList = ({ movies }) => {
   const data = movies?.cast || [];
@@ -39,7 +40,7 @@ const ActorSeriesList = ({ movies }) => {
       <div className='flex flex-wrap'>
         {currentMovies.map(movie => (
           <Link to={'/shows/' + movie.id} key={movie.id}>
-            <ActorMovieCard movie={movie} />
+            <ActorSeriesCard movie={movie} />
           </Link>
         ))}
       </div>

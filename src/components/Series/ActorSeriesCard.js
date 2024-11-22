@@ -1,13 +1,13 @@
-import { IMG_CDN_URL, MOVIE_BANNER } from "../utils/constants";
+import { IMG_CDN_ORG_URL, SERIES_BANNER } from "../../utils/constants";
 
 
 
-const ActorMovieCard = ({movie}) => {
+const ActorSeriesCard = ({movie}) => {
   return (
     <div className="w-56 p-4"> 
         <img
             alt ="movies"
-            src={movie.poster_path ? `${IMG_CDN_URL}${movie.poster_path}` : MOVIE_BANNER}
+            src={movie.poster_path ? `${IMG_CDN_ORG_URL}${movie.poster_path}` : SERIES_BANNER}
             className="cursor-pointer hover:scale-105 transition-transform duration-300 ease-out"
         />
         <h1 className="text-white">{movie.title}</h1>
@@ -15,4 +15,4 @@ const ActorMovieCard = ({movie}) => {
   )
 }
 
-export default ActorMovieCard;
+export default ActorSeriesCard;

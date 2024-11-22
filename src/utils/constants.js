@@ -25,6 +25,9 @@ export const IMG_CDN_ORG_URL = 'https://image.tmdb.org/t/p/original';
 export const GOOGLE_URL = 'https://www.google.com/search?q=';
 export const IMDB_URL = 'https://www.imdb.com/title/';
 
+export const MOVIE_BANNER = 'https://utfs.io/f/0Gl64F1LqW8AyVKfKPBL23UVxRaD91gjGBwqWErKHuoScT6F'
+export const SERIES_BANNER = 'https://utfs.io/f/0Gl64F1LqW8AyXAlwqBL23UVxRaD91gjGBwqWErKHuoScT6F'
+
 export const SUPPORTED_LANGUAGES = [{identifier: 'en', name: 'English'}, 
   {identifier: 'ta', name: 'Tamil'}, 
   {identifier: 'hi', name: 'Hindi'},
