@@ -62,5 +62,26 @@ const genreIcons = (genre) => {
     }
 }
 
-
 export default genreIcons
+
+export const GENRES = [
+    {logo: <GiPunchBlast /> ,genre: "Action"},
+    {logo: <FaCompass />,genre: "Adventure"},
+    {logo: <RiMickeyFill />,genre: "Animation"},
+    {logo: <FaTheaterMasks />,genre: "Comedy"},
+    {logo: <RiPoliceBadgeFill />,genre: "Crime"},
+    {logo: <IoMdVideocam />,genre: "Documentary"},
+    {logo: <GiDramaMasks />,genre: "Drama"},
+    {logo: <MdOutlineFamilyRestroom />,genre: "Family"},
+    {logo: <FaMagic />,genre: "Fantasy"},
+    {logo: <GiSandsOfTime />,genre: "History"},
+    {logo: <GiGhost />,genre: "Horror"},
+    {logo: <MdQueueMusic />,genre: "Music"},
+    {logo: <FaHatCowboy />,genre: "Mystery"},
+    {logo: <RiHeartsFill />,genre: "Romance"},
+    {logo: <TbUfo />,genre: "Science Fiction"},
+    {logo: <BsTvFill />,genre: "TV Movie"},
+    {logo: <GiHarryPotterSkull />,genre: "Thriller"},
+    {logo: <GiDwarfHelmet />,genre: "War"},
+    {logo: <RiCactusLine />,genre: "Western"},
+]

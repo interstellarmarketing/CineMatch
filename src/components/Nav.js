@@ -39,6 +39,10 @@ const Nav = () => {
         navigate("/shows");
     }
 
+    const handleCategories = () => {
+        navigate("/categories");
+    }
+
   return (
     <div className="flex justify-between items-center gap-10 text-white">
         <div className="cursor-pointer ">
@@ -63,7 +67,7 @@ const Nav = () => {
         
                 
         </div>
-        <div className="cursor-pointer">
+        <div className="cursor-pointer " onClick={handleCategories}>
             Categories
         </div>
 

@@ -17,6 +17,7 @@ import About from "./components/About"
 import Anime from "./components/Anime"
 import BrowseTV from "./components/Series/BrowseTV"
 import SeriesDetails from "./components/Series/SeriesDetails"
+import Categories from "./components/Categories"
 
 
 const App = () => {
@@ -74,6 +75,10 @@ export const appRouter = createBrowserRouter([
       {
         path:'/shows',
         element: <BrowseTV />
+      },
+      {
+        path:'/categories',
+        element: <Categories />
       }
     ] 
   }
