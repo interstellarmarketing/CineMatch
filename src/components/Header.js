@@ -80,7 +80,7 @@ const Header = () => {
   };
 
   // Helper function to determine active link
-  const isActive = (path) => (location.pathname === path ? 'x font-bold' : 'text-black');
+  const isActive = (path) => (location.pathname === path ? 'text-sky-500 font-bold' : 'text-black');
 
   return (
     <div>
