@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const Anime = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
+
   return (
     <div className="flex items-center justify-center h-screen bg-gradient-to-br from-purple-800 via-pink-600 to-red-500">
         <div className="text-center">

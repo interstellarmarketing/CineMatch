@@ -7,6 +7,7 @@ import useTrendingSeries from "../../hooks/Series/useTrendingSeries"
 import useTopRatedSeries from "../../hooks/Series/useTopRatedSeries";
 import usePopularSeries from "../../hooks/Series/usePopularSeries";
 import useTamilSeries from "../../hooks/Series/useTamilSeries";
+import { useEffect } from "react";
 // import useUpcomingMovies from "../../hooks/useUpcomingMovies";
 // import useTrendingMovies from "../../hooks/useTrendingMovies";
 // import useTamilMovies from "../../hooks/useTamilMovies";
@@ -31,7 +32,10 @@ const BrowseTV = () => {
     // useBollyWoodMovies();
     // usePopularInIndia();
     // useMalayalamMovies();
-        
+    useEffect(() => {
+      window.scrollTo(0, 0); // Scrolls to the top of the page
+    }, []);
+  
   return (
     <div>
       <MainContainer />

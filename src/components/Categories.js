@@ -52,6 +52,10 @@ const Categories = () => {
       moviesContainerRef.current.scrollTo(0, 0);
     }
   };
+  
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
 
   // Set up the intersection observer
   useEffect(() => {

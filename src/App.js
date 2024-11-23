@@ -24,7 +24,7 @@ import Footer from "./components/Footer"
 const App = () => {
   return (
     <Provider store={appStore}>
-      <div>
+      <div className="bg-gray-900">
         <Header />
 
         <Outlet />

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { SiGooglegemini } from "react-icons/si";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { toggleGPTSearch } from "../utils/redux/geminiSlice";
+import { useEffect } from "react";
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,11 @@ const Body = () => {
   const handleGeminiSearch = () => {
       dispatch(toggleGPTSearch());
   }
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
 
   return (
     <div className="bg-black" >

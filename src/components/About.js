@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const About = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top of the page
+  }, []);
+
   return (
     <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center p-6">
       <div className="max-w-4xl pt-16 text-center">
