@@ -154,11 +154,11 @@ const Header = () => {
             : 'bg-gradient-to-b from-transparent to-transparent bg-opacity-0'
         }`}
       >
-        <div className='flex justify-between items-center'>
+        <div className='flex gap-[100px] justify-between items-center'>
           <div className=''>
             <img src={LOGO} alt="flimnest-logo" className="w-40" />
           </div>
-          <div className='pl-36 flex items-center gap-4'>
+          <div className='flex items-center gap-4'>
             <div className='text-white text text-4xl' onClick={handleGeminiSearch}>
               <SiGooglegemini/>
             </div>
@@ -213,7 +213,7 @@ const Header = () => {
             </div>
             </>
             }
-          <div className='px-4 pt-96'>
+          <div className='px-4 pt-56'>
             {user ? (
                   <>
                     <button
