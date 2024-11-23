@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { GENRES, genreMap } from '../utils/genreIcons';
 import { API_OPTIONS, IMG_CDN_URL, MOVIE_BANNER } from '../utils/constants';
 import { Link } from 'react-router-dom';
+import CategoryShimmer from './Shimmer/CategoryShimmer';
 
 const Categories = () => {
   const [movies, setMovies] = useState([]); // State to store movies
@@ -94,22 +95,30 @@ const Categories = () => {
       </div>
       <div className='w-10/12 h-full overflow-y-scroll scrollbar-hide'>
         <h1 className='text-center font-bold text-2xl'>{currentGenre+' Movies'}</h1>
-        {loading && page === 1 && <p>Loading movies...</p>}
+        
         {error && <p className='text-red-500'>{error}</p>}
-        <div className='grid grid-cols-4 gap-4 p-4'>
-          {movies.map((movie) => (
-            <Link to={`/movies/${movie.id}`} key={movie.id}>
-              <div className="w-[180px] md:w-60 p-1">
-                <img
-                  alt="movies"
-                  src={movie.poster_path ? `${IMG_CDN_URL}${movie.poster_path}` : MOVIE_BANNER}
-                  className="cursor-pointer hover:scale-105 transition-transform duration-300 ease-out"
-                />
-                <h1 className="text-white text-center">{movie.title}</h1>
-              </div>
-            </Link>
-          ))}
-        </div>
+
+        {loading && page === 1 ? (
+          <CategoryShimmer />
+        ):
+        (
+          <div className='flex flex-wrap items-center justify-center gap-4 p-4'>
+            {movies.map((movie) => (
+              <Link to={`/movies/${movie.id}`} key={movie.id}>
+                <div className="w-[180px] md:w-56 p-2">
+                  <img
+                    alt="movies"
+                    src={movie.poster_path ? `${IMG_CDN_URL}${movie.poster_path}` : MOVIE_BANNER}
+                    className="cursor-pointer hover:scale-105 transition-transform duration-300 ease-out"
+                  />
+                  <h1 className="text-white text-center">{movie.title}</h1>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )
+      }
+        
         {loading && page > 1 && <p className='text-center'>Loading more movies...</p>}
         <div ref={observerRef} className='h-10'></div> {/* Intersection observer target */}
       </div>
