@@ -77,9 +77,16 @@ const GeminiSearch = () => {
       <div className="">
         <div className="flex justify-center md:pt-6">
           <form
-            className="absolute z-50 top-24 bg-black p-2 md:p-6 flex justify-center items-center w-full md:w-6/12 gap-3 rounded-md"
+            className="absolute z-50 top-24 bg-black p-2 md:p-6 flex justify-center items-center w-full md:w-8/12 gap-3 rounded-md"
             onSubmit={(e) => e.preventDefault()}
           >
+            <div>
+              <img
+                src="https://utfs.io/f/0Gl64F1LqW8Ao1idN2OcK7FsptTXbzGNYiRQDvWOEnk504HA"
+                alt="Flimnest Logo"
+                className="w-72"
+              />
+            </div>
             <input
               ref={searchText}
               type="text"
