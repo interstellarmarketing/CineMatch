@@ -111,13 +111,13 @@ const Categories = () => {
           <div className='flex flex-wrap items-center justify-center gap-4 p-4'>
             {movies.map((movie) => (
               <Link to={`/movies/${movie.id}`} key={movie.id}>
-                <div className="w-[140px] md:w-56 p-1">
+                <div className="w-[115px] md:w-56 p-1">
                   <img
                     alt="movies"
                     src={movie.poster_path ? `${IMG_CDN_URL}${movie.poster_path}` : MOVIE_BANNER}
                     className="cursor-pointer hover:scale-105 transition-transform duration-300 ease-out"
                   />
-                  <h1 className="text-white text-center">{movie.title}</h1>
+                  <h1 className="text-white max-md:text-sm text-center">{movie.title}</h1>
                 </div>
               </Link>
             ))}
