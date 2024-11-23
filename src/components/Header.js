@@ -9,13 +9,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // Icons
 import { FaUserNinja } from 'react-icons/fa';
-import { LOGO } from '../utils/constants';
+import { AI_SEARCH_LOGO, LOGO } from '../utils/constants';
 import { SiGooglegemini } from "react-icons/si";
 import { IoMdOptions } from "react-icons/io";
 import { FaRegCircleXmark } from "react-icons/fa6";
 
 // React Router
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { toggleGPTSearch } from '../utils/redux/geminiSlice';
 
 const Header = () => {
   const user = useSelector((store) => store.user);
@@ -78,6 +79,16 @@ const Header = () => {
         navigate('/error');
       });
   };
+
+  const handleGeminiSearch = () => {
+    dispatch(toggleGPTSearch());
+    if (user) {
+        navigate("/gptsearch");
+    } else {
+        navigate("/login");
+    }
+};
+
 
   // Helper function to determine active link
   const isActive = (path) => (location.pathname === path ? 'text-sky-500 font-bold' : 'text-black');
@@ -148,7 +159,7 @@ const Header = () => {
             <img src={LOGO} alt="flimnest-logo" className="w-40" />
           </div>
           <div className='pl-36 flex items-center gap-4'>
-            <div className='text-white text text-4xl'>
+            <div className='text-white text text-4xl' onClick={handleGeminiSearch}>
               <SiGooglegemini/>
             </div>
             <div className='text-white text text-4xl' onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -169,7 +180,7 @@ const Header = () => {
             className='absolute top-0 right-0 p-3 m-3 mr-5'
             onClick={() => setIsMenuOpen(false)}
           >
-            <FaRegCircleXmark className='w-5 h-5 p-1 text-white bg-black rounded-full' />
+            <FaRegCircleXmark className='w-8 h-8 p-1 text-black ' />
           </button>
           {user ? (
             <div className='px-4 text-xl flex text-blue-500 items-center'>
@@ -187,6 +198,21 @@ const Header = () => {
           <Link className={`px-4 pt-3 text-lg font-semibold ${isActive('/shows')}`} to="/shows" onClick={() => setIsMenuOpen(false)}>TV Shows</Link>
           <Link className={`px-4 pt-3 text-lg font-semibold ${isActive('/anime')}`} to="/anime" onClick={() => setIsMenuOpen(false)}>Anime</Link>
           <Link className={`px-4 pt-3 text-lg font-semibold ${isActive('/about')}`} to="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+          {location.pathname !== "/gptsearch" && <>
+                <div className="cursor-pointer bg-black px-4" onClick={handleGeminiSearch}>
+                    {
+                        user && <>
+                            <div>
+                                <img src={AI_SEARCH_LOGO}
+                                    alt="Flimnest Logo"
+                                    className="w-44"
+                                />
+                            </div>
+                        </>
+                    }
+            </div>
+            </>
+            }
           <div className='px-4 pt-96'>
             {user ? (
                   <>

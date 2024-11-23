@@ -77,7 +77,7 @@ const GeminiSearch = () => {
       <div className="">
         <div className="flex justify-center md:pt-6">
           <form
-            className="max-md:flex-col absolute z-50 top-[75px] bg-black bg-opacity-65 p-2 md:p-6 flex justify-center items-center w-full md:w-8/12 gap-3 rounded-md"
+            className="max-md:flex-col absolute z-40 top-[75px] bg-black bg-opacity-65 p-2 md:p-6 flex justify-center items-center w-full md:w-8/12 gap-3 rounded-md"
             onSubmit={(e) => e.preventDefault()}
           >
             <div>
@@ -90,11 +90,11 @@ const GeminiSearch = () => {
               <input
                 ref={searchText}
                 type="text"
-                className="p-1 md:p-2 px-4 w-5/6 rounded-sm outline-none"
+                className="p-3 md:p-2 px-4 w-full md:w-5/6 rounded-sm outline-none"
                 placeholder={lang[currentLang].gptSearchPlaceHolder}
               />
               <button
-                className="text-white border border-white w-1/6 p-1 md:p-2 rounded-sm"
+                className="text-black bg-sky-400 md:w-1/6 w-3/6 p-1 md:p-2 rounded-sm"
                 onClick={handleGPTSearch}
               >
                 {lang[currentLang].search}
@@ -102,7 +102,7 @@ const GeminiSearch = () => {
           </form>
         </div>
       </div>
-      <div className="absolute inset-0 top-44">
+      <div className="absolute inset-0 top-72 md:top-44">
         {isLoading ? (
           <div className="flex justify-center items-center h-full">
             <div className="loader"></div>
