@@ -77,32 +77,32 @@ const GeminiSearch = () => {
       <div className="">
         <div className="flex justify-center md:pt-6">
           <form
-            className="absolute z-50 top-24 bg-black p-2 md:p-6 flex justify-center items-center w-full md:w-8/12 gap-3 rounded-md"
+            className="max-md:flex-col absolute z-50 top-[75px] bg-black bg-opacity-65 p-2 md:p-6 flex justify-center items-center w-full md:w-8/12 gap-3 rounded-md"
             onSubmit={(e) => e.preventDefault()}
           >
             <div>
               <img
                 src="https://utfs.io/f/0Gl64F1LqW8Ao1idN2OcK7FsptTXbzGNYiRQDvWOEnk504HA"
                 alt="Flimnest Logo"
-                className="w-72"
+                className="w-80"
               />
             </div>
-            <input
-              ref={searchText}
-              type="text"
-              className="p-1 md:p-2 px-4 w-5/6 rounded-sm outline-none"
-              placeholder={lang[currentLang].gptSearchPlaceHolder}
-            />
-            <button
-              className="text-white border border-white w-1/6 p-1 md:p-2 rounded-sm"
-              onClick={handleGPTSearch}
-            >
-              {lang[currentLang].search}
-            </button>
+              <input
+                ref={searchText}
+                type="text"
+                className="p-1 md:p-2 px-4 w-5/6 rounded-sm outline-none"
+                placeholder={lang[currentLang].gptSearchPlaceHolder}
+              />
+              <button
+                className="text-white border border-white w-1/6 p-1 md:p-2 rounded-sm"
+                onClick={handleGPTSearch}
+              >
+                {lang[currentLang].search}
+              </button>
           </form>
         </div>
       </div>
-      <div className="absolute inset-0 top-40">
+      <div className="absolute inset-0 top-44">
         {isLoading ? (
           <div className="flex justify-center items-center h-full">
             <div className="loader"></div>
