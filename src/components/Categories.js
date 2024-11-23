@@ -69,10 +69,10 @@ const Categories = () => {
   }, [loading]);
 
   return (
-    <div className='flex pt-20 p-6 justify-between w-full h-screen bg-gray-900 text-white'>
-      <div className='w-2/12 border-r-2 h-full overflow-y-scroll scrollbar-hide'>
+    <div className='flex pt-20 md:pt-20 p-2 md:p-6 justify-between w-full h-screen bg-gray-900 text-white'>
+      <div className='w-2/12  border-r-2 h-full overflow-y-scroll scrollbar-hide'>
         <div>
-          <h1 className='text-center font-bold text-xl'>Categories</h1>
+          <h1 className='hidden md:flex justify-center text-center font-bold text-xl'>Categories</h1>
         </div>
         <div className=''>
           {GENRES.map((category, index) => (
@@ -86,7 +86,7 @@ const Categories = () => {
               onClick={() => handleGenreClick(category.genre)}
             >
               <div className='text-3xl'>{category.logo}</div>
-              <div className='text xl'>
+              <div className='hidden md:flex text xl'>
                 <h1>{category.genre}</h1>
               </div>
             </div>
@@ -105,7 +105,7 @@ const Categories = () => {
           <div className='flex flex-wrap items-center justify-center gap-4 p-4'>
             {movies.map((movie) => (
               <Link to={`/movies/${movie.id}`} key={movie.id}>
-                <div className="w-[180px] md:w-56 p-2">
+                <div className="w-[140px] md:w-56 p-1">
                   <img
                     alt="movies"
                     src={movie.poster_path ? `${IMG_CDN_URL}${movie.poster_path}` : MOVIE_BANNER}
