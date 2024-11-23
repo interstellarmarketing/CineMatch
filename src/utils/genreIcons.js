@@ -78,12 +78,12 @@ export const GENRES = [
     {logo: <GiGhost />,genre: "Horror"},
     {logo: <MdQueueMusic />,genre: "Music"},
     {logo: <FaHatCowboy />,genre: "Mystery"},
-    {logo: <RiHeartsFill />,genre: "Romance"},
     {logo: <TbUfo />,genre: "Science Fiction"},
     {logo: <BsTvFill />,genre: "TV Movie"},
     {logo: <GiHarryPotterSkull />,genre: "Thriller"},
     {logo: <GiDwarfHelmet />,genre: "War"},
     {logo: <RiCactusLine />,genre: "Western"},
+    {logo: <RiHeartsFill />,genre: "Romance"},
 ]
 
 export const genreMap = {

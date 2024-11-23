@@ -30,6 +30,7 @@ export const SERIES_BANNER = 'https://utfs.io/f/0Gl64F1LqW8AyXAlwqBL23UVxRaD91gj
 export const ACTOR_BANNER = 'https://utfs.io/f/0Gl64F1LqW8AzpvQZNId7O3n0CwI1YRZ5lVtTFNGou9AE8Qc'
 export const PROD_LOGO ='https://utfs.io/f/0Gl64F1LqW8ASsIb2XUfmCFVWPrR6B3Dn9yoKa2jLgY0Sexd'
 export const NETWORK_LOGO = 'https://utfs.io/f/0Gl64F1LqW8AAnL6JhFZ8H1mi0DMwQVXOnGzRABIf9e2WhJj'
+export const AI_SEARCH_LOGO ='https://utfs.io/f/0Gl64F1LqW8Ao1idN2OcK7FsptTXbzGNYiRQDvWOEnk504HA'
 
 export const SUPPORTED_LANGUAGES = [{identifier: 'en', name: 'English'}, 
   {identifier: 'ta', name: 'Tamil'}, 

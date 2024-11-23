@@ -3,6 +3,7 @@ import { IoSearch } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleGPTSearch } from "../utils/redux/geminiSlice";
 import { useNavigate, useLocation } from "react-router-dom";
+import { AI_SEARCH_LOGO } from "../utils/constants";
 
 const Nav = () => {
     const dispatch = useDispatch();
@@ -49,9 +50,21 @@ const Nav = () => {
     const activeStyles = "bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white hover:text-black";
 
     return (
-        <div className="flex justify-between items-center gap-10 text-white">
-            <div className="cursor-pointer">
-                {user && (
+        <div className="flex justify-between items-center gap-6 text-white">
+            {location.pathname !== "/gptsearch" && <>
+                <div className="cursor-pointer" onClick={handleGeminiSearch}>
+                    {
+                        user && <>
+                            <div>
+                                <img src={AI_SEARCH_LOGO}
+                                    alt="Flimnest Logo"
+                                    className="w-44"
+                                />
+                            </div>
+                        </>
+                    }
+                
+                {/* {user && (
                     toggleGPT ? (
                         <button
                             className={`flex w-[120px] justify-center items-center gap-1 text-sm font-semibold p-2 m-4 ${isActive("/") ? `${activeStyles}` : "text-white"} border border-white hover:bg-white hover:text-black rounded-sm transition-all ease-in-out duration-300`}
@@ -67,7 +80,15 @@ const Nav = () => {
                             <span className="text-lg"><IoSearch /></span> Gemini
                         </button>
                     )
-                )}
+                )} */}
+
+            </div>
+            </>
+            }
+                
+            
+            <div className={`cursor-pointer ${isActive("/") ? `${activeStyles}` : "text-white"} py-1 px-2 hover:text-sky-400 rounded-sm transition-all ease-in-out duration-300`} onClick={handleHomePage}>
+                Home
             </div>
 
             <div className={`cursor-pointer ${isActive("/categories") ? `${activeStyles}` : "text-white"} py-1 px-2 hover:text-sky-400 rounded-sm transition-all ease-in-out duration-300`} onClick={handleCategories}>

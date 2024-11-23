@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GeminiMovieSuggestions from "./GeminiMovieSuggestions";
-import { API_OPTIONS, COVER_IMAGE } from "../utils/constants";
+import { AI_SEARCH_LOGO, API_OPTIONS, COVER_IMAGE } from "../utils/constants";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { addSearchResultMovies } from "../utils/redux/geminiSlice";
 import lang from "../utils/languageConstants";
@@ -82,7 +82,7 @@ const GeminiSearch = () => {
           >
             <div>
               <img
-                src="https://utfs.io/f/0Gl64F1LqW8Ao1idN2OcK7FsptTXbzGNYiRQDvWOEnk504HA"
+                src={AI_SEARCH_LOGO}
                 alt="Flimnest Logo"
                 className="w-80"
               />

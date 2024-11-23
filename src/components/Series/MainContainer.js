@@ -7,7 +7,7 @@ import { useSelector } from "react-redux"
 
 
 const MainContainer = () => {
-    const series = useSelector((store => store.series?.topRatedSeries));
+    const series = useSelector((store => store.series?.trendingSeries));
 
     if(!series) return; // this is a guard clause 
 

@@ -8,6 +8,7 @@ import useTopRatedSeries from "../../hooks/Series/useTopRatedSeries";
 import usePopularSeries from "../../hooks/Series/usePopularSeries";
 import useTamilSeries from "../../hooks/Series/useTamilSeries";
 import { useEffect } from "react";
+import useHindiSeries from "../../hooks/Series/useHindiSeries";
 // import useUpcomingMovies from "../../hooks/useUpcomingMovies";
 // import useTrendingMovies from "../../hooks/useTrendingMovies";
 // import useTamilMovies from "../../hooks/useTamilMovies";
@@ -22,7 +23,7 @@ const BrowseTV = () => {
   useTrendingSeries();
   useTopRatedSeries();
   useTamilSeries('ta');
-  useTamilSeries('hi');
+  useHindiSeries();
   useTamilSeries('ml');
   useTamilSeries('te');
     // useUpcomingMovies();
