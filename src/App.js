@@ -18,6 +18,7 @@ import Anime from "./components/Anime"
 import BrowseTV from "./components/Series/BrowseTV"
 import SeriesDetails from "./components/Series/SeriesDetails"
 import Categories from "./components/Categories"
+import Footer from "./components/Footer"
 
 
 const App = () => {
@@ -27,6 +28,8 @@ const App = () => {
         <Header />
 
         <Outlet />
+
+        <Footer />
       </div>
     </Provider>
   )

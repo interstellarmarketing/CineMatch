@@ -11,6 +11,7 @@ const Categories = () => {
   const [page, setPage] = useState(1); // Track current page
   const [currentGenre, setCurrentGenre] = useState('Action'); // Default genre set to "Action"
   const observerRef = useRef(); // Ref for intersection observer
+  const moviesContainerRef = useRef(); // Ref for the movies container (main column)
 
   const fetchMoviesByGenre = async (genre, pageNumber = 1) => {
     const genreId = genreMap[genre];
@@ -47,6 +48,8 @@ const Categories = () => {
     if (genre !== currentGenre) {
       setCurrentGenre(genre);
       setPage(1); // Reset to the first page for a new genre
+      // Scroll to the top of the main content (movies container)
+      moviesContainerRef.current.scrollTo(0, 0);
     }
   };
 
@@ -93,15 +96,14 @@ const Categories = () => {
           ))}
         </div>
       </div>
-      <div className='w-10/12 h-full overflow-y-scroll scrollbar-hide'>
-        <h1 className='text-center font-bold text-2xl'>{currentGenre+' Movies'}</h1>
+      <div ref={moviesContainerRef} className='w-10/12 h-full overflow-y-scroll scrollbar-hide'>
+        <h1 className='text-center font-bold text-2xl'>{currentGenre + ' Movies'}</h1>
         
         {error && <p className='text-red-500'>{error}</p>}
 
         {loading && page === 1 ? (
           <CategoryShimmer />
-        ):
-        (
+        ) : (
           <div className='flex flex-wrap items-center justify-center gap-4 p-4'>
             {movies.map((movie) => (
               <Link to={`/movies/${movie.id}`} key={movie.id}>
@@ -116,8 +118,7 @@ const Categories = () => {
               </Link>
             ))}
           </div>
-        )
-      }
+        )}
         
         {loading && page > 1 && <p className='text-center'>Loading more movies...</p>}
         <div ref={observerRef} className='h-10'></div> {/* Intersection observer target */}
