@@ -67,10 +67,6 @@ const MovieDetails = () => {
       return <DetailsShimmer />
     }
 
-    
-
-    
-
     return (
       <div className="bg-gray-900 pt-20 ">
 

@@ -36,8 +36,8 @@ const Footer = () => {
                 </div>
         </div>
 
-        <div className='flex mt-3 items-center justify-center'>
-            <p className='text-center text-white text-sm sm:text-lg' >Developed by Sankar Gnanasekar |  </p>
+        <div className='flex max-md:flex-col mt-3 items-center justify-center'>
+            <p className='md:flex gap-1 text-center text-white text-sm sm:text-lg' >Developed by Sankar Gnanasekar <span className='hidden md:flex md:items-center'>|</span>  </p>
             <p className='text-center pl-1 text-white text-sm sm:text-lg' > © {new Date().getFullYear()} Filmnest. All rights reserved.</p>
         </div>
     </div>

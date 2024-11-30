@@ -11,6 +11,7 @@ const CategoryShimmer = () => {
             <div className="mt-1 h-4 w-3/4 bg-gray-600 rounded"></div>
           </div>
         ))}
+        
       </div>
     );
   };

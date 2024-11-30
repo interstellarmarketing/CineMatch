@@ -11,6 +11,11 @@ const MainShimmer = () => {
             <div className="mt-1 h-4 w-3/4 bg-gray-600 rounded"></div>
           </div>
         ))}
+        <div>
+          <p className="text-center text-sm text-white">
+            Please switch to other networks / Wi-Fi other than Jio if you are experiencing slow loading. Because Jio is blocking the TMDB API.
+          </p>
+        </div>
       </div>
     );
   };

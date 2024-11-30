@@ -154,7 +154,7 @@ const Header = () => {
             : 'bg-gradient-to-b from-transparent to-transparent bg-opacity-0'
         }`}
       >
-        <div className='flex mx-2 w-full justify-between items-center'>
+        <div className='flex ml-3 mr-4 w-full justify-between items-center'>
           <div className=''>
             <img src={LOGO} alt="flimnest-logo" className="w-40" />
           </div>
@@ -213,7 +213,7 @@ const Header = () => {
             </div>
             </>
             }
-          <div className='px-4 pt-56'>
+          <div className='px-4 pt-64'>
             {user ? (
                   <>
                     <button
