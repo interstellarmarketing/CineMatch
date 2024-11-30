@@ -1,13 +1,26 @@
 import { useSelector } from "react-redux";
 import MovieList from "./MovieList"
+import { useEffect, useState } from "react";
+import MainShimmer from "./Shimmer/MainShimmer";
 
 const SecondaryContainer = () => {
-    const movies = useSelector((store => store.movies));
-    console.log(movies)
 
+  const [loading, setLoading] = useState(true);
+  const movies = useSelector((store => store.movies));
+  useEffect(() => {
+    if (movies){
+      setLoading(false);
+    }
+  }, [movies]);
+
+  if (loading){
+    return(
+      <MainShimmer />
+    )
+  }
   return (
     <div className="bg-gray-900 md:bg-black">
-      <div className="pt-20 md:-mt-80 md:mx-10 relative z-40">
+      <div className="pt-[40px] md:-mt-80 md:mx-10 relative z-40">
         <MovieList title={"Trending Movies"} movies={movies?.trendingMovies}/>
         <MovieList title={"Tamil Movies"} movies={movies?.tamilMovies}/>
         <MovieList title={"Bollywood Movies"} movies={movies?.bollywoodMovies}/>
