@@ -8,7 +8,7 @@ const SecondaryContainer = () => {
   const [loading, setLoading] = useState(true);
   const movies = useSelector((store => store.movies));
   useEffect(() => {
-    if (movies){
+    if (movies?.trendingMovies && movies?.tamilMovies && movies?.bollywoodMovies && movies?.teluguMovies && movies?.malayalamMovies && movies?.nowPlayingMovies && movies?.upcomingMovies && movies?.popularMovies){
       setLoading(false);
     }
   }, [movies]);
