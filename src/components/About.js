@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { FaGithub, FaLinkedin } from "react-icons/fa"; // Importing GitHub and LinkedIn icons
 
 const About = () => {
 
@@ -43,7 +44,6 @@ const About = () => {
             </ul>
             </div>
 
-
         <h2 className="text-2xl font-semibold mt-8 mb-4 text-sky-300">Our Mission</h2>
         <p className="text-lg mb-4">
           We aim to unite movie lovers from around the globe by fostering a community where everyone can discover, explore, and celebrate the art of cinema. At <span className="text-sky-400 font-semibold">Filmnest</span>, we believe movies have the power to inspire, educate, and bring people together.
@@ -53,6 +53,49 @@ const About = () => {
         <p className="text-lg">
           Whether you’re looking to discover hidden gems, relive iconic moments, or dive into the history of filmmaking, <span className="text-sky-400 font-semibold">Filmnest</span> is here to make your movie journey unforgettable. Let’s explore the stories that captivate, inspire, and entertain us all.
         </p>
+
+        {/* Developer Section */}
+        <div className="bg-gray-800 pt-3 md:p-6 rounded-lg shadow-lg text-white mt-16">
+          <h2 className="text-2xl font-semibold mb-4 text-sky-300 text-center">Developer Corner</h2>
+          <div className="flex flex-col md:flex-row justify-center md:gap-4 items-center px-6 md:px-20 w-full">
+            <div className="md:w-4/12 mb-6 md:mb-0">
+              <img
+                src="https://avatars.githubusercontent.com/u/128117256?v=4" // Replace this with your GitHub profile image URL
+                alt="Sankar Gnanasekar"
+                className="w-52 h-52 rounded-full border-4 border-sky-400"
+              />
+            </div>
+            
+            <div className="md:w-6/12 text-center md:text-left">
+              <p className="text-md md:text-xl mb-4">
+                <strong className="text-white text-2xl">Sankar Gnanasekar</strong> 
+              </p>
+              <p className="text-md md:text-xl mb-4">
+                <strong className="text-sky-400">sankargnanasekar.k@gmail.com</strong> 
+              </p>
+              <div className="flex justify-center md:justify-start pb-3 gap-8 text-3xl text-sky-400">
+                  <a
+                    href="https://github.com/sankaraxi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-sky-300 transition-colors"
+                  >
+                    <FaGithub />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/sankargnanasekar/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-sky-300 transition-colors"
+                  >
+                    <FaLinkedin />
+                  </a>
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
       </div>
     </div>
   );

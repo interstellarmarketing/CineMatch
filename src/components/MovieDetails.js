@@ -24,6 +24,19 @@ const MovieDetails = () => {
 
     const [loading, setLoading] = useState(true);
 
+    const [popupMessage, setPopupMessage] = useState("");
+    const [showPopup, setShowPopup] = useState(false);
+
+    const triggerPopup = (message) => {
+      setPopupMessage(message);
+      setShowPopup(true);
+
+      // Hide the popup after 3 seconds
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
+    };
+
     const trailerRef = useRef(null);
 
     const scrollToTrailer = () => {
@@ -70,11 +83,21 @@ const MovieDetails = () => {
     return (
       <div className="bg-gray-900 pt-20 ">
 
+      {showPopup && (
+        <div
+          className="popup-message fixed top-16 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-6 py-3 rounded-full shadow-xl z-50 fade-slide"
+        >
+          {popupMessage}
+        </div>
+      )}
+
+
         <div className=" flex max-md:flex-col justify-between md:m-10 md:mx-28">
           <div className="flex flex-col md:hidden text-white">
             <h1 className="text-3xl font-bold text-center">{movieDetails.title}</h1>
             <p className="text-lg text-center pt-1">{movieDetails.tagline}</p>
           </div>
+
 
           <div className="flex flex-col gap-5 md:w-5/12 max-md:items-center max-md:mt-3">
               <div className="max-md:flex max-md:justify-center" >
@@ -86,10 +109,22 @@ const MovieDetails = () => {
               </div>
 
               
-              <div className="flex text-lg w-[250px] items-center justify-center md:w-[350px]">
-                <button className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 mr-1">Watchlist<span className="ml-2 text-2xl"><MdBookmarkAdd /></span></button>
-                <button className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 ml-1">Like<span className="ml-2 text-2xl"><AiFillHeart /></span></button>
-              </div>
+              <div className="flex flex-col gap-5 md:w-5/12 max-md:items-center max-md:mt-3">
+        <div className="flex text-lg w-[250px] items-center justify-center md:w-[350px]">
+          <button
+            onClick={() => triggerPopup("We are working on this feature. It will be rolled out soon!")}
+            className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 mr-1"
+          >
+            Watchlist<span className="ml-2 text-2xl"><MdBookmarkAdd /></span>
+          </button>
+          <button
+            onClick={() => triggerPopup("We are working on this feature. It will be rolled out soon!")}
+            className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 ml-1"
+          >
+            Like<span className="ml-2 text-2xl"><AiFillHeart /></span>
+          </button>
+        </div>
+      </div>
           </div>
 
           <div className="text-white md:w-7/12">
