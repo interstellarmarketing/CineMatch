@@ -1,7 +1,7 @@
 const MainShimmer = () => {
     return (
       <div className="flex flex-wrap pt-20 items-center justify-center gap-4 p-4">
-        {Array.from({ length: 25 }).map((_, index) => (
+        {Array.from({ length: 24 }).map((_, index) => (
           <div
             key={index}
             className="w-[140px] h-[280px] md:w-64 p-1 md:h-[280px] md:p-2 bg-gray-700 rounded-md animate-pulse"

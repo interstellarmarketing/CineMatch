@@ -1,9 +1,24 @@
 import { useSelector } from "react-redux";
 import SeriesList from "./SeriesList";
+import MainShimmer from "../Shimmer/MainShimmer";
+import { useEffect, useState } from "react";
 
 const SecondaryContainer = () => {
+    
+    const [loading, setLoading] = useState(true);
+
     const series = useSelector((store => store.series));
-    console.log(series?.trendingSeries)
+    useEffect(() => {
+      if (series?.trendingSeries){
+        setLoading(false);
+      }
+    }, [series]);
+  
+    if (loading){
+      return(
+        <MainShimmer />
+      )
+    }
   return (
     <div className="bg-gray-900 md:bg-black">
       <div className="pt-20 md:-mt-80 md:mx-10 relative z-40">
