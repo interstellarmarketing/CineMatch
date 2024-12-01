@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 //icons
@@ -10,8 +10,7 @@ import { useEffect } from "react";
 const Body = () => {
   const dispatch = useDispatch();
 
-  const user = useSelector(store => store.user);
-  const toggleGPT = useSelector(store => store.gemini.toggleState);
+  const user = useSelector(store => store.user)
   const handleGeminiSearch = () => {
       dispatch(toggleGPTSearch());
   }

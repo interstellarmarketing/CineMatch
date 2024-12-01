@@ -40,47 +40,47 @@ export const appRouter = createBrowserRouter([
     element: <App />,
     children:[
       {
-        path: "/",
+        index: true,
         element: <Body />,
       },
       {
-        path: "/browse",
+        path: "browse",
         element: <Browse />,
       },
       {
-        path: "/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/gptsearch",
+        path: "gptsearch",
         element: <GeminiSearch />,
       },
       {
-        path:'/movies/:movId',
+        path:'movies/:movId',
         element: <MovieDetails />
       },
       {
-        path:'/shows/:movId',
+        path:'shows/:movId',
         element: <SeriesDetails />
       },
       {
-        path:'/cast/:castId',
+        path:'cast/:castId',
         element: <ActorDetails />
       },
       {
-        path:'/about',
+        path:'about',
         element: <About />
       },
       {
-        path:'/anime',
+        path:'anime',
         element: <Anime />
       },
       {
-        path:'/shows',
+        path:'shows',
         element: <BrowseTV />
       },
       {
-        path:'/categories',
+        path:'categories',
         element: <Categories />
       }
     ] 
