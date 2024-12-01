@@ -35,8 +35,8 @@ Follow these steps to get the project running locally:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/sankaraxi/film-nest.git
-   cd film-nest
+   git clone https://github.com/sankaraxi/filmnest-gpt.git
+   cd filmnest-gpt
 
 2. **Install dependencies**:
    ```bash
