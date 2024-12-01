@@ -1,4 +1,4 @@
-# Film Nest - A Cinematic Resource and Film Recommendation System
+# Filmnest - A Cinematic Resource and Film Recommendation System
 
 ![Film Nest Banner](https://i.ibb.co/1Q0r4b2/film-banner.jpg)
 
