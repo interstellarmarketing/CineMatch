@@ -67,7 +67,6 @@ const MovieDetails = () => {
 
     if (!movieDetails) return;
 
-
     // if (loading) {
     //   return (
     //     <div className="bg-gray-900 pt-20 text-white text-center text-3xl w-full h-screen">

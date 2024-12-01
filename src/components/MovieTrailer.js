@@ -8,7 +8,6 @@ const MovieTrailer = ({movieId}) => {
 
     const trailer = useSelector(store => store.movies?.movieTrailer); //subscribe to the store
 
-    
   return (
     <div className='md:mx-40 md:mt-10 py-5' id='trailer'>
         <iframe   
