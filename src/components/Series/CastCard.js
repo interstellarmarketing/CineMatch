@@ -8,8 +8,8 @@ const CastCard = ({actorName, actorCharacter, actorProfilePath}) => {
             src = {actorProfilePath ? `https://image.tmdb.org/t/p/w500${actorProfilePath}` : ACTOR_BANNER} 
             className="w-28px h-[168px] rounded-full object-contain"
         />
-        <h1 className="text-lg font-semibold">{actorName}</h1>
-        <h2 className="text-sm text-gray-400">{actorCharacter}</h2>
+        <h1 className="text-lg text-center font-semibold">{actorName}</h1>
+        <h2 className="text-sm text-center text-gray-400">{actorCharacter}</h2>
         
     </div>
   )
