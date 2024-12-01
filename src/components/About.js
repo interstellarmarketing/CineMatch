@@ -56,7 +56,7 @@ const About = () => {
 
         {/* Developer Section */}
         <div className="bg-gray-800 pt-3 md:p-6 rounded-lg shadow-lg text-white mt-16">
-          <h2 className="text-2xl font-semibold mb-4 text-sky-300 text-center">Developer Corner</h2>
+          <h2 className="text-4xl font-bold mb-6 text-sky-400 text-center">Developer Connect</h2>
           <div className="flex flex-col md:flex-row justify-center md:gap-4 items-center px-6 md:px-20 w-full">
             <div className="md:w-4/12 mb-6 md:mb-0">
               <img
