@@ -196,8 +196,7 @@ const Header = () => {
           <Link className={`px-4 pt-3 text-lg font-semibold ${isActive('/')}`} to="/" onClick={() => setIsMenuOpen(false)}>Home</Link>
           <Link className={`px-4 pt-3 text-lg font-semibold ${isActive('/categories')}`} to="/categories" onClick={() => setIsMenuOpen(false)}>Categories</Link>
           <Link className={`px-4 pt-3 text-lg font-semibold ${isActive('/shows')}`} to="/shows" onClick={() => setIsMenuOpen(false)}>TV Shows</Link>
-          <Link className={`px-4 pt-3 text-lg font-semibold ${isActive('/anime')}`} to="/anime" onClick={() => setIsMenuOpen(false)}>Anime</Link>
-          <Link className={`px-4 pt-3 text-lg font-semibold ${isActive('/about')}`} to="/about" onClick={() => setIsMenuOpen(false)}>About</Link>
+          <Link className={`px-4 pt-3 text-lg font-semibold ${isActive('/browse')}`} to="/browse" onClick={() => setIsMenuOpen(false)}>Movies</Link>
           {location.pathname !== "/gptsearch" && <>
                 <div className="cursor-pointer bg-black px-4" onClick={handleGeminiSearch}>
                     {
@@ -233,8 +232,8 @@ const Header = () => {
                   </>
                 )}
                 <div className='pt-3'>
-                  <h1 className='text-lg font-semibold text-gray-500'>Movies are Soul.</h1>
-                  <h1 className='text-lg font-semibold text-gray-500'>© {new Date().getFullYear()} Flimnest.</h1>
+                  <h1 className='text-lg font-semibold text-gray-500'>King Smith</h1>
+                  <h1 className='text-lg font-semibold text-gray-500'>© {new Date().getFullYear()} CineMatch.</h1>
                 </div>
                 
           </div>
