@@ -19,10 +19,21 @@ const GeminiSearch = () => {
         "&include_adult=false&language=en-US&page=1",
       API_OPTIONS
     );
-
     const json = await data.json();
+    // Tag results as movies
+    return (json.results || []).map(r => ({ ...r, media_type: 'movie' }));
+  };
 
-    return json.results;
+  const searchTMDBTV = async (show) => {
+    const data = await fetch(
+      "https://api.themoviedb.org/3/search/tv?query=" +
+        show +
+        "&include_adult=false&language=en-US&page=1",
+      API_OPTIONS
+    );
+    const json = await data.json();
+    // Tag results as tv
+    return (json.results || []).map(r => ({ ...r, media_type: 'tv' }));
   };
 
   const handleGPTSearch = async () => {
@@ -35,27 +46,69 @@ const GeminiSearch = () => {
 
     try {
       const genAI = new GoogleGenerativeAI(process.env.REACT_APP_GEMINI_API);
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-05-20" });
 
+      // Dynamic prompt construction based on user input
+      const userInput = searchText.current.value.toLowerCase();
+      let typePhrase = "movies and TV shows";
+      if (userInput.includes("movie") && !userInput.includes("tv show") && !userInput.includes("series")) {
+        typePhrase = "movies";
+      } else if ((userInput.includes("tv show") || userInput.includes("series")) && !userInput.includes("movie")) {
+        typePhrase = "TV shows";
+      }
       const prompt =
-        "Act as movie recommendation engine and suggest movies based on user's input -" +
-        searchText.current.value +
-        " give me only 10 movie results as comma separated list of movie titles and also ensure that no extra text is added with it like -'here are...etc'. For example - 'The Dark Knight, Inception, Interstellar'";
+        `Act as a recommendation engine and suggest up to 20 relevant ${typePhrase} based on the user's input: ${searchText.current.value}. Give me only the titles as a comma-separated list, and ensure no extra text is added.`;
 
       const result = await model.generateContent(prompt);
 
-      const geminiResults = result.response.text().split(",");
+      // Log the raw Gemini response and parsed results for development
+      console.log('Raw Gemini response:', result.response.text());
 
-      const promiseArray = geminiResults.map((movie) =>
-        searchTMDMMovie(movie.trim())
-      );
+      const geminiResults = result.response.text().split(",");
+      console.log('Parsed Gemini results:', geminiResults);
+
+      // Determine what to search for based on typePhrase
+      const shouldSearchMovies = typePhrase.includes('movie');
+      const shouldSearchTV = typePhrase.toLowerCase().includes('tv show');
+
+      const promiseArray = geminiResults.map((title) => {
+        const trimmedTitle = title.trim();
+        let searches = [];
+        if (shouldSearchMovies) searches.push(searchTMDMMovie(trimmedTitle));
+        if (shouldSearchTV) searches.push(searchTMDBTV(trimmedTitle));
+        if (searches.length === 0) searches = [searchTMDMMovie(trimmedTitle), searchTMDBTV(trimmedTitle)]; // fallback to both
+        return Promise.all(searches).then(resultsArrays => {
+          const allResults = resultsArrays.flat();
+          // Filter for exact title matches (case-insensitive)
+          const exactMatches = allResults.filter(
+            (item) =>
+              item &&
+              item.id &&
+              ((item.media_type === 'movie' && item.title && item.title.trim().toLowerCase() === trimmedTitle.toLowerCase()) ||
+               (item.media_type === 'tv' && item.name && item.name.trim().toLowerCase() === trimmedTitle.toLowerCase()))
+          );
+          if (exactMatches.length === 0) return null;
+          // Sort by popularity and take the most popular
+          return exactMatches.sort((a, b) => b.popularity - a.popularity)[0];
+        });
+      });
 
       const movieResults = await Promise.all(promiseArray);
+
+      // Filter out nulls and deduplicate by 'id'
+      const filteredResults = movieResults.filter(movie => movie && movie.id);
+      const uniqueResultsMap = new Map();
+      filteredResults.forEach(movie => {
+        if (!uniqueResultsMap.has(movie.id)) {
+          uniqueResultsMap.set(movie.id, movie);
+        }
+      });
+      const uniqueResults = Array.from(uniqueResultsMap.values());
 
       dispatch(
         addSearchResultMovies({
           movieNames: geminiResults,
-          movieResults: movieResults,
+          movieResults: uniqueResults,
         })
       );
     } catch (error) {

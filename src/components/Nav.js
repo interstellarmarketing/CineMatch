@@ -43,6 +43,10 @@ const Nav = () => {
         navigate("/categories");
     };
 
+    const handleBrowsePage = () => {
+        navigate("/browse");
+    };
+
     // Helper function to check if the current path is active
     const isActive = (path) => location.pathname === path;
 
@@ -99,12 +103,8 @@ const Nav = () => {
                 TV Shows
             </div>
 
-            <div className={`cursor-pointer ${isActive("/anime") ? `${activeStyles}` : "text-white"} py-1 px-2 hover:text-sky-400 rounded-sm transition-all ease-in-out duration-300`} onClick={handleAnimePage}>
-                Anime
-            </div>
-
-            <div className={`cursor-pointer ${isActive("/about") ? `${activeStyles}` : "text-white"} py-1 px-2 hover:text-sky-400 rounded-sm transition-all ease-in-out duration-300`} onClick={handleAboutPage}>
-                About
+            <div className={`cursor-pointer ${isActive("/browse") ? `${activeStyles}` : "text-white"} py-1 px-2 hover:text-sky-400 rounded-sm transition-all ease-in-out duration-300`} onClick={handleBrowsePage}>
+                Movies
             </div>
         </div>
     );

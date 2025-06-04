@@ -13,8 +13,6 @@ import appStore from "./utils/redux/appStore"
 import { Provider } from "react-redux"
 import ActorDetails from "./components/ActorDetails"
 import GeminiSearch from "./components/GeminiSearch"
-import About from "./components/About"
-import Anime from "./components/Anime"
 import BrowseTV from "./components/Series/BrowseTV"
 import SeriesDetails from "./components/Series/SeriesDetails"
 import Categories from "./components/Categories"
@@ -66,14 +64,6 @@ export const appRouter = createBrowserRouter([
       {
         path:'cast/:castId',
         element: <ActorDetails />
-      },
-      {
-        path:'about',
-        element: <About />
-      },
-      {
-        path:'anime',
-        element: <Anime />
       },
       {
         path:'shows',

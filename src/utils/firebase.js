@@ -8,13 +8,12 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE,
-  authDomain: "filmnest-gpt.firebaseapp.com",
-  projectId: "filmnest-gpt",
-  storageBucket: "filmnest-gpt.appspot.com",
-  messagingSenderId: "343046538829",
-  appId: "1:343046538829:web:7b501919856a186f2e7e04",
-  measurementId: "G-01EFPZP1HD"
+  apiKey: "AIzaSyAiRVfyoXVWp4u-oSD1LJOWylfckA4DY38",
+  authDomain: "cinematch-2b345.firebaseapp.com",
+  projectId: "cinematch-2b345",
+  storageBucket: "cinematch-2b345.firebasestorage.app",
+  messagingSenderId: "429166648472",
+  appId: "1:429166648472:web:a9d08820597d058d7544ed"
 };
 
 // Initialize Firebase
