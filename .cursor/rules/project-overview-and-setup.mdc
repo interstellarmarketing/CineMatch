@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Provides general context about the Filmnest project, its purpose, main technologies (React, Redux, Firebase, Gemini API, TMDB API), and setup. Useful for high-level questions, understanding the project architecture, and initial onboarding.
+[README.md](mdc:README.md)
+
+[package.json](mdc:package.json)

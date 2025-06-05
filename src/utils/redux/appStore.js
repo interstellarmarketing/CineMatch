@@ -8,6 +8,7 @@ import imagesReducer from "./imagesSlice"
 import seriesReducer from "./seriesSlice"
 import geminiReducer from "./geminiSlice"
 import langConfigReducer from "./langConfigSlice"
+import preferencesReducer from "./preferencesSlice"
 
 const appStore = configureStore({
     reducer:{
@@ -19,6 +20,7 @@ const appStore = configureStore({
         series: seriesReducer,
         gemini: geminiReducer,
         lang: langConfigReducer,
+        preferences: preferencesReducer,
     }
 })
 

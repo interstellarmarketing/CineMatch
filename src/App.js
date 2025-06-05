@@ -7,6 +7,8 @@ import Browse from "./components/Browse"
 import Login from "./components/Login"
 import Header from "./components/Header"
 import MovieDetails from "./components/MovieDetails"
+import MyLists from "./components/MyLists"
+import ListRecommendations from "./components/ListRecommendations"
 
 //redux
 import appStore from "./utils/redux/appStore"
@@ -72,6 +74,14 @@ export const appRouter = createBrowserRouter([
       {
         path:'categories',
         element: <Categories />
+      },
+      {
+        path:'mylists',
+        element: <MyLists />
+      },
+      {
+        path:'recommendations',
+        element: <ListRecommendations />
       }
     ] 
   }

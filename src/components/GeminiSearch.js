@@ -127,35 +127,46 @@ const GeminiSearch = () => {
           className="w-full h-screen object-cover fixed"
         />
       </div>
-      <div className="">
-        <div className="flex justify-center md:pt-6">
+      <div className="relative z-40">
+        <div className="flex flex-col items-center pt-20 px-4">
           <form
-            className="max-md:flex-col absolute z-40 top-[75px] bg-black bg-opacity-65 p-2 md:p-6 flex justify-center items-center w-full md:w-8/12 gap-3 rounded-md"
+            className="w-full md:w-8/12 bg-black bg-opacity-65 p-2 md:p-6 flex flex-col md:flex-row justify-center items-center gap-3 rounded-md"
             onSubmit={(e) => e.preventDefault()}
           >
-            <div>
+            <div className="w-full md:w-auto flex justify-center">
               <img
                 src={AI_SEARCH_LOGO}
                 alt="Flimnest Logo"
-                className="w-80"
+                className="w-64 md:w-80"
               />
             </div>
+            <div className="w-full flex gap-3">
               <input
                 ref={searchText}
                 type="text"
-                className="p-3 md:p-2 px-4 w-full md:w-5/6 rounded-sm outline-none"
+                className="p-3 md:p-2 px-4 w-full rounded-sm outline-none"
                 placeholder={lang[currentLang].gptSearchPlaceHolder}
               />
               <button
-                className="text-black bg-sky-400 md:w-1/6 w-3/6 p-1 md:p-2 rounded-sm"
+                className="text-black bg-sky-400 w-1/4 md:w-1/6 p-1 md:p-2 rounded-sm whitespace-nowrap"
                 onClick={handleGPTSearch}
               >
                 {lang[currentLang].search}
               </button>
+            </div>
           </form>
+          
+          <div className="w-full md:w-8/12 mt-4 bg-black bg-opacity-65 p-4 rounded-md">
+            <p className="text-white mb-2">💡 <strong>Tips for better results:</strong></p>
+            <ul className="text-white text-sm md:text-base list-disc list-inside space-y-1">
+              <li>Mention "movie(s)" or "TV show(s)" in your search to specify what you're looking for</li>
+              <li>Example search: "Disaster movies"</li>
+              <li>For multiple references: "Find movies like [Movie 1] and [Movie 2]"</li>
+            </ul>
+          </div>
         </div>
       </div>
-      <div className="absolute inset-0 top-72 md:top-44">
+      <div className="relative z-30 mt-72 md:mt-44">
         {isLoading ? (
           <div className="flex justify-center items-center h-full">
             <div className="loader"></div>

@@ -58,7 +58,7 @@ const Header = () => {
         if (toggleGPT && window.location.pathname === '/login') {
           navigate('/gptsearch');
         } else if (window.location.pathname === '/login' || window.location.pathname === '/') {
-          navigate('/browse');
+          navigate('/gptsearch');
         }
       } else {
         dispatch(removeUser());
@@ -89,6 +89,9 @@ const Header = () => {
     }
 };
 
+const handleMyLists = () => {
+    navigate("/mylists");
+};
 
   // Helper function to determine active link
   const isActive = (path) => (location.pathname === path ? 'text-sky-500 font-bold' : 'text-black');
@@ -104,35 +107,33 @@ const Header = () => {
         }`}
       >
         <div>
-          <img src={LOGO} alt="flimnest-logo" className="w-48" />
+          <img 
+            src={LOGO} 
+            alt="flimnest-logo" 
+            className="w-48" 
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
         </div>
         <div className="flex gap-10 items-center">
           <Nav />
           <div className="flex gap-10 w-77 items-center">
             {user ? (
-              <p className="text-lg flex items-center gap-1 text-white font-semibold">
-                <span>
-                  <FaUserNinja />
-                </span>
-                {user.displayName || "User"}
-              </p>
-            ) : (
-              <p className="text-lg flex items-center gap-1 text-white font-semibold">
-                <span>
-                  <FaUserNinja />
-                </span>
-                Guest
-              </p>
-            )}
-            {user ? (
-              <>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={handleMyLists}
+                  className="text-white hover:text-sky-400 transition-colors"
+                >
+                  My Lists
+                </button>
                 <button
                   onClick={handleSignOut}
                   className="cursor-pointer flex items-center bg-sky-400 text-sm p-2 px-4 text-black font-semibold rounded-sm"
                 >
                   Sign Out
                 </button>
-              </>
+              </div>
             ) : (
               <>
                 <Link to="/login">
@@ -156,7 +157,14 @@ const Header = () => {
       >
         <div className='flex ml-3 mr-4 w-full justify-between items-center'>
           <div className=''>
-            <img src={LOGO} alt="flimnest-logo" className="w-40" />
+            <img 
+              src={LOGO} 
+              alt="flimnest-logo" 
+              className="w-40" 
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
           </div>
           <div className='flex items-center gap-4'>
             <div className='text-white text text-4xl' onClick={handleGeminiSearch}>
@@ -197,6 +205,9 @@ const Header = () => {
           <Link className={`px-4 pt-3 text-lg font-semibold ${isActive('/categories')}`} to="/categories" onClick={() => setIsMenuOpen(false)}>Categories</Link>
           <Link className={`px-4 pt-3 text-lg font-semibold ${isActive('/shows')}`} to="/shows" onClick={() => setIsMenuOpen(false)}>TV Shows</Link>
           <Link className={`px-4 pt-3 text-lg font-semibold ${isActive('/browse')}`} to="/browse" onClick={() => setIsMenuOpen(false)}>Movies</Link>
+          {user && (
+            <Link className={`px-4 pt-3 text-lg font-semibold ${isActive('/mylists')}`} to="/mylists" onClick={() => setIsMenuOpen(false)}>My Lists</Link>
+          )}
           {location.pathname !== "/gptsearch" && <>
                 <div className="cursor-pointer bg-black px-4" onClick={handleGeminiSearch}>
                     {
@@ -214,32 +225,35 @@ const Header = () => {
             }
           <div className='px-4 pt-64'>
             {user ? (
-                  <>
-                    <button
-                      onClick={handleSignOut}
-                      className="cursor-pointer flex items-center bg-sky-400 text-sm p-2 px-4 text-black font-semibold rounded-sm"
-                    >
-                      Sign Out
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <Link to="/login" onClick={() => setIsMenuOpen(false)}>
-                      <button className="cursor-pointer flex items-center bg-sky-400 text-sm p-2 px-4 text-black font-semibold rounded-sm">
-                        Sign In
-                      </button>
-                    </Link>
-                  </>
-                )}
-                <div className='pt-3'>
-                  <h1 className='text-lg font-semibold text-gray-500'>King Smith</h1>
-                  <h1 className='text-lg font-semibold text-gray-500'>© {new Date().getFullYear()} CineMatch.</h1>
-                </div>
-                
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={handleMyLists}
+                  className="text-white hover:text-sky-400 transition-colors"
+                >
+                  My Lists
+                </button>
+                <button
+                  onClick={handleSignOut}
+                  className="cursor-pointer flex items-center bg-sky-400 text-sm p-2 px-4 text-black font-semibold rounded-sm"
+                >
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <>
+                <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                  <button className="cursor-pointer flex items-center bg-sky-400 text-sm p-2 px-4 text-black font-semibold rounded-sm">
+                    Sign In
+                  </button>
+                </Link>
+              </>
+            )}
+            <div className='pt-3'>
+              <h1 className='text-lg font-semibold text-gray-500'>King Smith</h1>
+              <h1 className='text-lg font-semibold text-gray-500'>© {new Date().getFullYear()} CineMatch.</h1>
+            </div>
           </div>
-          
         </div>
-        
       </div>
     </div>
   );

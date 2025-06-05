@@ -1,0 +1,23 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+Handles fetching, displaying, and interacting with TV series data: series lists (popular, trending, top-rated), individual series details pages, trailers, and cast information. Uses TMDB API.
+Relevant for tasks related to TV show carousels, series detail page enhancements, or debugging series data.
+[BrowseTV.js](mdc:src/components/Series/BrowseTV.js)
+[MainContainer.js](mdc:src/components/Series/MainContainer.js)
+[SecondaryContainer.js](mdc:src/components/Series/SecondaryContainer.js)
+[SeriesList.js](mdc:src/components/Series/SeriesList.js)
+[SeriesCard.js](mdc:src/components/Series/SeriesCard.js)
+[SeriesDetails.js](mdc:src/components/Series/SeriesDetails.js)
+[SeriesTrailer.js](mdc:src/components/Series/SeriesTrailer.js)
+[CastCard.js](mdc:src/components/Series/CastCard.js)
+[CastList.js](mdc:src/components/Series/CastList.js)
+[usePopularSeries.js](mdc:src/hooks/Series/usePopularSeries.js)
+[useTrendingSeries.js](mdc:src/hooks/Series/useTrendingSeries.js)
+[useTopRatedSeries.js](mdc:src/hooks/Series/useTopRatedSeries.js)
+[SeriesDetails.js](mdc:src/components/Series/SeriesDetails.js)
+
+[SeriesTrailer.js](mdc:src/components/Series/SeriesTrailer.js)
+[useTVCastDetails.js](mdc:src/hooks/Series/useTVCastDetails.js)

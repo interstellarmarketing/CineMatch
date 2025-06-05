@@ -37,7 +37,7 @@ const MovieList = ({ title, movies }) => {
         >
           {movies.map((movie) => (
             <Link to={`/movies/${movie.id}`} key={movie.id}>
-              <MovieCard poster_path={movie.poster_path} />
+              <MovieCard poster_path={movie.poster_path} movie={movie} />
             </Link>
           ))}
         </div>

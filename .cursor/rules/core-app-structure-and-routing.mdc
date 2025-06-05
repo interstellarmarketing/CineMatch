@@ -1,0 +1,12 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Defines the main React application shell, root component rendering, React Router setup, and global providers. Essential for understanding how the app is initialized, how navigation works, and where global context originates.
+[App.js](mdc:src/App.js)
+[index.js](mdc:src/index.js)
+[index.html](mdc:public/index.html)
+[Header.js](mdc:src/components/Header.js)
+[Footer.js](mdc:src/components/Footer.js)
+[Body.js](mdc:src/components/Body.js)

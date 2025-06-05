@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Provides context for global styles (Tailwind base/custom CSS), Tailwind CSS configuration, and common UI utility functions or presentational components like Shimmers, star ratings, and genre icons.
+Helpful for general UI consistency questions or when working with shared visual elements.
+[tailwind.config.js](mdc:tailwind.config.js)
+[index.css](mdc:src/index.css)
+[MainShimmer.js](mdc:src/components/Shimmer/MainShimmer.js)
+[DetailsShimmer.js](mdc:src/components/Shimmer/DetailsShimmer.js)
+[CategoryShimmer.js](mdc:src/components/Shimmer/CategoryShimmer.js)
+[starRating.js](mdc:src/utils/starRating.js)
+[genreIcons.js](mdc:src/utils/genreIcons.js)
+[calculateAge.js](mdc:src/utils/calculateAge.js)

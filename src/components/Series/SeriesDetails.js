@@ -5,6 +5,7 @@ import { TbActivity } from "react-icons/tb";
 import starRating from "../../utils/starRating";
 import CastList from "./CastList";
 import { useEffect, useRef, useState } from "react";
+import usePreferences from "../../hooks/usePreferences";
 
 //icons
 import { FaGlobe } from "react-icons/fa";
@@ -12,7 +13,7 @@ import { LiaImdb } from "react-icons/lia";
 import { FcGoogle } from "react-icons/fc";
 import { IoPlayOutline } from "react-icons/io5";
 import { MdBookmarkAdd } from "react-icons/md";
-import { AiFillHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import genreIcons from "../../utils/genreIcons";
 import useSeriesDetails from "../../hooks/Series/useSeriesDetails";
 import useTVCastDetails from "../../hooks/Series/useTVCastDetails";
@@ -21,6 +22,7 @@ import DetailsShimmer from "../Shimmer/DetailsShimmer";
 
 const SeriesDetails = () => {
     const { movId } = useParams();
+    const { toggleFavorite, isFavorite } = usePreferences();
 
     const [loading, setLoading] = useState(true);
 
@@ -84,7 +86,20 @@ const SeriesDetails = () => {
               
               <div className="flex text-lg w-[250px] items-center justify-center md:w-[350px]">
                 <button className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 mr-1">Watchlist<span className="ml-2 text-2xl"><MdBookmarkAdd /></span></button>
-                <button className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 ml-1">Like<span className="ml-2 text-2xl"><AiFillHeart /></span></button>
+                <button 
+                    onClick={() => toggleFavorite(movieDetails)}
+                    className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 ml-1"
+                >
+                    {isFavorite(movieDetails.id) ? (
+                        <>
+                            Liked<span className="ml-2 text-2xl"><AiFillHeart /></span>
+                        </>
+                    ) : (
+                        <>
+                            Like<span className="ml-2 text-2xl"><AiOutlineHeart /></span>
+                        </>
+                    )}
+                </button>
               </div>
           </div>
 
@@ -144,7 +159,7 @@ const SeriesDetails = () => {
 
 
             <div className="border-t-[1px] border-b-[1px] my-4 border-white max-md:mx-3">
-              <h1 className="text-lg md:text-2xl pt-2 font-semibold">Intrigued by <span className="font-bold">{movieDetails.original_name}</span>? Let’s dive into its world!</h1>
+              <h1 className="text-lg md:text-2xl pt-2 font-semibold">Intrigued by <span className="font-bold">{movieDetails.original_name}</span>? Let's dive into its world!</h1>
               <div className="">
                 <div className="hidden md:flex items-center md:justify-between">
                   <div className="">

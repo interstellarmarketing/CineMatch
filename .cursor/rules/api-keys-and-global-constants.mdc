@@ -1,0 +1,9 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Contains critical API keys (TMDB, Gemini), base URLs for APIs, image CDNs, and other important global constants used throughout the application. Vital for understanding external API interactions, data sources, and fixed application-wide values.
+
+[API_KEYS.js](mdc:src/utils/API_KEYS.js)
+[constants.js](mdc:src/utils/constants.js)

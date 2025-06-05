@@ -8,6 +8,7 @@ import CastList from "./CastList";
 import useCastDetails from "../hooks/useCastDetatils";
 import { useEffect, useRef, useState } from "react";
 import MovieTrailer from "./MovieTrailer";
+import usePreferences from "../hooks/usePreferences";
 
 //icons
 import { FaGlobe } from "react-icons/fa";
@@ -65,6 +66,8 @@ const MovieDetails = () => {
 
     const movieDetails = useSelector((store) => store.details.movieDetails);
 
+    const { toggleFavorite, isFavorite } = usePreferences();
+
     if (!movieDetails) return;
 
     // if (loading) {
@@ -117,10 +120,18 @@ const MovieDetails = () => {
             Watchlist<span className="ml-2 text-2xl"><MdBookmarkAdd /></span>
           </button>
           <button
-            onClick={() => triggerPopup("We are working on this feature. It will be rolled out soon!")}
+            onClick={() => toggleFavorite(movieDetails)}
             className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 ml-1"
           >
-            Like<span className="ml-2 text-2xl"><AiFillHeart /></span>
+            {isFavorite(movieDetails.id) ? (
+              <>
+                Liked<span className="ml-2 text-2xl"><AiFillHeart /></span>
+              </>
+            ) : (
+              <>
+                Like<span className="ml-2 text-2xl"><AiOutlineHeart /></span>
+              </>
+            )}
           </button>
         </div>
       </div>
@@ -185,7 +196,7 @@ const MovieDetails = () => {
 
 
             <div className="border-t-[1px] border-b-[1px] my-4 border-white max-md:mx-3">
-              <h1 className="text-lg md:text-2xl pt-2 font-semibold">Intrigued by <span className="font-bold">{movieDetails.title}</span>? Let’s dive into its world!</h1>
+              <h1 className="text-lg md:text-2xl pt-2 font-semibold">Intrigued by <span className="font-bold">{movieDetails.title}</span>? Let's dive into its world!</h1>
               <div className="">
                 <div className="hidden md:flex items-center md:justify-between">
                   <div className="">

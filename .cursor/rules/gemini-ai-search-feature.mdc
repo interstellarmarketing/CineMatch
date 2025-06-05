@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Focuses on the AI-powered movie/series recommendation feature using the Google Gemini API. Includes the main search component, suggestion display, API call logic, and related Redux state. Helpful for tasks related to improving search, handling Gemini API responses, or UI for search results.
+[geminiSlice.js](mdc:src/utils/redux/geminiSlice.js)
+[GeminiMovieCard.js](mdc:src/components/GeminiMovieCard.js)
+[GeminiMovieSuggestions.js](mdc:src/components/GeminiMovieSuggestions.js)
+[GeminiSearch.js](mdc:src/components/GeminiSearch.js)

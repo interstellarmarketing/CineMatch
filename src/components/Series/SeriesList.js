@@ -33,7 +33,7 @@ const SeriesList = ({ title, series }) => {
         <div className="flex">
           {series.map((seriesItem) => (
             <Link to={`/shows/${seriesItem.id}`} key={seriesItem.id}>
-              <SeriesCard poster_path={seriesItem.poster_path} />
+              <SeriesCard poster_path={seriesItem.poster_path} series={seriesItem} />
             </Link>
           ))}
         </div>

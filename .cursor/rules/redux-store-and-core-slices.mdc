@@ -1,0 +1,14 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Covers the Redux store configuration and the primary Redux slices for managing global application state related to movies, TV series, user session, and UI details.
+[appStore.js](mdc:src/utils/redux/appStore.js)
+[moviesSlice.js](mdc:src/utils/redux/moviesSlice.js)
+[seriesSlice.js](mdc:src/utils/redux/seriesSlice.js)
+[detailsSlice.js](mdc:src/utils/redux/detailsSlice.js)
+[userSlice.js](mdc:src/utils/redux/userSlice.js)
+[geminiSlice.js](mdc:src/utils/redux/geminiSlice.js)
+[imagesSlice.js](mdc:src/utils/redux/imagesSlice.js)
+[langConfigSlice.js](mdc:src/utils/redux/langConfigSlice.js)

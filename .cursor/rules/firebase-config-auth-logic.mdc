@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Handles Firebase setup (initialization, auth instance) and authentication-related UI (Login component). Relevant for questions about user login, registration, Firebase services, and auth state management.
+[firebase.js](mdc:src/utils/firebase.js)
+[firebase.json](mdc:firebase.json)
+[Login.js](mdc:src/components/Login.js)
+
+[userSlice.js](mdc:src/utils/redux/userSlice.js)

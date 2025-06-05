@@ -1,5 +1,6 @@
 import { TMDB_API_KEY } from "./API_KEYS";
-
+import logo from '../assets/images/logo.png';
+import aiSearchLogo from '../assets/images/ai-search-logo.png';
 
 export const API_OPTIONS = {
     method: 'GET',
@@ -13,7 +14,7 @@ export const VIDEO_URL = 'https://api.themoviedb.org/3/movie/';
 
 export const VIDEO_URL_END = '/videos?language=en-US';
 
-export const LOGO = 'https://utfs.io/f/0Gl64F1LqW8AkSYOWRxdmZEIKhV6Oryl3ps8aH2UwzJFMcb9';
+export const LOGO = logo;
 
 export const COVER_IMAGE =
           "https://assets.nflxext.com/ffe/siteui/vlv3/74d734ca-0eab-4cd9-871f-bca01823d872/web/IN-en-20241021-TRIFECTA-perspective_2277eb50-9da3-4fdf-adbe-74db0e9ee2cf_large.jpg"
@@ -30,7 +31,7 @@ export const SERIES_BANNER = 'https://utfs.io/f/0Gl64F1LqW8AyXAlwqBL23UVxRaD91gj
 export const ACTOR_BANNER = 'https://utfs.io/f/0Gl64F1LqW8AzpvQZNId7O3n0CwI1YRZ5lVtTFNGou9AE8Qc'
 export const PROD_LOGO ='https://utfs.io/f/0Gl64F1LqW8ASsIb2XUfmCFVWPrR6B3Dn9yoKa2jLgY0Sexd'
 export const NETWORK_LOGO = 'https://utfs.io/f/0Gl64F1LqW8AAnL6JhFZ8H1mi0DMwQVXOnGzRABIf9e2WhJj'
-export const AI_SEARCH_LOGO ='https://utfs.io/f/0Gl64F1LqW8Ao1idN2OcK7FsptTXbzGNYiRQDvWOEnk504HA'
+export const AI_SEARCH_LOGO = aiSearchLogo;
 
 export const SUPPORTED_LANGUAGES = [{identifier: 'en', name: 'English'}, 
   {identifier: 'ta', name: 'Tamil'}, 
