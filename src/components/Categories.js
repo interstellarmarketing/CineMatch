@@ -76,7 +76,7 @@ const Categories = () => {
   }, [loading]);
 
   return (
-    <div className='flex pt-20 md:pt-20 p-2 md:p-6 justify-between w-full h-screen bg-gray-900 text-white'>
+    <div className='flex pt-20 md:pt-20 p-2 md:p-6 justify-between w-full h-screen text-white'>
       <div className='w-2/12  border-r-2 h-full overflow-y-scroll scrollbar-hide'>
         <div>
           <h1 className='hidden md:flex justify-center text-center font-bold text-xl'>Categories</h1>

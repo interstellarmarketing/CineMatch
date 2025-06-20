@@ -5,79 +5,86 @@ import { auth } from "../utils/firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/redux/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-
-  const [isSignUp, setIsSignUp] = useState(false)
+  const [isSignUp, setIsSignUp] = useState(false);
   const [emailErrMsg, setEmailErrMsg] = useState(null);
   const [passwordErrMsg, setPasswordErrMsg] = useState(null);
   const [fullNameErrMsg, setFullNameErrMsg] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
 
   const email = useRef(null);
   const password = useRef(null);
   const fullName = useRef(null);
 
   const toggleSignUpForm = () => {
-    setIsSignUp(!isSignUp)
-  }
+    setIsSignUp(!isSignUp);
+    // Clear error messages when toggling
+    setEmailErrMsg(null);
+    setPasswordErrMsg(null);
+    setFullNameErrMsg(null);
+  };
 
-  const handleButtonClick = () => {
-    // validate email and password
+  const handleButtonClick = async () => {
+    // Clear previous error messages
+    setEmailErrMsg(null);
+    setPasswordErrMsg(null);
+    setFullNameErrMsg(null);
+
+    // Validate inputs
     const emailErr = validateEmail(email.current.value);
-    setEmailErrMsg(emailErr);
-
     const passwordErr = validatePassword(password.current.value);
-    setPasswordErrMsg(passwordErr);
+    const fullNameErr = isSignUp ? validateFullName(fullName.current.value) : null;
 
-    const fullNameErr = isSignUp && validateFullName(fullName.current.value)
-    setFullNameErrMsg(fullNameErr);
+    if (emailErr) setEmailErrMsg(emailErr);
+    if (passwordErr) setPasswordErrMsg(passwordErr);
+    if (fullNameErr) setFullNameErrMsg(fullNameErr);
 
-    // if (emailErr ===null || passwordErr === null || fullNameErr === null) return; // if error end the code here
+    if (emailErr || passwordErr || (isSignUp && fullNameErr)) return;
 
+    setIsLoading(true);
 
-    // procede if no errors to sign up or sign in
-    if(isSignUp){
-      //Sign up logic
-      createUserWithEmailAndPassword(auth, email.current.value, password.current.value,fullName.current.value)
-        .then((userCredential) => {
-          // Signed up 
-          const user = userCredential.user;
-          updateProfile(user, {
-            displayName: fullName.current.value, photoURL: "https://example.com/jane-q-user/profile.jpg"
-          }).then(() => {
-            const {uid,email,displayName} = auth.currentUser;
-            dispatch(addUser({uid: uid, email: email, displayName: displayName})); 
-          }).catch((error) => {
-            
-          });
-        })
-
-        .catch((error) => {
-          const errorCode = error.code; 
-          const errorMessage = error.message;
-          setPasswordErrMsg(errorCode+" "+errorMessage)
+    try {
+      if (isSignUp) {
+        // Sign up logic
+        const userCredential = await createUserWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        );
+        
+        const user = userCredential.user;
+        await updateProfile(user, {
+          displayName: fullName.current.value,
+          photoURL: "https://example.com/jane-q-user/profile.jpg"
         });
 
-    }else{
-      //signin logic
-      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setPasswordErrMsg(errorCode+" "+errorMessage)
-      });
+        const { uid, email: userEmail, displayName } = auth.currentUser;
+        dispatch(addUser({ uid, email: userEmail, displayName }));
+      } else {
+        // Sign in logic
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email.current.value,
+          password.current.value
+        );
+        
+        const { uid, email: userEmail, displayName } = userCredential.user;
+        dispatch(addUser({ uid, email: userEmail, displayName }));
+      }
       
+      navigate('/browse');
+    } catch (error) {
+      console.error("Authentication error:", error);
+      setPasswordErrMsg(error.message);
+    } finally {
+      setIsLoading(false);
     }
-
-  }
+  };
 
   return (
     <div>
@@ -122,19 +129,27 @@ const Login = () => {
             />
             <p className="text-red-500 font-semibold m-2">{passwordErrMsg}</p>
 
-            <button className="bg-sky-400 p-2 m-2 mt-4 rounded-md text-black" onClick={handleButtonClick}>
-              {isSignUp ? "Sign Up" : "Sign In"}
+            <button 
+              className={`bg-sky-400 p-2 m-2 mt-4 rounded-md text-black ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`} 
+              onClick={handleButtonClick}
+              disabled={isLoading}
+            >
+              {isLoading ? "Loading..." : (isSignUp ? "Sign Up" : "Sign In")}
             </button> 
 
-            <p className="m-2 text-gray-300">{isSignUp ? "Already Registered?" : "New to Filmnest?"} <span 
-                  className="cursor-pointer font-bold text-white" onClick={toggleSignUpForm}>{isSignUp ? "Sign In" : "Sign Up"}
-                </span>
+            <p className="m-2 text-gray-300">
+              {isSignUp ? "Already Registered?" : "New to CineMatch?"} 
+              <span 
+                className="cursor-pointer font-bold text-white" 
+                onClick={toggleSignUpForm}
+              >
+                {isSignUp ? " Sign In" : " Sign Up"}
+              </span>
             </p>
         </form>
       </div>
     </div>
-    
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

@@ -1,13 +1,15 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import usePreferences from '../hooks/usePreferences';
+import { useState, useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { PreferencesContext } from '../App';
+import { selectAllFavorites } from '../utils/redux/preferencesSlice';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { addSearchResultMovies } from '../utils/redux/geminiSlice';
 import { API_OPTIONS } from '../utils/constants';
 import GeminiMovieSuggestions from './GeminiMovieSuggestions';
 
 const ListRecommendations = () => {
-    const { favorites, lists } = usePreferences();
+    const favorites = useSelector(selectAllFavorites);
+    const lists = useSelector((state) => state.preferences.lists);
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     const [selectedList, setSelectedList] = useState('all');
@@ -115,7 +117,7 @@ const ListRecommendations = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-900 text-white p-8">
+        <div className="min-h-screen text-white p-8">
             <div className="max-w-4xl mx-auto">
                 <h2 className="text-3xl font-bold mb-8">Get Recommendations</h2>
                 

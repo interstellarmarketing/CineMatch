@@ -1,22 +1,45 @@
-# Filmnest - A Cinematic Resource and Film Recommendation System
+# CineMatch - A Cinematic Resource and Film Recommendation System
 
-![Film Nest Banner](https://i.ibb.co/1Q0r4b2/film-banner.jpg)
+![CineMatch Banner](https://i.ibb.co/1Q0r4b2/film-banner.jpg)
 
-Film Nest is a cutting-edge cinematic resource and film recommendation platform designed to provide users with personalized movie suggestions, detailed information on films, and an engaging user experience. Built using React, Tailwind CSS, Redux, and integrated with Gemini and TMDB APIs, this application is perfect for film enthusiasts and showcases advanced web development practices. Authentication is powered by Firebase for a secure and seamless login experience.
+CineMatch is a cutting-edge cinematic resource and film recommendation platform designed to provide users with personalized movie suggestions, detailed information on films, and an engaging user experience. Built using React, Tailwind CSS, Redux, and integrated with Gemini and TMDB APIs, this application is perfect for film enthusiasts and showcases advanced web development practices. Authentication is powered by Firebase for a secure and seamless login experience.
 
 ## Features
 
-- **Personalized Film Recommendations**: Recommends movies based on user preferences and past interactions.
-- **AI-Powered Search**: Advanced search capabilities powered by Gemini API for intuitive and accurate results.
-- **Interactive User Interface**: Built using React for a seamless and engaging user experience.
-- **Responsive Design**: Designed with Tailwind CSS to ensure compatibility across all devices.
-- **State Management**: Efficiently manages app state with Redux for better performance and structure.
-- **Detailed Film Information**: Fetches data from TMDB and Gemini APIs to provide rich and comprehensive movie details.
-- **User Authentication**: Secure login and registration functionality powered by Firebase.
-- **Persistent User Preferences**: Favorites and custom lists are stored in Firebase Firestore for cross-device synchronization.
-- **Comprehensive Media Support**: Full support for both movies and TV shows in favorites, lists, and recommendations.
-- **Custom Lists**: Create and manage custom lists to organize your favorite movies and TV shows.
-- **Smart Recommendations**: Get personalized recommendations based on your favorites and custom lists.
+### 🎬 **Movie & TV Show Discovery**
+- Browse trending, popular, and upcoming content
+- Search through extensive movie and TV show databases
+- Filter by genres, languages, and categories
+- Detailed information including cast, crew, ratings, and reviews
+
+### 🧠 **AI-Powered Recommendations**
+- Intelligent movie and TV show suggestions using Google Gemini AI
+- Personalized recommendations based on your preferences
+- Natural language search queries for better discovery
+
+### 📺 **Where to Watch**
+- **NEW!** Real-time streaming availability information
+- Shows where movies and TV shows are available to stream, rent, or buy
+- Covers major platforms like Netflix, Amazon Prime, Disney+, Hulu, and more
+- Region-aware content availability
+- Direct links to search for titles on streaming platforms
+- Categorized by streaming, rental, purchase, and free options
+
+### 👤 **User Management**
+- User authentication with Firebase
+- Personalized watchlists and favorites
+- User preferences and settings
+- Cross-device synchronization
+
+### 🌍 **Multi-Language Support**
+- Support for English, Tamil, Hindi, and Kannada
+- Localized content and interface
+- Regional movie and TV show recommendations
+
+### 📱 **Responsive Design**
+- Mobile-first responsive design
+- Optimized for all screen sizes
+- Touch-friendly interface
 
 ## Technologies Used
 
@@ -56,8 +79,8 @@ Follow these steps to get the project running locally:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/sankaraxi/filmnest-gpt.git
-   cd filmnest-gpt
+   git clone https://github.com/sankaraxi/cinematch.git
+   cd cinematch
 
 2. **Install dependencies**:
    ```bash

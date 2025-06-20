@@ -1,7 +1,7 @@
 const lang = {
     en: {
         search: 'Search',
-        gptSearchPlaceHolder: 'What movies would you like to watch?',
+        gptSearchPlaceHolder: 'Type stuff here dumbass',
     },
     ta: {
         search: 'தேடு',

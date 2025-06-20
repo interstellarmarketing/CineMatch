@@ -6,6 +6,7 @@ import { SiGooglegemini } from "react-icons/si";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { toggleGPTSearch } from "../utils/redux/geminiSlice";
 import { useEffect } from "react";
+import frogNetflix from '../assets/images/frog-netflix.png';
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -21,20 +22,30 @@ const Body = () => {
   }, []);
 
   return (
-    <div className="bg-black" >
-        <div className="relative flex ">
-          <img src="https://utfs.io/f/0Gl64F1LqW8ASxldPqUfmCFVWPrR6B3Dn9yoKa2jLgY0Sexd  " className="w-full h-screen object-cover" alt="Home Page" />
+    <div className="bg-black min-h-screen flex flex-col items-center justify-center relative overflow-x-hidden">
+      <div className="flex flex-col items-center justify-center text-white z-10 relative -mt-16">
+        {/* Hero spotlight effect behind the image */}
+        <div className="hero-spotlight"></div>
+        <figure className="hero-img homepage mb-12 z-10">
+          <img
+            src={frogNetflix}
+            alt="Frog in a suit watching Netflix"
+            loading="lazy"
+            className="w-full h-full object-cover block"
+          />
+        </figure>
+        <h1 className="hero-heading max-w-5xl">Too Stupid to Choose a Show? Let AI Do It.</h1>
+        <div className="flex max-md:flex-col gap-3 items-center justify-center pt-20 text-black font-semibold">
+          <Link 
+            to={user ? "/gptsearch" : "/login"} 
+            onClick={handleGeminiSearch} 
+            className="flex justify-center items-center gap-2 text-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 px-8 hover:from-blue-600 hover:to-purple-700 rounded-lg cta-glow font-bold shadow-lg"
+          >
+            <span className='text-2xl'><SiGooglegemini /></span>
+            <span>Feed Me Content</span>
+          </Link>  
         </div>
-
-        <div className="absolute inset-0 -top-24 flex flex-col items-center justify-center text-white">
-          <h1 className="text-xl md:text-4xl text-center font-bold">Zach made this so his friends would stop asking what to watch. You won't.</h1>
-          <div className="flex max-md:flex-col gap-3 items-center justify-center pt-3 text-black font-semibold">
-            <Link to={user ? "/gptsearch" : "/login"} onClick={handleGeminiSearch} className="flex justify-center items-center gap-1 text-xl bg-white py-2 px-4 hover:bg-sky-400  hover:text-black rounded-sm"><span className='text-xl'><SiGooglegemini /></span><span>Feed Me Content</span></Link>  
-            <Link to="/browse" className=" flex items-centert text-xl text-white py-2 px-4 hover:bg-white hover:text-sky-400 rounded-sm">Browse<span className="text-3xl"><MdKeyboardDoubleArrowRight /></span></Link>  
-          </div>
-
-        </div>
-        
+      </div>
     </div>
   )
 }

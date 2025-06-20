@@ -8,8 +8,7 @@ import { AI_SEARCH_LOGO } from "../utils/constants";
 const Nav = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const location = useLocation(); // Get the current location (path)
-
+    const location = useLocation();
     const toggleGPT = useSelector(store => store.gemini.toggleState);
     const user = useSelector(store => store.user);
 
@@ -27,24 +26,20 @@ const Nav = () => {
         navigate("/");
     };
 
-    const handleAboutPage = () => {
-        navigate("/about");
-    };
-
-    const handleAnimePage = () => {
-        navigate("/anime");
+    const handleCategories = () => {
+        navigate("/categories");
     };
 
     const handleTVPage = () => {
         navigate("/shows");
     };
 
-    const handleCategories = () => {
-        navigate("/categories");
-    };
-
     const handleBrowsePage = () => {
         navigate("/browse");
+    };
+
+    const handleSearch = () => {
+        navigate("/search");
     };
 
     // Helper function to check if the current path is active
@@ -54,59 +49,70 @@ const Nav = () => {
     const activeStyles = "bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 text-white hover:text-black";
 
     return (
-        <div className="flex justify-between items-center gap-6 text-white">
-            {location.pathname !== "/gptsearch" && <>
-                <div className="cursor-pointer" onClick={handleGeminiSearch}>
-                    {
-                        user && <>
-                            <div>
-                                <img src={AI_SEARCH_LOGO}
-                                    alt="Flimnest Logo"
-                                    className="w-44"
-                                />
-                            </div>
-                        </>
-                    }
-                
-                {/* {user && (
-                    toggleGPT ? (
-                        <button
-                            className={`flex w-[120px] justify-center items-center gap-1 text-sm font-semibold p-2 m-4 ${isActive("/") ? `${activeStyles}` : "text-white"} border border-white hover:bg-white hover:text-black rounded-sm transition-all ease-in-out duration-300`}
-                            onClick={handleHomePage}
-                        >
-                            <span className="text-lg"><IoMdHome /></span> Home Page
-                        </button>
-                    ) : (
-                        <button
-                            className={`flex w-[120px] justify-center items-center gap-1 text-sm font-semibold p-2 m-4 ${isActive("/gptsearch") ? `${activeStyles}` : "text-white"} border border-white hover:bg-white hover:text-black rounded-sm transition-all ease-in-out duration-300`}
-                            onClick={handleGeminiSearch}
-                        >
-                            <span className="text-lg"><IoSearch /></span> Gemini
-                        </button>
-                    )
-                )} */}
-
-            </div>
-            </>
-            }
-                
+        <nav className="hidden md:flex items-center gap-6 text-white">
+            {location.pathname !== "/gptsearch" && user && (
+                <button 
+                    onClick={handleGeminiSearch}
+                    className="focus:outline-none focus:ring-2 focus:ring-sky-400 rounded-sm"
+                >
+                    <img 
+                        src={AI_SEARCH_LOGO}
+                        alt="AI Search"
+                        className="w-32 lg:w-44"
+                    />
+                </button>
+            )}
             
-            <div className={`cursor-pointer ${isActive("/") ? `${activeStyles}` : "text-white"} py-1 px-2 hover:text-sky-400 rounded-sm transition-all ease-in-out duration-300`} onClick={handleHomePage}>
-                Home
-            </div>
+            <div className="flex items-center gap-4">
+                <button
+                    onClick={handleHomePage}
+                    className={`min-h-[44px] px-4 rounded-sm transition-all duration-300 ${
+                        isActive("/") ? activeStyles : "text-white hover:text-sky-400"
+                    }`}
+                >
+                    Home
+                </button>
 
-            <div className={`cursor-pointer ${isActive("/categories") ? `${activeStyles}` : "text-white"} py-1 px-2 hover:text-sky-400 rounded-sm transition-all ease-in-out duration-300`} onClick={handleCategories}>
-                Categories
-            </div>
+                {/* Hidden navigation tabs
+                <button
+                    onClick={handleCategories}
+                    className={`min-h-[44px] px-4 rounded-sm transition-all duration-300 ${
+                        isActive("/categories") ? activeStyles : "text-white hover:text-sky-400"
+                    }`}
+                >
+                    Categories
+                </button>
 
-            <div className={`cursor-pointer ${isActive("/shows") ? `${activeStyles}` : "text-white"} py-1 px-2 hover:text-sky-400 rounded-sm transition-all ease-in-out duration-300`} onClick={handleTVPage}>
-                TV Shows
-            </div>
+                <button
+                    onClick={handleTVPage}
+                    className={`min-h-[44px] px-4 rounded-sm transition-all duration-300 ${
+                        isActive("/shows") ? activeStyles : "text-white hover:text-sky-400"
+                    }`}
+                >
+                    TV Shows
+                </button>
 
-            <div className={`cursor-pointer ${isActive("/browse") ? `${activeStyles}` : "text-white"} py-1 px-2 hover:text-sky-400 rounded-sm transition-all ease-in-out duration-300`} onClick={handleBrowsePage}>
-                Movies
+                <button
+                    onClick={handleBrowsePage}
+                    className={`min-h-[44px] px-4 rounded-sm transition-all duration-300 ${
+                        isActive("/browse") ? activeStyles : "text-white hover:text-sky-400"
+                    }`}
+                >
+                    Movies
+                </button>
+                */}
+
+                <button
+                    onClick={handleSearch}
+                    className={`min-h-[44px] min-w-[44px] flex items-center justify-center rounded-sm transition-all duration-300 ${
+                        isActive("/search") ? activeStyles : "text-white hover:text-sky-400"
+                    }`}
+                    aria-label="Search"
+                >
+                    <IoSearch className="text-xl" />
+                </button>
             </div>
-        </div>
+        </nav>
     );
 };
 

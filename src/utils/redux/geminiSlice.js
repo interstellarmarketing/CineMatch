@@ -4,9 +4,11 @@ const geminiSlice = createSlice({
     name: "gemini",
     initialState: {
         toggleState: false,
-        toggleGemini:false,
+        toggleGemini: false,
         searchResultMoviesNames: null,
         searchResultMovies: null,
+        isFromGPTSearch: false,
+        searchQuery: null,
     },
     reducers: {
         toggleGPTSearch: (state) => {
@@ -17,13 +19,19 @@ const geminiSlice = createSlice({
         },
 
         addSearchResultMovies: (state, action) => {
-            const { movieNames, movieResults } = action.payload;
+            const { movieNames, movieResults, searchQuery } = action.payload;
             state.searchResultMoviesNames = movieNames;
-            state.searchResultMovies = movieResults
+            state.searchResultMovies = movieResults;
+            state.searchQuery = searchQuery;
+            state.isFromGPTSearch = true;
+        },
+
+        clearSearchContext: (state) => {
+            state.isFromGPTSearch = false;
+            state.searchQuery = null;
         },
     },
 });
 
-
-export const { toggleGPTSearch, addSearchResultMovies, toggleGeminiSearch } = geminiSlice.actions;
+export const { toggleGPTSearch, addSearchResultMovies, toggleGeminiSearch, clearSearchContext } = geminiSlice.actions;
 export default geminiSlice.reducer;

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import { auth } from '../utils/firebase';
-import { addUser, removeUser } from '../utils/redux/userSlice';
-import { toggleGPTSearch } from '../utils/redux/geminiSlice';
-import { LOGO } from '../utils/constants';
+import { auth } from '../../utils/firebase';
+import { addUser, removeUser } from '../../utils/redux/userSlice';
+import { toggleGPTSearch } from '../../utils/redux/geminiSlice';
+import { LOGO } from '../../utils/constants';
 
 // Icons
 import { FaUserNinja } from 'react-icons/fa';
@@ -14,7 +14,7 @@ import { IoMdOptions } from "react-icons/io";
 import { FaRegCircleXmark } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
 
-const Header = () => {
+const DarkPremiumHeader = () => {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -130,48 +130,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Desktop Header */}
-      <div className={`
-        hidden md:flex justify-between items-center px-8 py-2
-        ${isScrolled ? 'bg-gradient-to-b from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-xl border-b border-amber-500/30 shadow-2xl' : 'bg-transparent'}
-        transition-all duration-500 ease-out
-      `}>
-        <img 
-          src={LOGO} 
-          alt="cinematch-logo" 
-          className="w-40 lg:w-48 transition-all duration-300 hover:scale-105" 
-          loading="eager"
-          decoding="async"
-          fetchpriority="high"
-        />
-        <nav className="flex items-center gap-8">
-          <div className="flex items-center gap-6">
-            {user ? (
-              <>
-                <button
-                  onClick={handleMyLists}
-                  className="text-white/90 hover:text-amber-400 transition-colors min-h-[44px] px-4 font-medium"
-                >
-                  My Lists
-                </button>
-                <button
-                  onClick={handleSignOut}
-                  className="bg-gradient-to-r from-red-500/20 to-pink-600/20 border border-red-400/30 text-white font-semibold rounded-lg min-h-[44px] px-6 hover:from-red-500/30 hover:to-pink-600/30 hover:border-red-400/50 transition-all duration-300"
-                >
-                  Sign Out
-                </button>
-              </>
-            ) : (
-              <Link to="/login">
-                <button className="bg-gradient-to-r from-cyan-500/20 to-blue-600/20 border border-cyan-400/30 text-white font-semibold rounded-lg min-h-[44px] px-6 hover:from-cyan-500/30 hover:to-blue-600/30 hover:border-cyan-400/50 transition-all duration-300">
-                  Sign In
-                </button>
-              </Link>
-            )}
-          </div>
-        </nav>
-      </div>
-
       {/* Dark Premium Mobile Menu */}
       <div
         className={`
@@ -283,4 +241,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default DarkPremiumHeader; 

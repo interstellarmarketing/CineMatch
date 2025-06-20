@@ -1,5 +1,5 @@
 import { TMDB_API_KEY } from "./API_KEYS";
-import logo from '../assets/images/logo.png';
+import logo from '../assets/images/cinematch_logo_main.svg';
 import aiSearchLogo from '../assets/images/ai-search-logo.png';
 
 export const API_OPTIONS = {

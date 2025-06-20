@@ -1,6 +1,6 @@
 const DetailsShimmer = () => {
     return (
-      <div className="bg-gray-900 pt-20 text-white">
+      <div className="pt-20 text-white">
         {/* Header Section */}
         <div className="flex max-md:flex-col justify-between md:m-10 md:mx-28">
           {/* Mobile Title */}

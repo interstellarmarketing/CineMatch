@@ -56,7 +56,7 @@ const ActorDetails = () => {
     }
 
   return (
-    <div className='bg-gray-900 pt-20'>
+    <div className='pt-20'>
         <div className='flex max-md:flex-col justify-between md:m-10 mx-3 md:mx-28'>
             <div className='flex flex-col gap-5 md:w-5/12'>
                 <div className='flex flex-col text-white md:hidden'>

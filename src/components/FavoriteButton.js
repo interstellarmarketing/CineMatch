@@ -1,9 +1,23 @@
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import usePreferences from "../hooks/usePreferences";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { useContext } from "react";
+import { useSelector } from "react-redux";
+import { PreferencesContext } from "../App";
+import { selectAllFavorites } from "../utils/redux/preferencesSlice";
 
-const FavoriteButton = ({ media }) => {
-    const { toggleFavorite, isFavorite } = usePreferences();
-    const favorited = isFavorite(media.id);
+const sizeClassMap = {
+  '2xs': 'text-lg',
+  'xs': 'text-xl',
+  'sm': 'text-2xl',
+  'md': 'text-3xl',
+  'lg': 'text-4xl',
+  'xl': 'text-5xl',
+};
+
+const FavoriteButton = ({ media, size }) => {
+    const favorites = useSelector(selectAllFavorites);
+    const { toggleFavorite } = useContext(PreferencesContext);
+    const favorited = favorites.some(item => item.id === media.id);
+    const iconSizeClass = sizeClassMap[size] || 'text-2xl';
 
     const handleClick = (e) => {
         e.preventDefault(); // Prevent navigation when clicking the button
@@ -14,13 +28,13 @@ const FavoriteButton = ({ media }) => {
     return (
         <button
             onClick={handleClick}
-            className="absolute top-2 right-2 p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-200"
+            className="absolute top-0 right-0 transition-all duration-200 h-auto w-auto p-0 m-0 leading-none flex items-start justify-end"
             aria-label={favorited ? "Remove from favorites" : "Add to favorites"}
         >
             {favorited ? (
-                <AiFillHeart className="text-red-500 text-xl" />
+                <MdFavorite className={`text-red-500 ${iconSizeClass} drop-shadow`} />
             ) : (
-                <AiOutlineHeart className="text-white text-xl hover:text-red-500 transition-colors duration-200" />
+                <MdFavoriteBorder className={`text-white ${iconSizeClass} hover:text-red-500 transition-colors duration-200 drop-shadow`} />
             )}
         </button>
     );

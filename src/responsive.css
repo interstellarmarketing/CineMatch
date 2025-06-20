@@ -1,0 +1,123 @@
+:root {
+  /* Breakpoints */
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-large-desktop: 1440px;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;  /* 8px */
+  --spacing-sm: 1rem;    /* 16px */
+  --spacing-md: 1.5rem;  /* 24px */
+  --spacing-lg: 2rem;    /* 32px */
+  --spacing-xl: 3rem;    /* 48px */
+
+  /* Typography */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-lg: 1.125rem;    /* 18px */
+  --font-size-xl: 1.25rem;     /* 20px */
+  --font-size-2xl: 1.5rem;     /* 24px */
+  --font-size-3xl: 2rem;       /* 32px */
+
+  /* Line heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* Container padding */
+  --container-padding-mobile: var(--spacing-sm);
+  --container-padding-tablet: var(--spacing-md);
+  --container-padding-desktop: var(--spacing-lg);
+}
+
+/* Base styles (mobile first) */
+html {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding: var(--container-padding-mobile);
+  margin: 0 auto;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-sm);
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Forms */
+input, 
+textarea, 
+select {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+}
+
+button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+/* Navigation */
+.nav-toggle {
+  display: block;
+  min-width: 44px;
+  min-height: 44px;
+  padding: var(--spacing-xs);
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+  .container {
+    padding: var(--container-padding-tablet);
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-menu {
+    display: flex;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .container {
+    padding: var(--container-padding-desktop);
+    max-width: 1024px;
+  }
+}
+
+/* Large Desktop styles */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1440px;
+  }
+} 

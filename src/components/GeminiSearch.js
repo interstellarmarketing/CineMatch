@@ -1,16 +1,36 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GeminiMovieSuggestions from "./GeminiMovieSuggestions";
-import { AI_SEARCH_LOGO, API_OPTIONS, COVER_IMAGE } from "../utils/constants";
+import { API_OPTIONS } from "../utils/constants";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { addSearchResultMovies } from "../utils/redux/geminiSlice";
+import { addSearchResultMovies, clearSearchContext } from "../utils/redux/geminiSlice";
 import lang from "../utils/languageConstants";
+import frogNetflix from '../assets/images/frog-netflix.png';
 
 const GeminiSearch = () => {
   const currentLang = useSelector((store) => store.lang.lang);
+  const { searchResultMovies, searchQuery, isFromGPTSearch } = useSelector((store) => store.gemini);
   const searchText = useRef();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
+
+  // Restore search query in input field if coming back from details page
+  useEffect(() => {
+    if (searchQuery && searchText.current) {
+      searchText.current.value = searchQuery;
+    }
+  }, [searchQuery]);
+
+  // Handle browser back button - preserve search state
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      // Don't clear search context when user navigates away
+      // This allows the back button to work properly
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, []);
 
   const searchTMDMMovie = async (movie) => {
     const data = await fetch(
@@ -40,6 +60,11 @@ const GeminiSearch = () => {
     if (!searchText.current || !searchText.current.value) {
       console.error("Search text is undefined or empty");
       return;
+    }
+
+    // Clear previous search context if this is a new search
+    if (isFromGPTSearch && searchText.current.value !== searchQuery) {
+      dispatch(clearSearchContext());
     }
 
     setIsLoading(true); // Start loading animation
@@ -109,6 +134,7 @@ const GeminiSearch = () => {
         addSearchResultMovies({
           movieNames: geminiResults,
           movieResults: uniqueResults,
+          searchQuery: searchText.current.value,
         })
       );
     } catch (error) {
@@ -119,54 +145,72 @@ const GeminiSearch = () => {
   };
 
   return (
-    <div>
-      <div className="">
-        <img
-          src={COVER_IMAGE}
-          alt="Netflix Logo"
-          className="w-full h-screen object-cover fixed"
-        />
-      </div>
-      <div className="relative z-40">
-        <div className="flex flex-col items-center pt-20 px-4">
+    <div className="bg-black min-h-screen flex flex-col items-center justify-center">
+      <div className="relative z-40 w-full flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center pt-1 px-4 w-full">
+          <figure className="hero-img gpt-search mb-6">
+            <img
+              src={frogNetflix}
+              alt="Frog in a suit watching Netflix"
+              loading="lazy"
+              className="w-full h-full object-cover block"
+            />
+          </figure>
           <form
-            className="w-full md:w-8/12 bg-black bg-opacity-65 p-2 md:p-6 flex flex-col md:flex-row justify-center items-center gap-3 rounded-md"
+            className="w-full md:w-11/12 lg:w-9/12 p-0 flex flex-col md:flex-row justify-center items-center"
             onSubmit={(e) => e.preventDefault()}
           >
-            <div className="w-full md:w-auto flex justify-center">
-              <img
-                src={AI_SEARCH_LOGO}
-                alt="Flimnest Logo"
-                className="w-64 md:w-80"
-              />
-            </div>
-            <div className="w-full flex gap-3">
+            {/* Show previous search results indicator */}
+            {isFromGPTSearch && searchResultMovies && searchResultMovies.length > 0 && (
+              <div className="w-full mb-4 p-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-400/30 rounded-lg backdrop-blur-sm">
+                <p className="text-white text-sm">
+                  📋 Previous search: <span className="font-semibold text-blue-300">"{searchQuery}"</span> 
+                  ({searchResultMovies.length} results)
+                </p>
+              </div>
+            )}
+            
+            <div className="w-full flex gap-0">
               <input
                 ref={searchText}
                 type="text"
-                className="p-3 md:p-2 px-4 w-full rounded-sm outline-none"
+                className="p-4 w-full rounded-l-lg outline-none h-14 text-lg bg-gray-800 border border-gray-600 border-r-0 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-300"
                 placeholder={lang[currentLang].gptSearchPlaceHolder}
+                style={{ minHeight: '56px' }}
               />
               <button
-                className="text-black bg-sky-400 w-1/4 md:w-1/6 p-1 md:p-2 rounded-sm whitespace-nowrap"
+                className="text-white bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 rounded-r-lg whitespace-nowrap h-14 text-lg font-bold flex items-center justify-center transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                style={{ minHeight: '56px' }}
                 onClick={handleGPTSearch}
               >
                 {lang[currentLang].search}
               </button>
             </div>
           </form>
-          
-          <div className="w-full md:w-8/12 mt-4 bg-black bg-opacity-65 p-4 rounded-md">
-            <p className="text-white mb-2">💡 <strong>Tips for better results:</strong></p>
-            <ul className="text-white text-sm md:text-base list-disc list-inside space-y-1">
-              <li>Mention "movie(s)" or "TV show(s)" in your search to specify what you're looking for</li>
-              <li>Example search: "Disaster movies"</li>
-              <li>For multiple references: "Find movies like [Movie 1] and [Movie 2]"</li>
+          <div className="w-full md:w-8/12 mt-6 bg-gray-900 bg-opacity-80 p-6 rounded-lg border border-gray-700">
+            <p className="text-white mb-4 text-lg font-semibold">💡 Quick Tips</p>
+            <ul className="text-gray-300 text-sm md:text-base space-y-3">
+              <li className="flex items-start">
+                <span className="text-blue-400 mr-2">•</span>
+                <span>Start with "movie(s)" or "TV show(s)"</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-400 mr-2">•</span>
+                <span>Use references — "movies like Brokeback Mountain"</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-400 mr-2">•</span>
+                <span>Optional genre tag — "disaster movies"</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-blue-400 mr-2">•</span>
+                <span>Multiple refs — "movies like [Movie 1] and [Movie 2]"</span>
+              </li>
             </ul>
           </div>
         </div>
       </div>
-      <div className="relative z-30 mt-72 md:mt-44">
+      <div className="relative z-30 mt-10 w-full">
         {isLoading ? (
           <div className="flex justify-center items-center h-full">
             <div className="loader"></div>

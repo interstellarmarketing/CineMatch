@@ -8,7 +8,12 @@ import CastList from "./CastList";
 import useCastDetails from "../hooks/useCastDetatils";
 import { useEffect, useRef, useState } from "react";
 import MovieTrailer from "./MovieTrailer";
-import usePreferences from "../hooks/usePreferences";
+import { useContext } from "react";
+import { PreferencesContext } from "../App";
+import { selectAllFavorites } from "../utils/redux/preferencesSlice";
+import WhereToWatch from "./WhereToWatch";
+import ShowMoreText from "./ShowMoreText";
+import BackToSearchButton from "./BackToSearchButton";
 
 //icons
 import { FaGlobe } from "react-icons/fa";
@@ -65,233 +70,126 @@ const MovieDetails = () => {
     useCastDetails(movId);
 
     const movieDetails = useSelector((store) => store.details.movieDetails);
+    const favorites = useSelector(selectAllFavorites);
+    const { toggleFavorite } = useContext(PreferencesContext);
+    const favorited = movieDetails && favorites.some(item => item.id === movieDetails.id);
 
-    const { toggleFavorite, isFavorite } = usePreferences();
-
-    if (!movieDetails) return;
-
-    // if (loading) {
-    //   return (
-    //     <div className="bg-gray-900 pt-20 text-white text-center text-3xl w-full h-screen">
-    //       Loading...
-    //     </div>
-    //   );
-    // }
+    if (!movieDetails) return <DetailsShimmer />;
 
     if (loading){
       return <DetailsShimmer />
     }
 
     return (
-      <div className="bg-gray-900 pt-20 ">
+      <div className="pt-16 bg-black text-white">
 
       {showPopup && (
         <div
-          className="popup-message fixed top-16 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-6 py-3 rounded-full shadow-xl z-50 fade-slide"
+          className="popup-message fixed top-20 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white px-6 py-3 rounded-full shadow-xl z-50"
         >
           {popupMessage}
         </div>
       )}
 
-
-        <div className=" flex max-md:flex-col justify-between md:m-10 md:mx-28">
-          <div className="flex flex-col md:hidden text-white">
-            <h1 className="text-3xl font-bold text-center">{movieDetails.title}</h1>
-            <p className="text-lg text-center pt-1">{movieDetails.tagline}</p>
+      {/* Main backdrop and movie info */}
+      <div className="w-full">
+        {/* Backdrop Image */}
+        <div className="relative w-full md:h-[550px] h-auto">
+          <img
+            src={movieDetails.backdrop_path ? IMG_CDN_URL + movieDetails.backdrop_path : (movieDetails.poster_path ? IMG_CDN_URL + movieDetails.poster_path : MOVIE_BANNER)}
+            alt={movieDetails.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+          {/* Back Button */}
+          <div className="absolute top-4 left-4 z-10">
+            <BackToSearchButton />
           </div>
+        </div>
 
+        {/* Movie Details Section */}
+        <div className="flex flex-col md:flex-row gap-8 md:m-10 m-4 md:mx-12">
+          {/* Left side: Poster */}
+          <div className="hidden md:block md:w-1/4">
+            <img 
+              src={movieDetails.poster_path ? IMG_CDN_URL +  movieDetails.poster_path : MOVIE_BANNER} 
+              alt={movieDetails.title} 
+              className="w-full rounded-xl shadow-lg"
+            />
+          </div>
+          
+          {/* Right side: Info */}
+          <div className="md:w-3/4 flex flex-col">
+            {/* Rating and other info */}
+            <div className="flex items-center gap-4 text-lg mb-2">
+              <span className="flex items-center gap-1">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" alt="IMDb" className="w-8 h-8" /> 
+                <span className="font-bold text-yellow-400">{movieDetails.vote_average.toFixed(1)}</span>
+                <span className="text-gray-400 text-sm">({movieDetails.vote_count.toLocaleString()})</span>
+              </span>
+              <span>•</span>
+              <span className="font-semibold">{new Date(movieDetails.release_date).getFullYear()}</span>
+              <span>•</span>
+              <span className="font-semibold">{Math.floor(movieDetails.runtime/60)}h {movieDetails.runtime % 60}m</span>
+            </div>
 
-          <div className="flex flex-col gap-5 md:w-5/12 max-md:items-center max-md:mt-3">
-              <div className="max-md:flex max-md:justify-center" >
-                <img 
-                  src={movieDetails.poster_path ? IMG_CDN_URL +  movieDetails.poster_path : MOVIE_BANNER} 
-                  alt="" 
-                  className="w-[300px] md:w-[350px] rounded-sm "
-                />
+            {/* Title and Tagline */}
+            <h1 className="text-4xl md:text-5xl font-bold">{movieDetails.title}</h1>
+            
+            {/* Overview */}
+            <div className="my-4">
+              <ShowMoreText text={movieDetails.overview} textSize="text-base" />
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex justify-start items-start gap-4 mb-6">
+              <button
+                onClick={() => toggleFavorite(movieDetails)}
+                className="flex items-center gap-2 bg-pink-600/20 hover:bg-pink-600/40 text-pink-300 px-4 py-2 rounded-lg transition-colors w-full md:w-auto justify-center"
+              >
+                {favorited ? <AiFillHeart size={24}/> : <AiOutlineHeart size={24}/>} 
+                <span className="font-semibold">{favorited ? 'Liked' : 'Like'}</span>
+              </button>
+              <button
+                onClick={() => triggerPopup("This feature is coming soon!")}
+                className="flex items-center gap-2 bg-yellow-600/20 hover:bg-yellow-600/40 text-yellow-300 px-4 py-2 rounded-lg transition-colors w-full md:w-auto justify-center"
+              >
+                <MdBookmarkAdd size={24}/>
+                <span className="font-semibold">Watchlist</span>
+              </button>
+            </div>
+
+            {/* New Details Section */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4 mt-8 border-t border-gray-700 pt-6">
+              {/* Genres */}
+              <div className="flex flex-col">
+                <span className="text-gray-400 font-semibold">GENRES</span>
+                <span className="text-lg">{movieDetails.genres.map(g => g.name).join(', ')}</span>
               </div>
-
-              
-              <div className="flex flex-col gap-5 md:w-5/12 max-md:items-center max-md:mt-3">
-        <div className="flex text-lg w-[250px] items-center justify-center md:w-[350px]">
-          <button
-            onClick={() => triggerPopup("We are working on this feature. It will be rolled out soon!")}
-            className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 mr-1"
-          >
-            Watchlist<span className="ml-2 text-2xl"><MdBookmarkAdd /></span>
-          </button>
-          <button
-            onClick={() => toggleFavorite(movieDetails)}
-            className="flex items-center justify-center text-lg font-semibold bg-white text-black w-3/6 border border-black p-2 ml-1"
-          >
-            {isFavorite(movieDetails.id) ? (
-              <>
-                Liked<span className="ml-2 text-2xl"><AiFillHeart /></span>
-              </>
-            ) : (
-              <>
-                Like<span className="ml-2 text-2xl"><AiOutlineHeart /></span>
-              </>
-            )}
-          </button>
+              {/* Runtime */}
+              <div className="flex flex-col">
+                <span className="text-gray-400 font-semibold">RUNTIME</span>
+                <span className="text-lg">{Math.floor(movieDetails.runtime/60)}h {movieDetails.runtime % 60}m</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-          </div>
-
-          <div className="text-white md:w-7/12">
-            <div className="hidden md:flex md:flex-col">
-              <h1 className="text-5xl font-bold text-center">{movieDetails.title}</h1>
-              <p className="text-lg text-center pt-2">{movieDetails.tagline}</p>
-            </div>
-            
-            <div className=" my-3 flex justify-between max-md:mx-3 max-md:flex-col max-md:items-center">
-                <div className="flex items-center gap-2 text-xl">
-                    {starRating(movieDetails.vote_average)}
-                    <span className="font-bold">
-                      {movieDetails.vote_average.toString().slice(0, 3)}/10
-                    </span>
-                </div>
-
-                <div className="flex items-center gap-2 text-xl font-semibold">
-                  <p className="text-white"> {new Date(movieDetails.release_date).getFullYear()}</p>
-                  <p><TbActivity /></p>
-                  <p className="text-white">{Math.floor(movieDetails.runtime/60)}<span>h</span> {movieDetails.runtime % 60}<span>m</span></p>
-                </div>
-            </div>
-
-            <div className="my-2 mt-4 max-md:mx-2">
-              <div className="flex justify-center flex-wrap gap-2">
-                {movieDetails.genres.map((genre) => (
-                  <div key={genre.id} className="flex items-center justify-center gap-1 text-white border border-white text-lg px-2 py-1 rounded-sm">
-                    <span className="text-2xl max-md:text-lg"> {genreIcons(genre.name)}</span>
-                    <span className="max-md:text-sm">{genre.name}</span>
-                    </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="max-md:mx-3">
-              <h1 className="text-2xl font-bold">Overview</h1>
-              <p className="text-lg pt-2">{movieDetails.overview}</p>
-            </div>
-
-            <div className="max-md:mx-3">
-              <h1 className="text-2xl font-bold pt-2 ">Production Company</h1>
-              <div className="flex max-md:flex-col max-md:items-center md:h-[100px] my-3">
-                <div className="flex items-center justify-center md:w-3/6 rounded-sm bg-white">
-                  {movieDetails.production_companies[0] &&
-                    <img
-                    src={movieDetails.production_companies[0].logo_path ? IMG_CDN_URL + movieDetails.production_companies[0].logo_path : PROD_LOGO}
-                    className="p-4 h-full hover:scale-150 transition-transform duration-300 ease-out"
-                    />
-                  }
-                  
-                  
-                </div>
-                <div className=" flex justify-center items-center md:w-3/6 px-4 md:border-l-2 md:border-white ml-2">
-                  <h1 className="text-white font-bold text-3xl">{movieDetails.production_companies[0].name}</h1>
-                </div>
-              </div>
-              
-            </div>
-
-
-            <div className="border-t-[1px] border-b-[1px] my-4 border-white max-md:mx-3">
-              <h1 className="text-lg md:text-2xl pt-2 font-semibold">Intrigued by <span className="font-bold">{movieDetails.title}</span>? Let's dive into its world!</h1>
-              <div className="">
-                <div className="hidden md:flex items-center md:justify-between">
-                  <div className="">
-                    <Link to={movieDetails.homepage} target="_blank">
-                      <button className="flex gap-1 items-center justify-center text-2xl max-md:text-lg text-white font-bold p-2 mt-2 ">Website<span><FaGlobe/></span></button>
-                    </Link>
-                  </div>
-
-                  <div className="">
-                    <Link to={GOOGLE_URL + encodeURIComponent(movieDetails.title)} target="_blank">
-                      <button className="text-white font-bold mt-2 text-4xl max-md:text-xl md:pl-9 "><FcGoogle/></button>
-                    </Link>
-                  </div>
-
-                  <div className="">
-                    <Link to={IMDB_URL +movieDetails.imdb_id} target="_blank">
-                      <button className="text-white font-bold mt-2 text-6xl max-md:text-3xl "><LiaImdb /></button>
-                    </Link>
-                  </div>
-
-                  <div className="">
-                    <button onClick={scrollToTrailer} className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Trailer<span className="text-3xl"><IoPlayOutline /></span></button>
-                  </div>
-
-                  <div className="">
-                    <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Netflix</button>
-                  </div>
-
-                </div>
-
-                <div className="flex flex-col md:hidden"> 
-
-                  <div className="flex gap-3 items-center justify-center">
-
-                    <div className="">
-                      <Link to={GOOGLE_URL + encodeURIComponent(movieDetails.title)} target="_blank">
-                        <button className="flex text-white items-center font-bold mt-2 text-4xl md:pl-9 "><FcGoogle/></button>
-                      </Link>
-                    </div>
-
-                    <div className="">
-                      <Link to={movieDetails.homepage} target="_blank">
-                        <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Website<span><FaGlobe/></span></button>
-                      </Link>
-                    </div>
-
-                    <div className="">
-                      <Link to={IMDB_URL +movieDetails.imdb_id} target="_blank">
-                        <button className="flex items-centertext-white font-bold mt-2 text-6xl  "><LiaImdb /></button>
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="flex justify-center items-center">
-                    <div className="">
-                      
-                      <button onClick={scrollToTrailer} className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Trailer<span className="text-3xl"><IoPlayOutline /></span></button>
-                    
-                    </div>
-
-                    <div className="">
-                      <button className="flex gap-1 items-center justify-center text-2xl text-white font-bold p-2 mt-2 ">Netflix</button>
-                    </div>
-                  </div>
-                  
-                </div>
-                
-              </div>
-              
-            </div>
-
-          </div>
-        </div>
-
-        <div className="md:my-10 mx-3 md:mx-28">
-          <h1 className="text-2xl md:text-3xl font-bold text-white">Top Cast</h1>
+      
+      {/* Cast and Trailer */}
+      <div className="md:m-10 m-4 md:mx-12">
+        <div className="my-10">
+          <h2 className="text-3xl font-bold text-white mb-4">Top Cast</h2>
           <CastList/>
         </div>
 
-        <div className="mx-3 md:mx-28" ref={trailerRef}>
-          <h1 className="text-3xl font-bold text-white">Trailer</h1>
+        <div className="my-10" ref={trailerRef}>
+          <h2 className="text-3xl font-bold text-white mb-4">Official Trailer</h2>
           <MovieTrailer movieId={movieDetails.id} />
-          
-          </div>
-
-          
-
         </div>
+      </div>
+    </div>
     )
   }
 
 export default MovieDetails;
-
-// {/* <div>
-//                 <img
-//                   src={IMG_CDN_URL + movieDetails.production_companies[0].logo_path}
-//                 />
-//               </div> */}

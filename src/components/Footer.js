@@ -5,9 +5,9 @@ import { LOGO } from '../utils/constants';
 const Footer = () => {
   return (
     <div className='bg-black sm:px-16 px-8 py-7'>
-        <div className='flex justify-center'>
+        <div className='flex justify-center items-center'>
             <Link href="/">
-                <img className='w-[250px]' src={LOGO} alt='logo' />
+                <img className='w-[250px]' src={LOGO} alt='cinematch-logo' />
             </Link>
         </div>
 

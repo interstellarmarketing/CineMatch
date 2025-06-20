@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 
 const preferencesSlice = createSlice({
     name: "preferences",
@@ -103,11 +103,14 @@ const preferencesSlice = createSlice({
 // Selectors
 export const selectAllFavorites = (state) => state.preferences.favorites;
 
-export const selectAllListedItems = (state) => {
-    const allItems = state.preferences.lists.flatMap(list => list.items);
-    // Remove duplicates based on id
-    return Array.from(new Map(allItems.map(item => [item.id, item])).values());
-};
+export const selectAllListedItems = createSelector(
+    [(state) => state.preferences.lists],
+    (lists) => {
+        const allItems = lists.flatMap(list => list.items);
+        // Remove duplicates based on id
+        return Array.from(new Map(allItems.map(item => [item.id, item])).values());
+    }
+);
 
 export const { 
     addFavorite,

@@ -1,5 +1,5 @@
 //router
-import { createBrowserRouter, Outlet } from "react-router-dom"
+import { createBrowserRouter, Outlet, useLocation } from "react-router-dom"
 
 //components
 import Body from "./components/Body"
@@ -9,6 +9,8 @@ import Header from "./components/Header"
 import MovieDetails from "./components/MovieDetails"
 import MyLists from "./components/MyLists"
 import ListRecommendations from "./components/ListRecommendations"
+import AlgoliaSearch from "./components/AlgoliaSearch"
+import HeaderDemo from "./components/HeaderDemo"
 
 //redux
 import appStore from "./utils/redux/appStore"
@@ -19,21 +21,46 @@ import BrowseTV from "./components/Series/BrowseTV"
 import SeriesDetails from "./components/Series/SeriesDetails"
 import Categories from "./components/Categories"
 import Footer from "./components/Footer"
+import { AuthProvider } from "./utils/AuthContext"
+import usePreferences from "./hooks/usePreferences"
+import { createContext } from "react"
 
+export const PreferencesContext = createContext()
 
-const App = () => {
+const PreferencesProvider = ({ children }) => {
+  const preferences = usePreferences()
   return (
-    <Provider store={appStore}>
-      <div className="bg-gray-900">
-        <Header />
-
-        <Outlet />
-
-        <Footer />
-      </div>
-    </Provider>
+    <PreferencesContext.Provider value={preferences}>
+      {children}
+    </PreferencesContext.Provider>
   )
 }
+
+const AppContent = () => {
+  const location = useLocation();
+  const isHeaderDemo = location.pathname === '/header-demo';
+
+  return (
+    <div className="min-h-screen">
+      {!isHeaderDemo && <Header />}
+      <main className="container mx-auto pt-16">
+        <Outlet />
+      </main>
+      {!isHeaderDemo && <Footer />}
+    </div>
+  );
+};
+
+const App = () => (
+  <Provider store={appStore}>
+    <AuthProvider>
+      <PreferencesProvider>
+        <AppContent />
+      </PreferencesProvider>
+    </AuthProvider>
+  </Provider>
+)
+
 export const appRouter = createBrowserRouter([
   {
     path: '/',
@@ -54,6 +81,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "gptsearch",
         element: <GeminiSearch />,
+      },
+      {
+        path: "search",
+        element: <AlgoliaSearch />,
       },
       {
         path:'movies/:movId',
@@ -82,11 +113,13 @@ export const appRouter = createBrowserRouter([
       {
         path:'recommendations',
         element: <ListRecommendations />
+      },
+      {
+        path:'header-demo',
+        element: <HeaderDemo />
       }
     ] 
   }
 ])
-
-
 
 export default App;

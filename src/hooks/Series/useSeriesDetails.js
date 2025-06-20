@@ -16,7 +16,7 @@ const useSeriesDetails = (movId) => {
 
   useEffect(() => {
     getSeriesDetails(movId);
-  }, [])
+  }, [movId]);
 }
 
 export default useSeriesDetails;
