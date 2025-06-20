@@ -24,9 +24,11 @@ const geminiSlice = createSlice({
             state.searchResultMovies = movieResults;
             state.searchQuery = searchQuery;
             state.isFromGPTSearch = true;
+            console.log('GeminiSlice: isFromGPTSearch set to true for query:', searchQuery);
         },
 
         clearSearchContext: (state) => {
+            console.log('GeminiSlice: clearing search context, isFromGPTSearch was:', state.isFromGPTSearch);
             state.isFromGPTSearch = false;
             state.searchQuery = null;
         },

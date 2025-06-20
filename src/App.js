@@ -41,7 +41,7 @@ const AppContent = () => {
   const isHeaderDemo = location.pathname === '/header-demo';
 
   return (
-    <div className="min-h-screen">
+    <div>
       {!isHeaderDemo && <Header />}
       <main className="container mx-auto pt-16">
         <Outlet />

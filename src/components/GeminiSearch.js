@@ -56,16 +56,22 @@ const GeminiSearch = () => {
     return (json.results || []).map(r => ({ ...r, media_type: 'tv' }));
   };
 
+  const handleClearSearch = () => {
+    if (searchText.current) {
+      searchText.current.value = '';
+    }
+    dispatch(clearSearchContext());
+  };
+
   const handleGPTSearch = async () => {
     if (!searchText.current || !searchText.current.value) {
       console.error("Search text is undefined or empty");
       return;
     }
 
-    // Clear previous search context if this is a new search
-    if (isFromGPTSearch && searchText.current.value !== searchQuery) {
-      dispatch(clearSearchContext());
-    }
+    // Don't automatically clear search context when navigating back
+    // Only clear it when user explicitly performs a new search
+    // The search context will be preserved for the back button functionality
 
     setIsLoading(true); // Start loading animation
 
@@ -163,10 +169,19 @@ const GeminiSearch = () => {
             {/* Show previous search results indicator */}
             {isFromGPTSearch && searchResultMovies && searchResultMovies.length > 0 && (
               <div className="w-full mb-4 p-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-400/30 rounded-lg backdrop-blur-sm">
-                <p className="text-white text-sm">
-                  📋 Previous search: <span className="font-semibold text-blue-300">"{searchQuery}"</span> 
-                  ({searchResultMovies.length} results)
-                </p>
+                <div className="flex items-center justify-between">
+                  <p className="text-white text-sm">
+                    📋 Previous search: <span className="font-semibold text-blue-300">"{searchQuery}"</span> 
+                    ({searchResultMovies.length} results)
+                  </p>
+                  <button
+                    onClick={handleClearSearch}
+                    className="text-red-300 hover:text-red-100 text-sm px-2 py-1 rounded hover:bg-red-500/20 transition-colors"
+                    title="Clear search history"
+                  >
+                    Clear
+                  </button>
+                </div>
               </div>
             )}
             

@@ -37,7 +37,7 @@ const Header = () => {
         const { uid, email, displayName } = user;
         dispatch(addUser({ uid, email, displayName }));
         if (window.location.pathname === '/login' || window.location.pathname === '/') {
-          navigate('/gptsearch');
+          navigate('/');
         }
       } else {
         dispatch(removeUser());

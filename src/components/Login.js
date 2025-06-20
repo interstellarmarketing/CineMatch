@@ -77,7 +77,7 @@ const Login = () => {
         dispatch(addUser({ uid, email: userEmail, displayName }));
       }
       
-      navigate('/browse');
+      navigate('/');
     } catch (error) {
       console.error("Authentication error:", error);
       setPasswordErrMsg(error.message);

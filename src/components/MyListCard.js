@@ -54,7 +54,7 @@ const MyListCard = ({ item }) => {
   const bestOption = pickBestStreamingOption(item.streamingOptions || []);
   const serviceIcon = bestOption ? getServiceIcon(bestOption.name) : null;
   const serviceName = bestOption ? formatServiceName(bestOption.name) : null;
-  const detailsPath = isMovie ? `/movies/${item.id}` : `/series/${item.id}`;
+  const detailsPath = isMovie ? `/movies/${item.id}` : `/shows/${item.id}`;
 
   return (
     <Link to={detailsPath} className="block group">
