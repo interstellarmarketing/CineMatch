@@ -8,7 +8,7 @@ const useTrendingMovies = () => {
     const dispatch = useDispatch();
 
     const getTrendingMovies = async () => {
-        const data = await fetch('https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=2', API_OPTIONS);
+        const data = await fetch('https://api.themoviedb.org/3/trending/movie/week?language=en-US&region=US', API_OPTIONS);
         const jsonData = await data.json();
 
         dispatch(addTrendingMovies(jsonData.results));
